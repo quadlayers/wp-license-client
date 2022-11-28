@@ -5,10 +5,10 @@ namespace QUADLAYERS\LicenseClient\Backend\Plugin;
 use QUADLAYERS\LicenseClient\Models\Plugin as Model_Plugin;
 
 /**
- * Controller_Plugin_Notification Class
+ * Controller_Plugin_Table Class
  */
 
-class Notification {
+class Table {
 
 	private $plugin;
 
@@ -63,9 +63,9 @@ class Notification {
 		if ( empty( $response->package ) ) {
 			printf(
 				'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
-				__ql_translate( 'Activate your license.'),
+				__ql_translate( 'Activate your license.' ),
 				sprintf(
-					__ql_translate( 'Please visit %1$s to activate the license or %2$s in our website.'),
+					__ql_translate( 'Please visit %1$s to activate the license or %2$s in our website.' ),
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
 						esc_url( $this->plugin->get_menu_license_url() ),
@@ -74,7 +74,7 @@ class Notification {
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
 						esc_url( $this->plugin->get_plugin_url() ),
-						__ql_translate( 'purchase')
+						__ql_translate( 'purchase' )
 					)
 				)
 			);

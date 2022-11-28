@@ -2,8 +2,9 @@
 
 namespace QUADLAYERS\LicenseClient;
 
-use QUADLAYERS\LicenseClient\Backend\Plugin\Notification as Controller_Plugin_Notification;
 use QUADLAYERS\LicenseClient\Backend\Plugin\Information as Controller_Plugin_Information;
+use QUADLAYERS\LicenseClient\Backend\Plugin\Table as Controller_Plugin_Table;
+use QUADLAYERS\LicenseClient\Backend\Plugin\Notification as Controller_Plugin_Notification;
 use QUADLAYERS\LicenseClient\Backend\Page\Load as Controller_Page;
 use QUADLAYERS\LicenseClient\Api\Rest\RoutesLibrary as API_Rest_Routes_Library;
 
@@ -51,7 +52,7 @@ final class Load {
 		$this->activation = new Model_Activation( $this->plugin );
 		$this->user_data  = new Model_User_Data( $this->plugin );
 		new Controller_Plugin_Information( $this->plugin, $this->activation, $this->user_data );
-		new Controller_Plugin_Notification( $this->plugin, $this->activation, $this->user_data );
+		new Controller_Plugin_Table( $this->plugin, $this->activation, $this->user_data );
 		new Controller_Page( $this->plugin, $this->activation, $this->user_data );
 
 	}
