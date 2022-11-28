@@ -12,7 +12,6 @@ use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\UserData\Get as API_Rest_Get_Use
 use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\UserData\Delete as API_Rest_Delete_User_Data;
 
 use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\RouteInterface;
-use QUADLAYERS\LicenseClient\Load;
 
 
 /**
@@ -23,9 +22,16 @@ class RoutesLibrary {
 
 	protected $routes = array();
 
-	public function __construct( array $plugin_data, Load $load ) {
+	public function __construct( array $plugin_data ) {
 
 		$this->plugin_data = $plugin_data;
+
+		/**
+		 * Don't load rest routes without rest_namespace
+		 */
+		if ( ! isset( $this->plugin_data['rest_namespace'] ) || ! is_string( $this->plugin_data['rest_namespace'] ) ) {
+			return;
+		}
 
 		/**
 		 * Activation routes
@@ -42,11 +48,6 @@ class RoutesLibrary {
 	}
 
 	public function get_rest_namespace() {
-
-		if ( ! isset( $this->plugin_data['rest_namespace'] ) || ! is_string( $this->plugin_data['rest_namespace'] ) ) {
-			return 'ql/licenseClient/' . Load::get_instance_key();
-		}
-
 		return 'ql/licenseClient/' . $this->plugin_data['rest_namespace'];
 	}
 

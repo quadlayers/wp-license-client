@@ -13,7 +13,6 @@ use QUADLAYERS\LicenseClient\Models\Activation as Model_Activation;
 
 abstract class Base implements RouteInterface {
 
-	// protected static $rest_namespace = 'ql/licenseClient';
 	protected $routes_library;
 	protected $rest_route;
 

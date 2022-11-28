@@ -13,6 +13,8 @@ class Plugin {
 
 	private $parent_menu_slug = null;
 
+	private $license_menu_slug = null;
+
 	private $plugin_url;
 
 	private $plugin_file;
@@ -135,8 +137,9 @@ class Plugin {
 
 		return $plugin_file;
 	}
-	
-/* 	private function set_plugin_file() {
+
+	/*
+	  private function set_plugin_file() {
 
 		if ( $this->plugin_file && is_file( $this->plugin_file ) ) {
 			return $this->plugin_file;
@@ -202,7 +205,11 @@ class Plugin {
 		if ( ! $this->get_parent_menu_slug() ) {
 			return false;
 		}
-		return $this->get_parent_menu_slug() . '_license';
+		if ( ! $this->license_menu_slug || ! is_string( $this->license_menu_slug ) ) {
+			return $this->get_parent_menu_slug() . '_license';
+		}
+
+		return $this->license_menu_slug;
 	}
 
 	public function get_menu_license_url() {

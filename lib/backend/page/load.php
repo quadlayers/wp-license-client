@@ -21,12 +21,20 @@ class Load {
 		$this->plugin     = $model_plugin;
 		$this->activation = $model_activation;
 		$this->user_data  = $model_user_data;
+
+		/**
+		 * Don't load plugin menu if parent_menu_slug is set to false
+		 */
+		if ( false === $this->plugin->get_parent_menu_slug() ) {
+			return;
+		}
+
 		add_action(
 			'plugins_loaded',
 			function() {
 				add_action( 'admin_init', array( $this, 'create_activation' ) );
 				add_action( 'admin_init', array( $this, 'delete_activation' ) );
-				add_action( 'admin_menu', array( $this, 'add_menu' ) );
+				add_action( 'admin_menu', array( $this, 'add_menu' ), 999 );
 			},
 			99
 		);

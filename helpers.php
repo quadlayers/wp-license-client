@@ -10,6 +10,6 @@ if ( ! function_exists( '__ql_translate' ) ) {
 
 if ( ! function_exists( 'ql_license_client' ) ) {
 	function ql_license_client( array $plugin_data ) {
-		return QUADLAYERS\LicenseClient\Load::instance( $plugin_data );
+		return new QUADLAYERS\LicenseClient\Load( $plugin_data );
 	}
 }
