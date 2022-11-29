@@ -219,7 +219,7 @@ class Plugin {
 		if ( ! $this->get_license_menu_slug() ) {
 			return false;
 		}
-		return menu_page_url( $this->get_license_menu_slug(), false );
+		return admin_url( 'admin.php?page=' . $this->get_license_menu_slug() );
 	}
 
 }
