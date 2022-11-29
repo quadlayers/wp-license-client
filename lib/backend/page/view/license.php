@@ -1,6 +1,6 @@
 <div class="wrap about-wrap full-width-layout qlwrap">
 	<form method="post">
-		<?php settings_fields( sanitize_key( $plugin_slug . '-qlwdd-create' ) ); ?>
+		<?php settings_fields( sanitize_key( $plugin_slug . '-qlwlm-create' ) ); ?>
 		<table class="widefat striped">
 			<thead>
 				<tr>
@@ -34,7 +34,7 @@
 		<?php submit_button( __ql_translate( 'Save'), 'primary' ); ?>	
 	</form>	
 	<form method="post">		
-		<?php settings_fields( sanitize_key( $plugin_slug . '-qlwdd-delete' ) ); ?>
+		<?php settings_fields( sanitize_key( $plugin_slug . '-qlwlm-delete' ) ); ?>
 		<table class="widefat striped" cellspacing="0">
 			<thead>
 				<tr>

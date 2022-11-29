@@ -3,6 +3,7 @@
 namespace QUADLAYERS\LicenseClient\Backend\Plugin;
 
 use QUADLAYERS\LicenseClient\Models\Plugin as Model_Plugin;
+use QUADLAYERS\LicenseClient\Models\Activation as Model_Activation;
 use QUADLAYERS\LicenseClient\Api\Fetch\Product\Information as API_Fetch_Product_Information;
 
 /**
@@ -13,9 +14,10 @@ class Information {
 
 	private $plugin;
 
-	public function __construct( Model_Plugin $plugin ) {
+	public function __construct( Model_Plugin $plugin, Model_Activation $activation ) {
 
-		$this->plugin = $plugin;
+		$this->plugin     = $plugin;
+		$this->activation = $activation;
 
 		add_action(
 			'admin_init',
@@ -33,7 +35,14 @@ class Information {
 
 		$fetch = new API_Fetch_Product_Information( $this->plugin );
 
-		$data = $fetch->get_data();
+		$activation = $this->activation->get();
+
+		$data = $fetch->get_data(
+			array(
+				'license_key'         => isset( $activation['license_key'] ) ? $activation['license_key'] : null,
+				'activation_instance' => isset( $activation['activation_instance'] ) ? $activation['activation_instance'] : null,
+			)
+		);
 
 		if ( isset( $data->error ) ) {
 			return $transient;

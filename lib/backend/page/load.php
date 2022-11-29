@@ -91,7 +91,7 @@ class Load {
 			return;
 		}
 
-		if ( $_REQUEST['option_page'] !== $plugin_slug . '-qlwdd-create' ) {
+		if ( $_REQUEST['option_page'] !== $plugin_slug . '-qlwlm-create' ) {
 			return;
 		}
 
@@ -126,7 +126,7 @@ class Load {
 			return;
 		}
 
-		if ( $_REQUEST['option_page'] !== $plugin_slug . '-qlwdd-delete' ) {
+		if ( $_REQUEST['option_page'] !== $plugin_slug . '-qlwlm-delete' ) {
 			return;
 		}
 

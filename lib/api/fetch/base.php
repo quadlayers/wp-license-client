@@ -40,7 +40,7 @@ abstract class Base implements FetchInterface {
 		$response = wp_remote_request(
 			$api_url . '?' . $query . '&product_key=' . $this->plugin->get_product_key(),
 			array(
-				'user-agent' => sprintf( 'WDD/%s/%s; %s', $this->plugin->get_plugin_slug(), $this->plugin->get_plugin_version(), $this->plugin->get_activation_site() ),
+				'user-agent' => sprintf( 'WLM/%s/%s; %s', $this->plugin->get_plugin_slug(), $this->plugin->get_plugin_version(), $this->plugin->get_activation_site() ),
 				'method'     => static::get_rest_method(),
 			)
 		);

@@ -3,7 +3,7 @@
 if ( ! function_exists( '__ql_translate' ) ) {
 	function __ql_translate( $text ) {
 		$fn         = 'translate';
-		$textdomain = 'wdd';
+		$textdomain = 'qlwlm';
 		return $fn( $text, $textdomain );
 	}
 }
