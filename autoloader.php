@@ -2,36 +2,61 @@
 
 namespace QUADLAYERS\LicenseClient;
 
+/**
+ * Autoloader class
+ * This class handles management of the actual PHP autoloader.
+ *
+ * @since 1.0.0
+ */
 final class Autoloader {
 
 	protected static $_instance;
 	const PATH = __DIR__ . DIRECTORY_SEPARATOR;
 
+	/**
+	 * Register autoloader
+	 */
 	private function __construct() {
-		spl_autoload_register( array( $this, 'autoload' ) );
+		spl_autoload_register( array( self::class, 'autoload' ) );
 	}
 
-	public function autoload( $class_to_load ) {
+	/**
+	 * Loads a class file if one could be found.
+	 *
+	 * Note: This function is static so that the autoloader can be easily unregistered. If
+	 * it was a class method we would have to unwrap the object to check the namespace.
+	 *
+	 * @param string $class_name The name of the class to autoload.
+	 *
+	 * @return bool Indicates whether or not a class file was loaded.
+	 */
+	public static function autoload( $class_name ) {
 
-		if ( 0 !== strpos( $class_to_load, __NAMESPACE__ ) ) {
+		if ( 0 !== strpos( $class_name, __NAMESPACE__ ) ) {
 			return;
 		}
 
-		if ( ! class_exists( $class_to_load ) ) {
+		if ( ! class_exists( $class_name ) ) {
 
-			$class_file = $this->class_file( $class_to_load );
+			$class_file = self::class_file( $class_name );
 
-			if ( is_readable( $class_file ) ) {
-				include_once $class_file;
-			} else {
-				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-					$warning_message = sprintf( __ql_translate( '"Can\'t find %1$s" for "%2$s" in "%3$s".' ), $class_file, $class_to_load, __NAMESPACE__ );
-					error_log( $warning_message, E_USER_NOTICE );
-				}
+			if ( ! is_readable( $class_file ) ) {
+				return false;
 			}
+
+			include_once $class_file;
+
+			return true;
 		}
 	}
 
+	/**
+	 * Finds the file path for the given class.
+	 *
+	 * @param string $class_name The class to find.
+	 *
+	 * @return string|null $file_path The path to the file if found, null if no class was found.
+	 */
 	public static function class_file( $class_name ) {
 
 		$class_name = str_replace( __NAMESPACE__, '', $class_name );
@@ -44,6 +69,11 @@ final class Autoloader {
 		return self::PATH . 'lib/' . $filename . '.php';
 	}
 
+	/**
+	 * Instantiate the singleton.
+	 *
+	 * @return self
+	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
 			self::$_instance = new self();

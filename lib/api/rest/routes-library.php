@@ -2,14 +2,14 @@
 
 namespace QUADLAYERS\LicenseClient\Api\Rest;
 
-use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\Activation\Create as API_Rest_Create_Activation_License;
-use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\Activation\Delete as API_Rest_Delete_Activation_License;
+use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\Activation\Create as API_Rest_Activation_License_Create;
+use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\Activation\Delete as API_Rest_Activation_License_Delete;
 
 use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\Activation\Get as API_Rest_Get_Activation_License;
 
-use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\UserData\Create as API_Rest_Create_User_Data;
-use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\UserData\Get as API_Rest_Get_User_Data;
-use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\UserData\Delete as API_Rest_Delete_User_Data;
+use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\UserData\Create as API_Rest_User_Data_Create;
+use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\UserData\Get as API_Rest_User_Data_Get;
+use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\UserData\Delete as API_Rest_User_Data_Delete;
 
 use QUADLAYERS\LicenseClient\Api\Rest\Endpoints\RouteInterface;
 
@@ -22,35 +22,57 @@ class RoutesLibrary {
 
 	protected $routes = array();
 
-	public function __construct( array $plugin_data ) {
+	/**
+	 * Client data initialized in the constructor.
+	 *
+	 * @var array
+	 */
+	private $client_data;
 
-		$this->plugin_data = $plugin_data;
+	public function __construct( array $client_data ) {
+
+		$this->client_data = $client_data;
 
 		/**
 		 * Don't load rest routes without rest_namespace
 		 */
-		if ( ! isset( $this->plugin_data['rest_namespace'] ) || ! is_string( $this->plugin_data['rest_namespace'] ) ) {
+		if ( ! $this->get_rest_namespace() ) {
 			return;
 		}
 
 		/**
 		 * Activation routes
 		 */
-		new API_Rest_Create_Activation_License( $this->plugin_data, $this );
-		new API_Rest_Delete_Activation_License( $this->plugin_data, $this );
-		new API_Rest_Get_Activation_License( $this->plugin_data, $this );
+		new API_Rest_Activation_License_Create( $this->client_data, $this );
+		new API_Rest_Activation_License_Delete( $this->client_data, $this );
+		new API_Rest_Get_Activation_License( $this->client_data, $this );
 		/**
 		* User data routes
 		*/
-		new API_Rest_Create_User_Data( $this->plugin_data, $this );
-		new API_Rest_Get_User_Data( $this->plugin_data, $this );
-		new API_Rest_Delete_User_Data( $this->plugin_data, $this );
+		new API_Rest_User_Data_Create( $this->client_data, $this );
+		new API_Rest_User_Data_Get( $this->client_data, $this );
+		new API_Rest_User_Data_Delete( $this->client_data, $this );
 	}
 
+	/**
+	 * Get rest namespace from client data
+	 *
+	 * @return string
+	 */
 	public function get_rest_namespace() {
-		return 'ql/licenseClient/' . $this->plugin_data['rest_namespace'];
+		if ( ! isset( $this->client_data['rest_namespace'] ) || ! is_string( $this->client_data['rest_namespace'] ) ) {
+			return false;
+		}
+
+		return 'ql/licenseClient/' . $this->client_data['rest_namespace'];
 	}
 
+	/**
+	 * Register rest routes to allow access to them via $client->routes->get().
+	 *
+	 * @param RouteInterface $rest_route_instance
+	 * @return array|null
+	 */
 	public function register( RouteInterface $rest_route_instance ) {
 
 		$rest_route = $rest_route_instance->get_rest_route();
@@ -62,6 +84,12 @@ class RoutesLibrary {
 
 	}
 
+	/**
+	 * Get specific rest route or all of them.
+	 *
+	 * @param string $rest_path Rest path to get.
+	 * @return string|array
+	 */
 	public function get( string $rest_path = null ) {
 
 		if ( null === $rest_path ) {

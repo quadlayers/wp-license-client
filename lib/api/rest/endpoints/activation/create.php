@@ -9,13 +9,30 @@ use QUADLAYERS\LicenseClient\Models\UserData as Model_User_Data;
 use QUADLAYERS\LicenseClient\Models\Activation as Model_Activation;
 
 /**
- * API_Rest_Create_Activation_License Class
+ * API_Rest_Activation_License_Create Class
+ *
+ * @since 1.0.0
  */
-
 class Create extends Base {
 
+	/**
+	 * Define rest route path
+	 *
+	 * @var string
+	 */
 	protected $rest_route = 'activation';
 
+	/**
+	 * Process rest request. Ej: /wp-json/ql/licenseClient/xxx/activation
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param \WP_REST_Request $request Request data.
+	 * @param Model_Plugin     $model_plugin Model_Plugin instance.
+	 * @param Model_Activation $model_activation Model_Activation instance.
+	 * @param Model_User_Data  $model_user_data Model_User_Data instance.
+	 * @return array
+	 */
 	public function callback( \WP_REST_Request $request, Model_Plugin $model_plugin, Model_Activation $model_activation, Model_User_Data $model_user_data ) {
 
 		$body = json_decode( $request->get_body() );
@@ -37,7 +54,7 @@ class Create extends Base {
 
 		$fetch = new API_Fetch_Activation_Create( $model_plugin );
 
-		$data = $fetch->get_data(
+		$activation = $fetch->get_data(
 			array_merge(
 				(array) $body,
 				array(
@@ -47,19 +64,24 @@ class Create extends Base {
 			)
 		);
 
-		if ( isset( $data->error ) ) {
+		if ( isset( $activation->error ) ) {
 			$response = array(
-				'error'   => isset( $data->error ) ? $data->error : null,
-				'message' => isset( $data->message ) ? $data->message : null,
+				'error'   => isset( $activation->error ) ? $activation->error : null,
+				'message' => isset( $activation->message ) ? $activation->message : null,
 			);
-			return $this->handle_response( $data );
+			return $this->handle_response( $activation );
 		}
 
-		$model_activation->create( (array) $data );
+		$model_activation->create( (array) $activation );
 
-		return $this->handle_response( $data );
+		return $this->handle_response( $activation );
 	}
 
+	/**
+	 * Get rest method
+	 *
+	 * @return string POST
+	 */
 	public function get_rest_method() {
 		return \WP_REST_Server::CREATABLE;
 	}

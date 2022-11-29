@@ -3,15 +3,33 @@
 namespace QUADLAYERS\LicenseClient\Models;
 
 /**
- * Base Class
+ * Abstract Base Class
+ *
+ * Implemented by classes using the same CRUD(s) pattern.
+ *
+ * @since  1.0.0
  */
-
 abstract class Base {
 
+	/**
+	 * Default attributes of the model.
+	 *
+	 * @var array
+	 */
 	protected $defaults = array();
 
+	/**
+	 * Get database model suffix.
+	 *
+	 * @return string
+	 */
 	abstract protected function get_db_suffix();
 
+	/**
+	 * Get model default attributes.
+	 *
+	 * @return string
+	 */
 	public function get_defaults() {
 		return $this->defaults;
 	}

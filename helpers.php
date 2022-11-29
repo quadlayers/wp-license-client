@@ -9,7 +9,8 @@ if ( ! function_exists( '__ql_translate' ) ) {
 }
 
 if ( ! function_exists( 'ql_license_client' ) ) {
-	function ql_license_client( array $plugin_data ) {
-		return new QUADLAYERS\LicenseClient\Load( $plugin_data );
+	function ql_license_client( array $client_data ) {
+		$client = new QUADLAYERS\LicenseClient\Load( $client_data );
+		return $client;
 	}
 }

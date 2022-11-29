@@ -6,25 +6,46 @@ use QUADLAYERS\LicenseClient\Models\Plugin as Model_Plugin;
 
 /**
  * Controller_Plugin_Table Class
+ *
+ * Implement plugin version notification in plugins table.
+ *
+ * @since 1.0.0
  */
-
 class Table {
 
+	/**
+	 * Instantiated Model_Plugin in the constructor.
+	 *
+	 * @var Model_Plugin
+	 */
 	private $plugin;
 
+	/**
+	 * Setup class.
+	 *
+	 * @param Model_Plugin $plugin
+	 */
 	public function __construct( Model_Plugin $plugin ) {
 		$this->plugin = $plugin;
 		add_action(
 			'admin_init',
 			function() {
-				add_filter( 'plugins_api', array( $this, 'add_plugin_data' ), 10, 3 );
+				add_filter( 'plugins_api', array( $this, 'add_fetch_data' ), 10, 3 );
 				add_action( 'in_plugin_update_message-' . $this->plugin->get_plugin_base(), array( $this, 'add_license_notification' ), 10, 2 );
 			}
 		);
 
 	}
 
-	function add_plugin_data( $return, $action, $args ) {
+	/**
+	 * Include fetched data in transient to the plugin in the plugins table.
+	 *
+	 * @param object $return
+	 * @param string $action
+	 * @param object $args
+	 * @return object
+	 */
+	function add_fetch_data( $return, $action, $args ) {
 
 		if ( 'plugin_information' !== $action ) {
 			return $return;
@@ -46,6 +67,12 @@ class Table {
 		return $return;
 	}
 
+	/**
+	 * Add product screenshots to the plugin in the View details modal of the plugins table.
+	 *
+	 * @param array $screenshots
+	 * @return string
+	 */
 	function add_screenshots( array $screenshots = array() ) {
 		ob_start();
 		?>
@@ -58,6 +85,13 @@ class Table {
 		return ob_get_clean();
 	}
 
+	/**
+	 * Require license validation notification in the plugins table if the automatic updates are disabled.
+	 *
+	 * @param object $plugin_data
+	 * @param object $response
+	 * @return string
+	 */
 	function add_license_notification( $plugin_data, $response ) {
 
 		if ( empty( $response->package ) ) {

@@ -1,0 +1,21 @@
+{
+	"name": "mazraara/random-password",
+	"description": "Generate random password of a given length",
+	"type": "library",
+	"require": {
+		"php": ">=5.3.0"
+	},
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "Azraar Azward",
+			"email": "mazraara@gmail.com"
+		}
+	],
+	"minimum-stability": "dev",
+	"autoload": {
+		"psr-4": {
+			"RandomPassword\\": "src/RandomPassword/"
+		}
+	}
+}

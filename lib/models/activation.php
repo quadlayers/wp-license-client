@@ -6,12 +6,24 @@ use QUADLAYERS\LicenseClient\Models\Plugin as Model_Plugin;
 
 /**
  * Model_Activation Class
+ * This class handles fetched data of the activation in the database.
+ *
+ * @since 1.0.0
  */
-
 class Activation extends Base {
 
+	/**
+	 * Plugin model
+	 *
+	 * @var Model_Plugin
+	 */
 	protected $plugin;
 
+	/**
+	 * Default attributes of the activation model.
+	 *
+	 * @var array
+	 */
 	protected $defaults = array(
 		'message'              => null,
 		'order_id'             => null,
@@ -31,23 +43,43 @@ class Activation extends Base {
 		'activation_created'   => null,
 	);
 
+	/**
+	 * Setup class
+	 *
+	 * @param Model_Plugin $plugin Model_Plugin instance.
+	 */
 	public function __construct( Model_Plugin $plugin ) {
 		$this->plugin = $plugin;
 	}
 
+	/**
+	 * Get database activation suffix
+	 *
+	 * @return string
+	 */
 	protected function get_db_suffix() {
 		return 'activation';
 	}
 
+	/**
+	 * Save activation data to the database.
+	 *
+	 * @param array $activation_data Activation data.
+	 * @return array
+	 */
 	public function create( array $activation_data ) {
 		$data = $this->save( $activation_data );
-		// wp_clean_plugins_cache();
 		return $data;
 	}
 
+	/**
+	 * Update activation data in the database.
+	 *
+	 * @param array $activation_data Activation data.
+	 * @return array
+	 */
 	public function update( array $activation_data ) {
 		$data = $this->save( $activation_data );
-		// wp_clean_plugins_cache();
 		return $data;
 	}
 }

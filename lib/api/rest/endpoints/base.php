@@ -8,21 +8,24 @@ use QUADLAYERS\LicenseClient\Models\UserData as Model_User_Data;
 use QUADLAYERS\LicenseClient\Models\Activation as Model_Activation;
 
 /**
- * Base Class
+ * Abstract Base Class
+ *
+ * Implemented by rest routes classes.
+ *
+ * @since  1.0.0
  */
-
 abstract class Base implements RouteInterface {
 
 	protected $routes_library;
 	protected $rest_route;
 
-	public function __construct( array $plugin_data, RoutesLibrary $routes_library ) {
+	public function __construct( array $client_data, RoutesLibrary $routes_library ) {
 
 		$this->routes_library = $routes_library;
 
 		add_action(
 			'rest_api_init',
-			function() use ( $plugin_data ) {
+			function() use ( $client_data ) {
 
 				register_rest_route(
 					$this->routes_library->get_rest_namespace(),
@@ -30,9 +33,9 @@ abstract class Base implements RouteInterface {
 					array(
 						'args'                => static::get_rest_args(),
 						'methods'             => static::get_rest_method(),
-						'callback'            => function( $request ) use ( $plugin_data ) {
+						'callback'            => function( $request ) use ( $client_data ) {
 
-							$model_plugin     = new Model_Plugin( $plugin_data );
+							$model_plugin     = new Model_Plugin( $client_data );
 							$model_activation = new Model_Activation( $model_plugin );
 							$model_user_data = new Model_User_Data( $model_plugin );
 

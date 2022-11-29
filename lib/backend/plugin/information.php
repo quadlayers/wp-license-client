@@ -8,12 +8,33 @@ use QUADLAYERS\LicenseClient\Api\Fetch\Product\Information as API_Fetch_Product_
 
 /**
  * Controller_Plugin_Information Class
+ *
+ * Implement plugin version notification and automatic updates.
+ *
+ * @since 1.0.0
  */
-
 class Information {
 
+	/**
+	 * Instantiated Model_Plugin in the constructor.
+	 *
+	 * @var Model_Plugin
+	 */
 	private $plugin;
 
+	/**
+	 * Instantiated Model_Activation in the constructor.
+	 *
+	 * @var Model_Plugin
+	 */
+	private $activation;
+
+	/**
+	 * Setup class
+	 *
+	 * @param Model_Plugin     $plugin
+	 * @param Model_Activation $activation
+	 */
 	public function __construct( Model_Plugin $plugin, Model_Activation $activation ) {
 
 		$this->plugin     = $plugin;
@@ -27,6 +48,12 @@ class Information {
 		);
 	}
 
+	/**
+	 * Add fetch data from the server API to the plugin transient.
+	 *
+	 * @param object $transient
+	 * @return object
+	 */
 	public function add_fetch_data( $transient ) {
 
 		if ( empty( $transient->checked ) ) {
@@ -37,14 +64,14 @@ class Information {
 
 		$activation = $this->activation->get();
 
-		$data = $fetch->get_data(
+		$product = $fetch->get_data(
 			array(
 				'license_key'         => isset( $activation['license_key'] ) ? $activation['license_key'] : null,
 				'activation_instance' => isset( $activation['activation_instance'] ) ? $activation['activation_instance'] : null,
 			)
 		);
 
-		if ( isset( $data->error ) ) {
+		if ( isset( $product->error ) ) {
 			return $transient;
 		}
 
@@ -52,41 +79,41 @@ class Information {
 		$plugin->id             = $this->plugin->get_plugin_slug();
 		$plugin->slug           = $this->plugin->get_plugin_slug();
 		$plugin->plugin         = $this->plugin->get_plugin_base();
-		$plugin->new_version    = $data->version;
-		$plugin->url            = $data->homepage;
-		$plugin->tested         = $data->tested;
-		$plugin->upgrade_notice = $data->upgrade_notice;
-		$plugin->icons          = array( 'default' => $data->icon );
+		$plugin->new_version    = $product->version;
+		$plugin->url            = $product->homepage;
+		$plugin->tested         = $product->tested;
+		$plugin->upgrade_notice = $product->upgrade_notice;
+		$plugin->icons          = array( 'default' => $product->icon );
 		// Fields for plugin info
-		$plugin->version         = $data->version;
-		$plugin->homepage        = $data->homepage;
-		$plugin->name            = $data->name;
-		$plugin->author          = $data->author;
-		$plugin->requires        = $data->requires;
+		$plugin->version         = $product->version;
+		$plugin->homepage        = $product->homepage;
+		$plugin->name            = $product->name;
+		$plugin->author          = $product->author;
+		$plugin->requires        = $product->requires;
 		$plugin->rating          = 100;
 		$plugin->num_ratings     = 5;
 		$plugin->active_installs = 10000;
-		$plugin->last_updated    = $data->last_updated;
-		$plugin->added           = $data->added;
+		$plugin->last_updated    = $product->last_updated;
+		$plugin->added           = $product->added;
 		$plugin->sections        = array(
-			'description' => preg_replace( '/<h2(.*?)<\/h2>/si', '<h3"$1</h3>', $data->description ),
-			'changelog'   => wpautop( $data->changelog ),
-			'screenshots' => $data->screenshots,
+			'description' => preg_replace( '/<h2(.*?)<\/h2>/si', '<h3"$1</h3>', $product->description ),
+			'changelog'   => wpautop( $product->changelog ),
+			'screenshots' => $product->screenshots,
 		);
 		$plugin->donate_link     = $this->plugin->get_plugin_url();
 		$plugin->banners         = array(
-			'low'  => $data->banner_low,
-			'high' => $data->banner_high,
+			'low'  => $product->banner_low,
+			'high' => $product->banner_high,
 		);
 		$plugin->package         = null;
 
-		$is_higher_version = version_compare( $data->version, $this->plugin->get_plugin_version(), '>' );
+		$is_higher_version = version_compare( $product->version, $this->plugin->get_plugin_version(), '>' );
 
 		if ( $is_higher_version ) {
 
-			if ( current_user_can( 'update_plugins' ) && filter_var( $data->download_link, FILTER_VALIDATE_URL ) !== false ) {
-				$plugin->package       = $data->download_link;
-				$plugin->download_link = $data->download_link;
+			if ( current_user_can( 'update_plugins' ) && filter_var( $product->download_link, FILTER_VALIDATE_URL ) !== false ) {
+				$plugin->package       = $product->download_link;
+				$plugin->download_link = $product->download_link;
 			}
 
 			$transient->response[ $this->plugin->get_plugin_base() ] = $plugin;
