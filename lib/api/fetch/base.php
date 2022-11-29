@@ -5,12 +5,16 @@ namespace QUADLAYERS\LicenseClient\Api\Fetch;
 use QUADLAYERS\LicenseClient\Api\Fetch\FetchInterface;
 
 use QUADLAYERS\LicenseClient\Models\Plugin as Model_Plugin;
-use QUADLAYERS\TIKTOK_PRO\Helpers;
 
 abstract class Base implements FetchInterface {
 
 	public function __construct( Model_Plugin $plugin ) {
 		$this->plugin = $plugin;
+	}
+
+	public static function sanitize_url( $url ) {
+		$url = preg_replace( '#([^:])//+#', '$1/', $url );
+		return $url;
 	}
 
 	public function get_data( array $args = array() ) {
@@ -24,7 +28,7 @@ abstract class Base implements FetchInterface {
 		$api_url = $this->plugin->get_api_url();
 		$path    = $this->get_rest_path();
 
-		return Helpers::sanitize_url( $api_url . '/' . $path );
+		return self::sanitize_url( $api_url . '/' . $path );
 	}
 
 	public function get_response( array $args = array() ) {
