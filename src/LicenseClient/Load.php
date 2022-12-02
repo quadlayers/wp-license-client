@@ -4,14 +4,14 @@ namespace LicenseClient;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-use LicenseClient\Backend\Plugin\Information as Controller_Plugin_Information;
-use LicenseClient\Backend\Plugin\Table as Controller_Plugin_Table;
-use LicenseClient\Backend\Page\Load as Controller_Page;
-use LicenseClient\Api\Rest\RoutesLibrary as API_Rest_Routes_Library;
+use QuadLayers\LicenseClient\Backend\Plugin\Information as Controller_Plugin_Information;
+use QuadLayers\LicenseClient\Backend\Plugin\Table as Controller_Plugin_Table;
+use QuadLayers\LicenseClient\Backend\Page\Load as Controller_Page;
+use QuadLayers\LicenseClient\Api\Rest\RoutesLibrary as API_Rest_Routes_Library;
 
-use LicenseClient\Models\Plugin as Model_Plugin;
-use LicenseClient\Models\UserData as Model_User_Data;
-use LicenseClient\Models\Activation as Model_Activation;
+use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
+use QuadLayers\LicenseClient\Models\UserData as Model_User_Data;
+use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
 
 /**
  * Load class

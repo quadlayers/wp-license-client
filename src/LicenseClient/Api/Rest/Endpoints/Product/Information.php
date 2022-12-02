@@ -1,11 +1,11 @@
 <?php
-namespace LicenseClient\Api\Rest\Endpoints\Product;
+namespace QuadLayers\LicenseClient\Api\Rest\Endpoints\Product;
 
-use LicenseClient\Api\Rest\Endpoints\Base as Base;
-use LicenseClient\Api\Fetch\Product\Information as API_Fetch_Product_Information;
-use LicenseClient\Models\Plugin as Model_Plugin;
-use LicenseClient\Models\UserData as Model_User_Data;
-use LicenseClient\Models\Activation as Model_Activation;
+use QuadLayers\LicenseClient\Api\Rest\Endpoints\Base as Base;
+use QuadLayers\LicenseClient\Api\Fetch\Product\Information as API_Fetch_Product_Information;
+use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
+use QuadLayers\LicenseClient\Models\UserData as Model_User_Data;
+use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
 
 /**
  * API_Rest_Request_Product_Information Class

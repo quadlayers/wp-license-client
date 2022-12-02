@@ -1,10 +1,10 @@
 <?php
 
-namespace LicenseClient\Api\Fetch;
+namespace QuadLayers\LicenseClient\Api\Fetch;
 
-use LicenseClient\Api\Fetch\FetchInterface;
+use QuadLayers\LicenseClient\Api\Fetch\FetchInterface;
 
-use LicenseClient\Models\Plugin as Model_Plugin;
+use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
 
 /**
  * Abstract Base Class

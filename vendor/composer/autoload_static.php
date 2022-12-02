@@ -11,43 +11,43 @@ class ComposerStaticInit37502c4dee1aee5d3fde6920f72e683c
     );
 
     public static $prefixLengthsPsr4 = array (
-        'L' => 
+        'Q' => 
         array (
-            'LicenseClient\\' => 14,
+            'QuadLayers\\LicenseClient\\' => 25,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'LicenseClient\\' => 
+        'QuadLayers\\LicenseClient\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/LicenseClient',
         ),
     );
 
     public static $classMap = array (
-        'LicenseClient\\Api\\Fetch\\Activation\\Create' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Fetch/Activation/Create.php',
-        'LicenseClient\\Api\\Fetch\\Activation\\Delete' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Fetch/Activation/Delete.php',
-        'LicenseClient\\Api\\Fetch\\Base' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Fetch/Base.php',
-        'LicenseClient\\Api\\Fetch\\FetchInterface' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Fetch/FetchInterface.php',
-        'LicenseClient\\Api\\Fetch\\Product\\Information' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Fetch/Product/Information.php',
-        'LicenseClient\\Api\\Rest\\Endpoints\\Activation\\Create' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/Activation/Create.php',
-        'LicenseClient\\Api\\Rest\\Endpoints\\Activation\\Delete' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/Activation/Delete.php',
-        'LicenseClient\\Api\\Rest\\Endpoints\\Activation\\Get' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/Activation/Get.php',
-        'LicenseClient\\Api\\Rest\\Endpoints\\Base' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/Base.php',
-        'LicenseClient\\Api\\Rest\\Endpoints\\Product\\Information' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/Product/Information.php',
-        'LicenseClient\\Api\\Rest\\Endpoints\\RouteInterface' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/RouteInterface.php',
-        'LicenseClient\\Api\\Rest\\Endpoints\\UserData\\Create' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/UserData/Create.php',
-        'LicenseClient\\Api\\Rest\\Endpoints\\UserData\\Delete' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/UserData/Delete.php',
-        'LicenseClient\\Api\\Rest\\Endpoints\\UserData\\Get' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/UserData/Get.php',
-        'LicenseClient\\Api\\Rest\\RoutesLibrary' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/RoutesLibrary.php',
-        'LicenseClient\\Backend\\Page\\Load' => __DIR__ . '/../..' . '/src/LicenseClient/Backend/Page/Load.php',
-        'LicenseClient\\Backend\\Plugin\\Information' => __DIR__ . '/../..' . '/src/LicenseClient/Backend/Plugin/Information.php',
-        'LicenseClient\\Backend\\Plugin\\Table' => __DIR__ . '/../..' . '/src/LicenseClient/Backend/Plugin/Table.php',
-        'LicenseClient\\Load' => __DIR__ . '/../..' . '/src/LicenseClient/Load.php',
-        'LicenseClient\\Models\\Activation' => __DIR__ . '/../..' . '/src/LicenseClient/Models/Activation.php',
-        'LicenseClient\\Models\\Base' => __DIR__ . '/../..' . '/src/LicenseClient/Models/Base.php',
-        'LicenseClient\\Models\\Plugin' => __DIR__ . '/../..' . '/src/LicenseClient/Models/Plugin.php',
-        'LicenseClient\\Models\\UserData' => __DIR__ . '/../..' . '/src/LicenseClient/Models/UserData.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'QuadLayers\\LicenseClient\\Api\\Fetch\\Activation\\Create' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Fetch/Activation/Create.php',
+        'QuadLayers\\LicenseClient\\Api\\Fetch\\Activation\\Delete' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Fetch/Activation/Delete.php',
+        'QuadLayers\\LicenseClient\\Api\\Fetch\\Base' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Fetch/Base.php',
+        'QuadLayers\\LicenseClient\\Api\\Fetch\\FetchInterface' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Fetch/FetchInterface.php',
+        'QuadLayers\\LicenseClient\\Api\\Fetch\\Product\\Information' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Fetch/Product/Information.php',
+        'QuadLayers\\LicenseClient\\Api\\Rest\\Endpoints\\Activation\\Create' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/Activation/Create.php',
+        'QuadLayers\\LicenseClient\\Api\\Rest\\Endpoints\\Activation\\Delete' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/Activation/Delete.php',
+        'QuadLayers\\LicenseClient\\Api\\Rest\\Endpoints\\Activation\\Get' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/Activation/Get.php',
+        'QuadLayers\\LicenseClient\\Api\\Rest\\Endpoints\\Base' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/Base.php',
+        'QuadLayers\\LicenseClient\\Api\\Rest\\Endpoints\\Product\\Information' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/Product/Information.php',
+        'QuadLayers\\LicenseClient\\Api\\Rest\\Endpoints\\RouteInterface' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/RouteInterface.php',
+        'QuadLayers\\LicenseClient\\Api\\Rest\\Endpoints\\UserData\\Create' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/UserData/Create.php',
+        'QuadLayers\\LicenseClient\\Api\\Rest\\Endpoints\\UserData\\Delete' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/UserData/Delete.php',
+        'QuadLayers\\LicenseClient\\Api\\Rest\\Endpoints\\UserData\\Get' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/Endpoints/UserData/Get.php',
+        'QuadLayers\\LicenseClient\\Api\\Rest\\RoutesLibrary' => __DIR__ . '/../..' . '/src/LicenseClient/Api/Rest/RoutesLibrary.php',
+        'QuadLayers\\LicenseClient\\Backend\\Page\\Load' => __DIR__ . '/../..' . '/src/LicenseClient/Backend/Page/Load.php',
+        'QuadLayers\\LicenseClient\\Backend\\Plugin\\Information' => __DIR__ . '/../..' . '/src/LicenseClient/Backend/Plugin/Information.php',
+        'QuadLayers\\LicenseClient\\Backend\\Plugin\\Table' => __DIR__ . '/../..' . '/src/LicenseClient/Backend/Plugin/Table.php',
+        'QuadLayers\\LicenseClient\\Models\\Activation' => __DIR__ . '/../..' . '/src/LicenseClient/Models/Activation.php',
+        'QuadLayers\\LicenseClient\\Models\\Base' => __DIR__ . '/../..' . '/src/LicenseClient/Models/Base.php',
+        'QuadLayers\\LicenseClient\\Models\\Plugin' => __DIR__ . '/../..' . '/src/LicenseClient/Models/Plugin.php',
+        'QuadLayers\\LicenseClient\\Models\\UserData' => __DIR__ . '/../..' . '/src/LicenseClient/Models/UserData.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

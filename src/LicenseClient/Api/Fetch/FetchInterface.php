@@ -1,6 +1,6 @@
 <?php
 
-namespace LicenseClient\Api\Fetch;
+namespace QuadLayers\LicenseClient\Api\Fetch;
 
 interface FetchInterface {
 

@@ -1,12 +1,12 @@
 <?php
-namespace LicenseClient\Api\Rest\Endpoints\Activation;
+namespace QuadLayers\LicenseClient\Api\Rest\Endpoints\Activation;
 
-use LicenseClient\Api\Rest\Endpoints\Base as Base;
-use LicenseClient\Api\Fetch\Activation\Delete as API_Fetch_Activation_Delete;
+use QuadLayers\LicenseClient\Api\Rest\Endpoints\Base as Base;
+use QuadLayers\LicenseClient\Api\Fetch\Activation\Delete as API_Fetch_Activation_Delete;
 
-use LicenseClient\Models\Plugin as Model_Plugin;
-use LicenseClient\Models\UserData as Model_User_Data;
-use LicenseClient\Models\Activation as Model_Activation;
+use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
+use QuadLayers\LicenseClient\Models\UserData as Model_User_Data;
+use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
 
 /**
  * API_Rest_Activation_License_Delete Class

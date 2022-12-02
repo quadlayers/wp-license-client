@@ -1,8 +1,8 @@
 <?php
 
-namespace LicenseClient\Api\Fetch\Product;
+namespace QuadLayers\LicenseClient\Api\Fetch\Product;
 
-use LicenseClient\Api\Fetch\Base;
+use QuadLayers\LicenseClient\Api\Fetch\Base;
 
 /**
  * API_Fetch_Product_Information Class

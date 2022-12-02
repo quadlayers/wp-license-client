@@ -1,8 +1,8 @@
 <?php
 
-namespace LicenseClient\Api\Fetch\Activation;
+namespace QuadLayers\LicenseClient\Api\Fetch\Activation;
 
-use LicenseClient\Api\Fetch\Base;
+use QuadLayers\LicenseClient\Api\Fetch\Base;
 
 /**
  * API_Fetch_Activation_Delete Class

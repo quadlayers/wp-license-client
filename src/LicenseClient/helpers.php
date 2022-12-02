@@ -10,7 +10,7 @@ if ( ! function_exists( '__ql_translate' ) ) {
 
 if ( ! function_exists( 'ql_license_client' ) ) {
 	function ql_license_client( array $client_data ) {
-		$client = new LicenseClient\Load( $client_data );
+		$client = new QuadLayers\LicenseClient\Load( $client_data );
 		return $client;
 	}
 }

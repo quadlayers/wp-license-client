@@ -1,6 +1,6 @@
 <?php
 
-namespace LicenseClient\Models;
+namespace QuadLayers\LicenseClient\Models;
 
 /**
  * Model_Plugin Class

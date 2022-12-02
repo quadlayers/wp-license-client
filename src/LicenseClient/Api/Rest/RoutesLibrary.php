@@ -1,17 +1,17 @@
 <?php
 
-namespace LicenseClient\Api\Rest;
+namespace QuadLayers\LicenseClient\Api\Rest;
 
-use LicenseClient\Api\Rest\Endpoints\Activation\Create as API_Rest_Activation_License_Create;
-use LicenseClient\Api\Rest\Endpoints\Activation\Delete as API_Rest_Activation_License_Delete;
+use QuadLayers\LicenseClient\Api\Rest\Endpoints\Activation\Create as API_Rest_Activation_License_Create;
+use QuadLayers\LicenseClient\Api\Rest\Endpoints\Activation\Delete as API_Rest_Activation_License_Delete;
 
-use LicenseClient\Api\Rest\Endpoints\Activation\Get as API_Rest_Get_Activation_License;
+use QuadLayers\LicenseClient\Api\Rest\Endpoints\Activation\Get as API_Rest_Get_Activation_License;
 
-use LicenseClient\Api\Rest\Endpoints\UserData\Create as API_Rest_User_Data_Create;
-use LicenseClient\Api\Rest\Endpoints\UserData\Get as API_Rest_User_Data_Get;
-use LicenseClient\Api\Rest\Endpoints\UserData\Delete as API_Rest_User_Data_Delete;
+use QuadLayers\LicenseClient\Api\Rest\Endpoints\UserData\Create as API_Rest_User_Data_Create;
+use QuadLayers\LicenseClient\Api\Rest\Endpoints\UserData\Get as API_Rest_User_Data_Get;
+use QuadLayers\LicenseClient\Api\Rest\Endpoints\UserData\Delete as API_Rest_User_Data_Delete;
 
-use LicenseClient\Api\Rest\Endpoints\RouteInterface;
+use QuadLayers\LicenseClient\Api\Rest\Endpoints\RouteInterface;
 
 
 /**

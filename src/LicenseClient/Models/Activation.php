@@ -1,8 +1,8 @@
 <?php
 
-namespace LicenseClient\Models;
+namespace QuadLayers\LicenseClient\Models;
 
-use LicenseClient\Models\Plugin as Model_Plugin;
+use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
 
 /**
  * Model_Activation Class

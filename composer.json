@@ -15,7 +15,7 @@
 	"minimum-stability": "stable",
 	"autoload": {
 		"psr-4": {
-			"LicenseClient\\": "src/LicenseClient/"
+			"QuadLayers\\LicenseClient\\": "src/LicenseClient/"
 		},
 		"files": [
 			"src/LicenseClient/helpers.php"

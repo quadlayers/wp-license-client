@@ -1,11 +1,11 @@
 <?php
 
-namespace LicenseClient\Api\Rest\Endpoints;
+namespace QuadLayers\LicenseClient\Api\Rest\Endpoints;
 
-use LicenseClient\Api\Rest\RoutesLibrary;
-use LicenseClient\Models\Plugin as Model_Plugin;
-use LicenseClient\Models\UserData as Model_User_Data;
-use LicenseClient\Models\Activation as Model_Activation;
+use QuadLayers\LicenseClient\Api\Rest\RoutesLibrary;
+use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
+use QuadLayers\LicenseClient\Models\UserData as Model_User_Data;
+use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
 
 /**
  * Abstract Base Class

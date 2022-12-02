@@ -1,8 +1,8 @@
 <?php
 
-namespace LicenseClient\Backend\Plugin;
+namespace QuadLayers\LicenseClient\Backend\Plugin;
 
-use LicenseClient\Models\Plugin as Model_Plugin;
+use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
 
 /**
  * Controller_Plugin_Table Class
