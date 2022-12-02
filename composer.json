@@ -1,11 +1,16 @@
 {
 	"name": "quadlayers/license-client",
-	"description": "WooCommerce License Manager Client",
+	"description": "Client for the WooCommerce License Manager server.",
+	"keywords": [
+		"WordPress",
+		"License",
+		"Client"
+	],
 	"type": "library",
 	"require": {
-		"php": ">=7.1.3"
+		"php": ">=7.4.0"
 	},
-	"license": "proprietary",
+	"license": "GPL-3.0",
 	"authors": [
 		{
 			"name": "QuadLayers",
@@ -15,10 +20,10 @@
 	"minimum-stability": "stable",
 	"autoload": {
 		"psr-4": {
-			"LicenseClient\\": "src/LicenseClient/"
+			"QuadLayers\\LicenseClient\\": "src/"
 		},
 		"files": [
-			"src/LicenseClient/helpers.php"
+			"src/helpers.php"
 		]
 	}
 }
