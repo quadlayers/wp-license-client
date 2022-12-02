@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    '0002eb119686925db080cfefab9d6865' => $baseDir . '/src/LicenseClient/helpers.php',
+    '505958ae4f7cd8fed7bcc77bb2d308ad' => $baseDir . '/src/helpers.php',
 );

@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'QuadLayers\\LicenseClient\\' => array($baseDir . '/src/LicenseClient'),
+    'QuadLayers\\LicenseClient\\' => array($baseDir . '/src'),
 );
