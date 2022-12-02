@@ -2,7 +2,7 @@
 
 namespace QuadLayers\LicenseClient;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 use QuadLayers\LicenseClient\Backend\Plugin\Information as Controller_Plugin_Information;
 use QuadLayers\LicenseClient\Backend\Plugin\Table as Controller_Plugin_Table;
@@ -14,9 +14,9 @@ use QuadLayers\LicenseClient\Models\UserData as Model_User_Data;
 use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
 
 /**
- * Load class
+ * Class Load
  *
- * @since 1.0.0
+ * @package QuadLayers\LicenseClient\Load
  */
 final class Load {
 
