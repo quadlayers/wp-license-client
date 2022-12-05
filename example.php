@@ -14,6 +14,7 @@ if ( ! function_exists( 'your_plugin_license_client_integration' ) ) {
 
 			/**
 			 * Path to the license client folder.
+			 * This is not required if you're using Composer in your package.
 			 */
 			require_once 'vendor/quadlayers/license-client/index.php';
 
