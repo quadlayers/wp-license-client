@@ -12,7 +12,7 @@ use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
  *
  * Implemented by rest routes classes.
  *
- * @since  1.0.0
+ * @since  1.0.1
  */
 abstract class Base implements RouteInterface {
 
