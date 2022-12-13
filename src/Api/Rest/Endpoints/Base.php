@@ -31,8 +31,8 @@ abstract class Base implements RouteInterface {
 					$this->routes_library->get_rest_namespace(),
 					$this->get_rest_route(),
 					array(
-						'args'                => static::get_rest_args(),
-						'methods'             => static::get_rest_method(),
+						'args'                => $this->get_rest_args(),
+						'methods'             => $this->get_rest_method(),
 						'callback'            => function( $request ) use ( $client_data ) {
 
 							$model_plugin     = new Model_Plugin( $client_data );
@@ -46,7 +46,7 @@ abstract class Base implements RouteInterface {
 								$model_user_data
 							);
 						},
-						'permission_callback' => array( static::class, 'get_rest_permission' ),
+						'permission_callback' => array( $this, 'get_rest_permission' ),
 					)
 				);
 			}
