@@ -58,7 +58,7 @@ abstract class Base implements FetchInterface {
 		);
 
 		$response = $this->get_response( $args );
-		$data     = $this->response_to_data( $response );
+		$data = $this->response_to_data( $response );
 		return $data;
 	}
 
@@ -109,7 +109,7 @@ abstract class Base implements FetchInterface {
 	 */
 	public function response_to_data( $response ) {
 
-		$data = (object) $response;
+		$data = is_array( $response ) ? (object) $response : $response;
 
 		return $data;
 

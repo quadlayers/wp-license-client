@@ -9,7 +9,7 @@ use QuadLayers\LicenseClient\Api\Fetch\Product\Information as API_Fetch_Product_
 /**
  * Controller_Plugin_Information Class
  *
- * Implement plugin version notification and automatic updates.
+ * Implement plugin information.
  *
  * @since 1.0.0
  */
@@ -62,14 +62,7 @@ class Information {
 
 		$fetch = new API_Fetch_Product_Information( $this->plugin );
 
-		$activation = $this->activation->get();
-
-		$product = $fetch->get_data(
-			array(
-				'license_key'         => isset( $activation['license_key'] ) ? $activation['license_key'] : null,
-				'activation_instance' => isset( $activation['activation_instance'] ) ? $activation['activation_instance'] : null,
-			)
-		);
+		$product = $fetch->get_data();
 
 		if ( isset( $product->error ) ) {
 			return $transient;
@@ -83,7 +76,9 @@ class Information {
 		$plugin->url            = $product->homepage;
 		$plugin->tested         = $product->tested;
 		$plugin->upgrade_notice = $product->upgrade_notice;
-		$plugin->icons          = array( 'default' => $product->icon );
+		$plugin->icons          = array(
+			'default' => $product->icon,
+		);
 		// Fields for plugin info
 		$plugin->version         = $product->version;
 		$plugin->homepage        = $product->homepage;
@@ -105,19 +100,6 @@ class Information {
 			'low'  => $product->banner_low,
 			'high' => $product->banner_high,
 		);
-		$plugin->package         = null;
-
-		$is_higher_version = version_compare( $product->version, $this->plugin->get_plugin_version(), '>' );
-
-		if ( $is_higher_version ) {
-
-			if ( current_user_can( 'update_plugins' ) && filter_var( $product->download_link, FILTER_VALIDATE_URL ) !== false ) {
-				$plugin->package       = $product->download_link;
-				$plugin->download_link = $product->download_link;
-			}
-
-			$transient->response[ $this->plugin->get_plugin_base() ] = $plugin;
-		}
 
 		$transient->no_update[ $this->plugin->get_plugin_base() ] = $plugin;
 

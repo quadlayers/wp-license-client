@@ -3,6 +3,7 @@
 namespace QuadLayers\LicenseClient\Backend\Plugin;
 
 use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
+use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
 
 /**
  * Controller_Plugin_Table Class
@@ -25,8 +26,9 @@ class Table {
 	 *
 	 * @param Model_Plugin $plugin
 	 */
-	public function __construct( Model_Plugin $plugin ) {
-		$this->plugin = $plugin;
+	public function __construct( Model_Plugin $plugin, Model_Activation $activation ) {
+		$this->plugin     = $plugin;
+		$this->activation = $activation;
 		add_action(
 			'admin_init',
 			function() {
@@ -55,16 +57,19 @@ class Table {
 			return $return;
 		}
 
-		if ( $plugin = get_site_transient( 'update_plugins' )->no_update[ $this->plugin->get_plugin_base() ] ) {
+		$transient = get_site_transient( 'update_plugins' );
 
-			if ( isset( $plugin->sections['screenshots'] ) && is_array( $plugin->sections['screenshots'] ) ) {
-				$plugin->sections['screenshots'] = $this->add_screenshots( $plugin->sections['screenshots'] );
-			}
+		$plugin = $transient->no_update[ $this->plugin->get_plugin_base() ];
 
-			return $plugin;
+		if ( ! $plugin ) {
+			return $return;
 		}
 
-		return $return;
+		if ( isset( $plugin->sections['screenshots'] ) && is_array( $plugin->sections['screenshots'] ) ) {
+			$plugin->sections['screenshots'] = $this->add_screenshots( $plugin->sections['screenshots'] );
+		}
+
+		return $plugin;
 	}
 
 	/**
@@ -94,7 +99,12 @@ class Table {
 	 */
 	function add_license_notification( $plugin_data, $response ) {
 
-		if ( empty( $response->package ) ) {
+		$activation = $this->activation->get();
+
+		/**
+		 * Check if the license is activated. If not, show a notice.
+		 */
+		if ( ! isset( $activation['license_key'], $activation['activation_instance'] ) ) {
 			printf(
 				'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
 				__ql_translate( 'Activate your license.' ),
@@ -109,6 +119,25 @@ class Table {
 						'<a href="%s" target="_blank">%s</a>',
 						esc_url( $this->plugin->get_plugin_url() ),
 						__ql_translate( 'purchase' )
+					)
+				)
+			);
+			return;
+		}
+
+		/**
+		 * Check if the download link is valid. If not, show a notice.
+		 */
+		if ( filter_var( $response->download_link, FILTER_VALIDATE_URL ) === false ) {
+			printf(
+				'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
+				__ql_translate( 'Automatic updates are disabled.' ),
+				sprintf(
+					__ql_translate( 'Please contact the plugin author %1$s.' ),
+					sprintf(
+						'<a href="%s" target="_blank">%s</a>',
+						esc_url( $this->plugin->get_plugin_url() ),
+						__ql_translate( 'here' )
 					)
 				)
 			);

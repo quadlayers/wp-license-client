@@ -5,6 +5,7 @@ namespace QuadLayers\LicenseClient;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use QuadLayers\LicenseClient\Backend\Plugin\Information as Controller_Plugin_Information;
+use QuadLayers\LicenseClient\Backend\Plugin\Download as Controller_Plugin_Download;
 use QuadLayers\LicenseClient\Backend\Plugin\Table as Controller_Plugin_Table;
 use QuadLayers\LicenseClient\Backend\Page\Load as Controller_Page;
 use QuadLayers\LicenseClient\Api\Rest\RoutesLibrary as API_Rest_Routes_Library;
@@ -90,6 +91,7 @@ final class Load {
 		$this->activation = new Model_Activation( $this->plugin );
 		$this->user_data  = new Model_User_Data( $this->plugin );
 		new Controller_Plugin_Information( $this->plugin, $this->activation, $this->user_data );
+		new Controller_Plugin_Download( $this->plugin, $this->activation, $this->user_data );
 		new Controller_Plugin_Table( $this->plugin, $this->activation, $this->user_data );
 		new Controller_Page( $this->plugin, $this->activation, $this->user_data );
 
