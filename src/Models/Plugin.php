@@ -164,17 +164,19 @@ class Plugin {
 			return $this->plugin_file;
 		}
 
-		$file_basename = plugin_basename( $this->dir );
+		$plugin_basefolders = plugin_basename( $this->dir );
 
-		$file_folders = explode( '/', $file_basename );
+		$plugin_filename = basename( $this->dir ) . '.php';
 
-		if ( ! isset( $file_folders[0] ) ) {
+		$plugin_basefolder = explode( '/', $plugin_basefolders );
+
+		if ( ! isset( $plugin_basefolder[0] ) ) {
 			return false;
 		}
 
-		$plugin_folder = $file_folders[0];
+		$plugin_folder = $plugin_basefolder[0];
 
-		$plugin_file = wp_normalize_path( WP_PLUGIN_DIR . '/' . $plugin_folder . '/' . $plugin_folder . '.php' );
+		$plugin_file = wp_normalize_path( WP_PLUGIN_DIR . '/' . $plugin_folder . '/' . $plugin_filename );
 
 		if ( ! is_file( $plugin_file ) ) {
 			return false;
