@@ -25,7 +25,7 @@ class Information {
 	/**
 	 * Instantiated Model_Activation in the constructor.
 	 *
-	 * @var Model_Plugin
+	 * @var Model_Activation
 	 */
 	private $activation;
 
