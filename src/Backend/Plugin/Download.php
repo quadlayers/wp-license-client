@@ -1,10 +1,10 @@
 <?php
 
-namespace QuadLayers\LicenseClient\Backend\Plugin;
+namespace QuadLayers\WP_License_Client\Backend\Plugin;
 
-use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
-use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
-use QuadLayers\LicenseClient\Api\Fetch\Product\Download as API_Fetch_Product_Download;
+use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
+use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
+use QuadLayers\WP_License_Client\Api\Fetch\Product\Download as API_Fetch_Product_Download;
 
 /**
  * Controller_Plugin_Information Class
@@ -84,18 +84,18 @@ class Download {
 		if ( ! isset( $activation['license_key'], $activation['activation_instance'] ) ) {
 			$plugin->upgrade_notice = sprintf(
 				'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
-				__ql_translate( 'Activate your license.' ),
+				esc_html__( 'Activate your license.', 'wp-license-client' ),
 				sprintf(
-					__ql_translate( 'Please visit %1$s to activate the license or %2$s in our website.' ),
+					esc_html__( 'Please visit %1$s to activate the license or %2$s in our website.', 'wp-license-client' ),
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
 						esc_url( $this->plugin->get_menu_license_url() ),
-						__ql_translate( 'settings' ),
+						esc_html__( 'settings', 'wp-license-client' ),
 					),
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
 						esc_url( $this->plugin->get_plugin_url() ),
-						__ql_translate( 'purchase' )
+						esc_html__( 'purchase', 'wp-license-client' )
 					)
 				)
 			);
@@ -124,13 +124,13 @@ class Download {
 		if ( isset( $download_link->error ) || filter_var( $download_link, FILTER_VALIDATE_URL ) === false ) {
 			$plugin->upgrade_notice                                  = sprintf(
 				'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
-				__ql_translate( 'Automatic updates are disabled.' ),
+				esc_html__( 'Automatic updates are disabled.', 'wp-license-client' ),
 				sprintf(
-					__ql_translate( 'Please contact the plugin author %1$s.' ),
+					esc_html__( 'Please contact the plugin author %1$s.', 'wp-license-client' ),
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
 						esc_url( $this->plugin->get_plugin_url() ),
-						__ql_translate( 'here' )
+						esc_html__( 'here', 'wp-license-client' )
 					)
 				)
 			);

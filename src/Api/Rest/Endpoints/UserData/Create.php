@@ -1,11 +1,11 @@
 <?php
-namespace QuadLayers\LicenseClient\Api\Rest\Endpoints\UserData;
+namespace QuadLayers\WP_License_Client\Api\Rest\Endpoints\UserData;
 
-use QuadLayers\LicenseClient\Api\Rest\Endpoints\Base as Base;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Base as Base;
 
-use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
-use QuadLayers\LicenseClient\Models\UserData as Model_User_Data;
-use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
+use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
+use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
+use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
 
 /**
  * API_Rest_User_Data_Create Class
@@ -22,7 +22,7 @@ class Create extends Base {
 	protected $rest_route = 'user-data';
 
 	/**
-	 * Process rest request. Ej: /wp-json/ql/licenseClient/xxx/user-data
+	 * Process rest request. Ej: /wp-json/ql/WP_License_Client/xxx/user-data
 	 *
 	 * @since 1.0.0
 	 *
@@ -39,7 +39,7 @@ class Create extends Base {
 		if ( empty( $body->license_email ) ) {
 			$response = array(
 				'error'   => 1,
-				'message' => __ql_translate( 'license_email not setted.' ),
+				'message' => esc_html__( 'license_email not setted.', 'wp-license-client' ),
 			);
 			return $this->handle_response( $response );
 		}
@@ -47,7 +47,7 @@ class Create extends Base {
 		if ( empty( $body->license_key ) ) {
 			$response = array(
 				'error'   => 1,
-				'message' => __ql_translate( 'license_key not setted.' ),
+				'message' => esc_html__( 'license_key not setted.', 'wp-license-client' ),
 			);
 			return $this->handle_response( $response );
 		}
@@ -57,7 +57,7 @@ class Create extends Base {
 		if ( ! $user_data ) {
 			$response = array(
 				'error'   => 1,
-				'message' => __ql_translate( 'User data could not be saved.' ),
+				'message' => esc_html__( 'User data could not be saved.', 'wp-license-client' ),
 			);
 			return $this->handle_response( $response );
 		}

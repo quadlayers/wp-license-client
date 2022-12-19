@@ -1,12 +1,12 @@
 <?php
 
-namespace QuadLayers\LicenseClient\Api\Rest\Endpoints\UserData;
+namespace QuadLayers\WP_License_Client\Api\Rest\Endpoints\UserData;
 
-use QuadLayers\LicenseClient\Api\Rest\Endpoints\Base as Base;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Base as Base;
 
-use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
-use QuadLayers\LicenseClient\Models\UserData as Model_User_Data;
-use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
+use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
+use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
+use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
 
 /**
  * API_Rest_User_Data_Delete Class
@@ -23,7 +23,7 @@ class Delete extends Base {
 	protected $rest_route = 'user-data';
 
 	/**
-	 * Process rest request. Ej: /wp-json/ql/licenseClient/xxx/user-data
+	 * Process rest request. Ej: /wp-json/ql/WP_License_Client/xxx/user-data
 	 *
 	 * @since 1.0.0
 	 *
@@ -40,7 +40,7 @@ class Delete extends Base {
 		if ( ! $status ) {
 			$response = array(
 				'error'   => 1,
-				'message' => __ql_translate( 'User data could not be deleted.' ),
+				'message' => esc_html__( 'User data could not be deleted.', 'wp-license-client' ),
 			);
 			return $this->handle_response( $response );
 		}

@@ -1,6 +1,6 @@
 <?php
 
-namespace QuadLayers\LicenseClient\Api\Fetch;
+namespace QuadLayers\WP_License_Client\Api\Fetch;
 
 interface FetchInterface {
 

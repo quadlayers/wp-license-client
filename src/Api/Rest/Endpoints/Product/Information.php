@@ -1,11 +1,11 @@
 <?php
-namespace QuadLayers\LicenseClient\Api\Rest\Endpoints\Product;
+namespace QuadLayers\WP_License_Client\Api\Rest\Endpoints\Product;
 
-use QuadLayers\LicenseClient\Api\Rest\Endpoints\Base as Base;
-use QuadLayers\LicenseClient\Api\Fetch\Product\Information as API_Fetch_Product_Information;
-use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
-use QuadLayers\LicenseClient\Models\UserData as Model_User_Data;
-use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Base as Base;
+use QuadLayers\WP_License_Client\Api\Fetch\Product\Information as API_Fetch_Product_Information;
+use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
+use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
+use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
 
 /**
  * API_Rest_Request_Product_Information Class
@@ -22,7 +22,7 @@ class Information extends Base {
 	protected $rest_route = 'product/information';
 
 	/**
-	 * Process rest request. Ej: /wp-json/ql/licenseClient/xxx/product/information
+	 * Process rest request. Ej: /wp-json/ql/WP_License_Client/xxx/product/information
 	 *
 	 * @since 1.0.0
 	 *
@@ -39,7 +39,7 @@ class Information extends Base {
 		if ( empty( $body->activation_instance ) ) {
 			$response = array(
 				'error'   => 1,
-				'message' => __ql_translate( 'activation_instance not setted.' ),
+				'message' => esc_html__( 'activation_instance not setted.', 'wp-license-client' ),
 			);
 			return $this->handle_response( $response );
 		}
@@ -47,7 +47,7 @@ class Information extends Base {
 		if ( empty( $body->license_key ) ) {
 			$response = array(
 				'error'   => 1,
-				'message' => __ql_translate( 'license_key not setted.' ),
+				'message' => esc_html__( 'license_key not setted.', 'wp-license-client' ),
 			);
 			return $this->handle_response( $response );
 		}

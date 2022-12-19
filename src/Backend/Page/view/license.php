@@ -4,12 +4,12 @@
 		<table class="widefat striped">
 			<thead>
 				<tr>
-					<th colspan="2"><b><?php echo __ql_translate( 'License'); ?></b></th>
+					<th colspan="2"><b><?php echo esc_html__( 'License', 'wp-license-client' ); ?></b></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<th><?php echo __ql_translate( 'Market'); ?></th>
+					<th><?php echo esc_html__( 'Market', 'wp-license-client' ); ?></th>
 					<td>
 						<select style="width:350px" name="<?php echo esc_html( $plugin_slug ); ?>[license_market]">
 							<option <?php selected( $user_data['license_market'], '' ); ?> value="">QuadLayers</option>
@@ -18,59 +18,59 @@
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php echo __ql_translate( 'Email'); ?></th>
+					<th scope="row"><?php echo esc_html__( 'Email', 'wp-license-client' ); ?></th>
 					<td>
-						<input type="email" name="<?php echo esc_html( $plugin_slug ); ?>[license_email]" placeholder="<?php echo __ql_translate( 'Enter your order email.'); ?>" value="<?php echo esc_html( $user_data['license_email'] ); ?>" />
+						<input type="email" name="<?php echo esc_html( $plugin_slug ); ?>[license_email]" placeholder="<?php echo esc_html__( 'Enter your order email.', 'wp-license-client' ); ?>" value="<?php echo esc_html( $user_data['license_email'] ); ?>" />
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php echo __ql_translate( 'Key'); ?></th>
+					<th scope="row"><?php echo esc_html__( 'Key', 'wp-license-client' ); ?></th>
 					<td>
-						<input type="password" name="<?php echo esc_html( $plugin_slug ); ?>[license_key]" placeholder="<?php echo __ql_translate( 'Enter your license key.'); ?>" value="<?php echo esc_attr( $user_data['license_key'] ); ?>" />
+						<input type="password" name="<?php echo esc_html( $plugin_slug ); ?>[license_key]" placeholder="<?php echo esc_html__( 'Enter your license key.', 'wp-license-client' ); ?>" value="<?php echo esc_attr( $user_data['license_key'] ); ?>" />
 					</td>
 				</tr>
 			</tbody>
 		</table>
-		<?php submit_button( __ql_translate( 'Save'), 'primary' ); ?>	
+		<?php submit_button( esc_html__( 'Save', 'wp-license-client' ), 'primary' ); ?>	
 	</form>	
 	<form method="post">		
 		<?php settings_fields( sanitize_key( $plugin_slug . '-qlwlm-delete' ) ); ?>
 		<table class="widefat striped" cellspacing="0">
 			<thead>
 				<tr>
-					<th colspan="2"><b><?php echo __ql_translate( 'Status'); ?></b></th>
+					<th colspan="2"><b><?php echo esc_html__( 'Status', 'wp-license-client' ); ?></b></th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php if ( ! empty( $activation['license_created'] ) ) : ?>
 					<tr>
-						<td><?php echo __ql_translate( 'Created'); ?></td>
+						<td><?php echo esc_html__( 'Created', 'wp-license-client' ); ?></td>
 						<td><?php echo date( get_option( 'date_format' ), strtotime( $activation['license_created'] ) ); ?></td>
 					</tr>
 					<tr>
-						<td><?php echo __ql_translate( 'Limit'); ?></td>
-						<td><?php echo $activation['license_limit'] ? esc_attr( $activation['license_limit'] ) : __ql_translate( 'Unlimited'); ?></td>
+						<td><?php echo esc_html__( 'Limit', 'wp-license-client' ); ?></td>
+						<td><?php echo $activation['license_limit'] ? esc_attr( $activation['license_limit'] ) : esc_html__( 'Unlimited', 'wp-license-client' ); ?></td>
 					</tr>
 					<tr>
-						<td><?php echo __ql_translate( 'Activations'); ?></td>
+						<td><?php echo esc_html__( 'Activations', 'wp-license-client' ); ?></td>
 						<td><?php echo esc_attr( $activation['activation_count'] ); ?></td>
 					</tr>
 					<tr>
-						<td><?php echo __ql_translate( 'Updates'); ?></td>
-						<td><?php echo ( $activation['license_expiration'] != '0000-00-00 00:00:00' && $activation['license_updates'] ) ? sprintf( __ql_translate( 'Expires on %s'), $activation['license_expiration'] ) : __ql_translate( 'Unlimited'); ?></td>
+						<td><?php echo esc_html__( 'Updates', 'wp-license-client' ); ?></td>
+						<td><?php echo ( $activation['license_expiration'] != '0000-00-00 00:00:00' && $activation['license_updates'] ) ? sprintf( esc_html__( 'Expires on %s', 'wp-license-client' ), $activation['license_expiration'] ) : esc_html__( 'Unlimited', 'wp-license-client' ); ?></td>
 					</tr>
 					<tr>
-						<td><?php echo __ql_translate( 'Support'); ?></td>
-						<td><?php echo ( $activation['license_expiration'] != '0000-00-00 00:00:00' && $activation['license_support'] ) ? sprintf( __ql_translate( 'Expires on %s'), $activation['license_expiration'] ) : __ql_translate( 'Unlimited'); ?></td>
+						<td><?php echo esc_html__( 'Support', 'wp-license-client' ); ?></td>
+						<td><?php echo ( $activation['license_expiration'] != '0000-00-00 00:00:00' && $activation['license_support'] ) ? sprintf( esc_html__( 'Expires on %s', 'wp-license-client' ), $activation['license_expiration'] ) : esc_html__( 'Unlimited', 'wp-license-client' ); ?></td>
 					</tr>
 					<tr>
-						<td><?php echo __ql_translate( 'Expiration'); ?></td>
-						<td><?php echo ( $activation['license_expiration'] != '0000-00-00 00:00:00' ) ? date_i18n( get_option( 'date_format' ), strtotime( $activation['license_expiration'] ) ) : __ql_translate( 'Unlimited'); ?></td>
+						<td><?php echo esc_html__( 'Expiration', 'wp-license-client' ); ?></td>
+						<td><?php echo ( $activation['license_expiration'] != '0000-00-00 00:00:00' ) ? date_i18n( get_option( 'date_format' ), strtotime( $activation['license_expiration'] ) ) : esc_html__( 'Unlimited', 'wp-license-client' ); ?></td>
 					</tr>
 				<?php endif; ?>
 				<tr>
 					<td>
-						<b><?php echo __ql_translate( 'Notice'); ?></b>
+						<b><?php echo esc_html__( 'Notice', 'wp-license-client' ); ?></b>
 					</td>
 					<td>
 						<span class="description">
@@ -78,10 +78,10 @@
 								<?php echo esc_html( $activation['message'] ); ?>
 							<?php endif; ?>
 							<?php if ( ! empty( $activation['license_key'] ) ) : ?>
-								<?php echo __ql_translate( 'Thanks for register your license!'); ?>
+								<?php echo esc_html__( 'Thanks for register your license!', 'wp-license-client' ); ?>
 							<?php endif; ?>
 							<?php if ( empty( $activation['message'] ) && empty( $activation['license_key'] ) ) : ?>
-								<?php echo __ql_translate( 'Before you can receive plugin updates, you must first authenticate your license.'); ?>
+								<?php echo esc_html__( 'Before you can receive plugin updates, you must first authenticate your license.', 'wp-license-client' ); ?>
 							<?php endif; ?>
 
 						</span>
@@ -90,7 +90,7 @@
 			</tbody>
 		</table>
 			<?php if ( $activation ) : ?>
-				<?php submit_button( __ql_translate( 'Delete'), 'secondary' ); ?>		
+				<?php submit_button( esc_html__( 'Delete', 'wp-license-client' ), 'secondary' ); ?>		
 			<?php endif; ?>
 	</form>
 </div>

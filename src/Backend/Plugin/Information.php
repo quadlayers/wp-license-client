@@ -1,10 +1,10 @@
 <?php
 
-namespace QuadLayers\LicenseClient\Backend\Plugin;
+namespace QuadLayers\WP_License_Client\Backend\Plugin;
 
-use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
-use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
-use QuadLayers\LicenseClient\Api\Fetch\Product\Information as API_Fetch_Product_Information;
+use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
+use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
+use QuadLayers\WP_License_Client\Api\Fetch\Product\Information as API_Fetch_Product_Information;
 
 /**
  * Controller_Plugin_Information Class

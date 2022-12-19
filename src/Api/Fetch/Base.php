@@ -1,10 +1,10 @@
 <?php
 
-namespace QuadLayers\LicenseClient\Api\Fetch;
+namespace QuadLayers\WP_License_Client\Api\Fetch;
 
-use QuadLayers\LicenseClient\Api\Fetch\FetchInterface;
+use QuadLayers\WP_License_Client\Api\Fetch\FetchInterface;
 
-use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
+use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
 
 /**
  * Abstract Base Class
@@ -58,7 +58,7 @@ abstract class Base implements FetchInterface {
 		);
 
 		$response = $this->get_response( $args );
-		$data = $this->response_to_data( $response );
+		$data     = $this->response_to_data( $response );
 		return $data;
 	}
 
@@ -138,7 +138,7 @@ abstract class Base implements FetchInterface {
 		if ( $is_error ) {
 			return (object) array(
 				'error'   => isset( $response->code ) ? $response->code : 404,
-				'message' => isset( $response->message ) ? $response->message : __ql_translate( 'Unknown error. Please try again.' ),
+				'message' => isset( $response->message ) ? $response->message : esc_html__( 'Unknown error. Please try again.', 'wp-license-client' ),
 			);
 		}
 		return false;

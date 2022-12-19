@@ -1,11 +1,11 @@
 <?php
-namespace QuadLayers\LicenseClient\Backend\Page;
+namespace QuadLayers\WP_License_Client\Backend\Page;
 
-use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
-use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
-use QuadLayers\LicenseClient\Models\UserData as Model_User_Data;
-use QuadLayers\LicenseClient\Api\Fetch\Activation\Create as API_Fetch_Activation_Create;
-use QuadLayers\LicenseClient\Api\Fetch\Activation\Delete as API_Fetch_Activation_Delete;
+use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
+use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
+use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
+use QuadLayers\WP_License_Client\Api\Fetch\Activation\Create as API_Fetch_Activation_Create;
+use QuadLayers\WP_License_Client\Api\Fetch\Activation\Delete as API_Fetch_Activation_Delete;
 
 /**
  * Controller_Page Class
@@ -68,8 +68,8 @@ class Load {
 
 		add_submenu_page(
 			$parent_menu_slug,
-			__ql_translate( 'License' ),
-			__ql_translate( 'License' ),
+			esc_html__( 'License', 'wp-license-client' ),
+			esc_html__( 'License', 'wp-license-client' ),
 			'manage_options',
 			$menu_slug_license,
 			function () {

@@ -1,8 +1,8 @@
 <?php
 
-namespace QuadLayers\LicenseClient\Api\Fetch\Product;
+namespace QuadLayers\WP_License_Client\Api\Fetch\Product;
 
-use QuadLayers\LicenseClient\Api\Fetch\Base;
+use QuadLayers\WP_License_Client\Api\Fetch\Base;
 
 /**
  * API_Fetch_Product_Download Class

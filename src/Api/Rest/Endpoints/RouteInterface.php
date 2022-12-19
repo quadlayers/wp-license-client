@@ -1,9 +1,9 @@
 <?php
-namespace QuadLayers\LicenseClient\Api\Rest\Endpoints;
+namespace QuadLayers\WP_License_Client\Api\Rest\Endpoints;
 
-use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
-use QuadLayers\LicenseClient\Models\UserData as Model_User_Data;
-use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
+use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
+use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
+use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
 /**
  * Route Interface
  */

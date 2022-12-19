@@ -1,17 +1,17 @@
 <?php
 
-namespace QuadLayers\LicenseClient\Api\Rest;
+namespace QuadLayers\WP_License_Client\Api\Rest;
 
-use QuadLayers\LicenseClient\Api\Rest\Endpoints\Activation\Create as API_Rest_Activation_License_Create;
-use QuadLayers\LicenseClient\Api\Rest\Endpoints\Activation\Delete as API_Rest_Activation_License_Delete;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Activation\Create as API_Rest_Activation_License_Create;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Activation\Delete as API_Rest_Activation_License_Delete;
 
-use QuadLayers\LicenseClient\Api\Rest\Endpoints\Activation\Get as API_Rest_Get_Activation_License;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Activation\Get as API_Rest_Get_Activation_License;
 
-use QuadLayers\LicenseClient\Api\Rest\Endpoints\UserData\Create as API_Rest_User_Data_Create;
-use QuadLayers\LicenseClient\Api\Rest\Endpoints\UserData\Get as API_Rest_User_Data_Get;
-use QuadLayers\LicenseClient\Api\Rest\Endpoints\UserData\Delete as API_Rest_User_Data_Delete;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\UserData\Create as API_Rest_User_Data_Create;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\UserData\Get as API_Rest_User_Data_Get;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\UserData\Delete as API_Rest_User_Data_Delete;
 
-use QuadLayers\LicenseClient\Api\Rest\Endpoints\RouteInterface;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\RouteInterface;
 
 
 /**
@@ -64,7 +64,7 @@ class RoutesLibrary {
 			return false;
 		}
 
-		return 'ql/licenseClient/' . $this->client_data['rest_namespace'];
+		return 'ql/WP_License_Client/' . $this->client_data['rest_namespace'];
 	}
 
 	/**

@@ -1,23 +1,23 @@
 <?php
 
-namespace QuadLayers\LicenseClient;
+namespace QuadLayers\WP_License_Client;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use QuadLayers\LicenseClient\Backend\Plugin\Information as Controller_Plugin_Information;
-use QuadLayers\LicenseClient\Backend\Plugin\Update as Controller_Plugin_Update;
-use QuadLayers\LicenseClient\Backend\Plugin\Table as Controller_Plugin_Table;
-use QuadLayers\LicenseClient\Backend\Page\Load as Controller_Page;
-use QuadLayers\LicenseClient\Api\Rest\RoutesLibrary as API_Rest_Routes_Library;
+use QuadLayers\WP_License_Client\Backend\Plugin\Information as Controller_Plugin_Information;
+use QuadLayers\WP_License_Client\Backend\Plugin\Update as Controller_Plugin_Update;
+use QuadLayers\WP_License_Client\Backend\Plugin\Table as Controller_Plugin_Table;
+use QuadLayers\WP_License_Client\Backend\Page\Load as Controller_Page;
+use QuadLayers\WP_License_Client\Api\Rest\RoutesLibrary as API_Rest_Routes_Library;
 
-use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
-use QuadLayers\LicenseClient\Models\UserData as Model_User_Data;
-use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
+use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
+use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
+use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
 
 /**
  * Class Load
  *
- * @package QuadLayers\LicenseClient\Load
+ * @package QuadLayers\WP_License_Client\Load
  */
 final class Load {
 

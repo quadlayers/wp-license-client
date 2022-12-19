@@ -1,12 +1,12 @@
 <?php
 
-namespace QuadLayers\LicenseClient\Api\Rest\Endpoints\Activation;
+namespace QuadLayers\WP_License_Client\Api\Rest\Endpoints\Activation;
 
-use QuadLayers\LicenseClient\Api\Rest\Endpoints\Base as Base;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Base as Base;
 
-use QuadLayers\LicenseClient\Models\Plugin as Model_Plugin;
-use QuadLayers\LicenseClient\Models\UserData as Model_User_Data;
-use QuadLayers\LicenseClient\Models\Activation as Model_Activation;
+use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
+use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
+use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
 
 
 /**
@@ -24,7 +24,7 @@ class Get extends Base {
 	protected $rest_route = 'activation';
 
 	/**
-	 * Process rest request. Ej: /wp-json/ql/licenseClient/xxx/activation
+	 * Process rest request. Ej: /wp-json/ql/WP_License_Client/xxx/activation
 	 *
 	 * @since 1.0.0
 	 *
@@ -41,7 +41,7 @@ class Get extends Base {
 		if ( empty( $activation ) ) {
 			$response = array(
 				'error'   => true,
-				'message' => __ql_translate( 'Unknow error.' ),
+				'message' => esc_html__( 'Unknow error.', 'wp-license-client' ),
 			);
 			return $this->handle_response( $response );
 		}

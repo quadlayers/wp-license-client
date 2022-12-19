@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'QuadLayers\\LicenseClient\\' => array($baseDir . '/src'),
+    'QuadLayers\\WP_License_Client\\' => array($baseDir . '/src'),
 );
