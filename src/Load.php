@@ -4,16 +4,24 @@ namespace QuadLayers\WP_License_Client;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+/**
+ * Models
+ */
+use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
+use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
+use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
+/**
+ * API
+ */
+use QuadLayers\WP_License_Client\Api\Rest\RoutesLibrary as API_Rest_Routes_Library;
+/**
+ * Controllers
+ */
 use QuadLayers\WP_License_Client\Backend\Plugin\Information as Controller_Plugin_Information;
 use QuadLayers\WP_License_Client\Backend\Plugin\Update as Controller_Plugin_Update;
 use QuadLayers\WP_License_Client\Backend\Plugin\Table as Controller_Plugin_Table;
 use QuadLayers\WP_License_Client\Backend\Page\Load as Controller_Page;
-use QuadLayers\WP_License_Client\Api\Rest\RoutesLibrary as API_Rest_Routes_Library;
-
-use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
-use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
-use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
-
+use QuadLayers\WP_License_Client\Backend\Notice\Load as Controller_Notice;
 /**
  * Class Load
  *
@@ -94,6 +102,7 @@ final class Load {
 		new Controller_Plugin_Update( $this->plugin, $this->activation, $this->user_data );
 		new Controller_Plugin_Table( $this->plugin, $this->activation, $this->user_data );
 		new Controller_Page( $this->plugin, $this->activation, $this->user_data );
+		new Controller_Notice( $this->plugin, $this->activation, $this->user_data );
 
 	}
 }

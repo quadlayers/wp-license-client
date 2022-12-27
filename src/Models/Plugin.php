@@ -67,6 +67,20 @@ class Plugin {
 	private $license_url;
 
 	/**
+	 * Custom license key url
+	 *
+	 * @var string
+	 */
+	private $license_key_url;
+
+	/**
+	 * Custom support url
+	 *
+	 * @var string
+	 */
+	private $support_url;
+
+	/**
 	 * Setup class
 	 *
 	 * @param array $client_data Plugin data.
@@ -248,6 +262,18 @@ class Plugin {
 			return false;
 		}
 		return admin_url( 'admin.php?page=' . $this->get_license_menu_slug() );
+	}
+
+	public function get_license_key_url() {
+		if ( $this->license_key_url && is_string( $this->license_key_url ) ) {
+			return $this->license_key_url;
+		}
+	}
+
+	public function get_support_url() {
+		if ( $this->support_url && is_string( $this->support_url ) ) {
+			return $this->support_url;
+		}
 	}
 
 }
