@@ -128,7 +128,7 @@ class Table {
 		/**
 		 * Check if the download link is valid. If not, show a notice.
 		 */
-		if ( filter_var( $response->download_link, FILTER_VALIDATE_URL ) === false ) {
+		if ( empty( $response->download_link ) || filter_var( $response->download_link, FILTER_VALIDATE_URL ) === false ) {
 			printf(
 				'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
 				esc_html__( 'Automatic updates are disabled.', 'wp-license-client' ),
