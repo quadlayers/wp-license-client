@@ -63,7 +63,7 @@ class Load {
 						</a>
 					<?php endif; ?>
 					<?php if ( $this->plugin->get_support_url() ) : ?>
-						<a href="<?php echo esc_url( $this->plugin->get_license_key_url() ); ?>"target="_blank">
+						<a href="<?php echo esc_url( $this->plugin->get_support_url() ); ?>"target="_blank">
 							<?php esc_html_e( 'Get support', 'wp-license-client' ); ?>
 						</a>
 					<?php endif; ?>
