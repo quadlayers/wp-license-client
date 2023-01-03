@@ -92,6 +92,7 @@ abstract class Base implements FetchInterface {
 			array(
 				'user-agent' => sprintf( 'WLM/%s/%s; %s', $this->plugin->get_plugin_slug(), $this->plugin->get_plugin_version(), $this->plugin->get_activation_site() ),
 				'method'     => static::get_rest_method(),
+				'timeout'    => 100,
 			)
 		);
 
