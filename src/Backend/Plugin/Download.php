@@ -60,6 +60,10 @@ class Download {
 			return $transient;
 		}
 
+		if ( empty( $transient->no_update[ $this->plugin->get_plugin_base() ] ) ) {
+			return $transient;
+		}
+
 		$plugin = $transient->no_update[ $this->plugin->get_plugin_base() ];
 
 		/**

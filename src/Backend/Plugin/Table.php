@@ -22,6 +22,13 @@ class Table {
 	private $plugin;
 
 	/**
+	 * Instantiated Model_Activation in the constructor.
+	 *
+	 * @var Model_Activation
+	 */
+	private $activation;
+
+	/**
 	 * Setup class.
 	 *
 	 * @param Model_Plugin $plugin
@@ -58,6 +65,10 @@ class Table {
 		}
 
 		$transient = get_site_transient( 'update_plugins' );
+
+		if ( empty( $transient->no_update[ $this->plugin->get_plugin_base() ] ) ) {
+			return $return;
+		}
 
 		$plugin = $transient->no_update[ $this->plugin->get_plugin_base() ];
 
