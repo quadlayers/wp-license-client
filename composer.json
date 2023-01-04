@@ -1,7 +1,7 @@
 {
 	"name": "quadlayers/wp-license-client",
 	"description": "Client for the WooCommerce License Manager server.",
-	"version": "1.2.4",
+	"version": "1.2.5",
 	"keywords": [
 		"WordPress",
 		"License",
