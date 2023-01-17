@@ -7,13 +7,13 @@ namespace Composer\Autoload;
 class ComposerStaticInit351b39e2b283ad6e8e356ad8d2404bf7
 {
     public static $files = array (
-        '505958ae4f7cd8fed7bcc77bb2d308ad' => __DIR__ . '/../..' . '/src/helpers.php',
+        'ee9922e131abffdaa2e5fa31e355dc22' => __DIR__ . '/../..' . '/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'Q' => 
         array (
-            'QuadLayers\\WP_License_Client\\' => 25,
+            'QuadLayers\\WP_License_Client\\' => 29,
         ),
     );
 
@@ -30,7 +30,9 @@ class ComposerStaticInit351b39e2b283ad6e8e356ad8d2404bf7
         'QuadLayers\\WP_License_Client\\Api\\Fetch\\Activation\\Delete' => __DIR__ . '/../..' . '/src/Api/Fetch/Activation/Delete.php',
         'QuadLayers\\WP_License_Client\\Api\\Fetch\\Base' => __DIR__ . '/../..' . '/src/Api/Fetch/Base.php',
         'QuadLayers\\WP_License_Client\\Api\\Fetch\\FetchInterface' => __DIR__ . '/../..' . '/src/Api/Fetch/FetchInterface.php',
+        'QuadLayers\\WP_License_Client\\Api\\Fetch\\Product\\Download' => __DIR__ . '/../..' . '/src/Api/Fetch/Product/Download.php',
         'QuadLayers\\WP_License_Client\\Api\\Fetch\\Product\\Information' => __DIR__ . '/../..' . '/src/Api/Fetch/Product/Information.php',
+        'QuadLayers\\WP_License_Client\\Api\\Fetch\\Product\\Update' => __DIR__ . '/../..' . '/src/Api/Fetch/Product/Update.php',
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\Activation\\Create' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/Activation/Create.php',
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\Activation\\Delete' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/Activation/Delete.php',
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\Activation\\Get' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/Activation/Get.php',
@@ -41,14 +43,18 @@ class ComposerStaticInit351b39e2b283ad6e8e356ad8d2404bf7
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\UserData\\Delete' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/UserData/Delete.php',
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\UserData\\Get' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/UserData/Get.php',
         'QuadLayers\\WP_License_Client\\Api\\Rest\\RoutesLibrary' => __DIR__ . '/../..' . '/src/Api/Rest/RoutesLibrary.php',
+        'QuadLayers\\WP_License_Client\\Backend\\Notice\\Load' => __DIR__ . '/../..' . '/src/Backend/Notice/Load.php',
         'QuadLayers\\WP_License_Client\\Backend\\Page\\Load' => __DIR__ . '/../..' . '/src/Backend/Page/Load.php',
+        'QuadLayers\\WP_License_Client\\Backend\\Plugin\\Download' => __DIR__ . '/../..' . '/src/Backend/Plugin/Download.php',
         'QuadLayers\\WP_License_Client\\Backend\\Plugin\\Information' => __DIR__ . '/../..' . '/src/Backend/Plugin/Information.php',
         'QuadLayers\\WP_License_Client\\Backend\\Plugin\\Table' => __DIR__ . '/../..' . '/src/Backend/Plugin/Table.php',
+        'QuadLayers\\WP_License_Client\\Backend\\Plugin\\Update' => __DIR__ . '/../..' . '/src/Backend/Plugin/Update.php',
         'QuadLayers\\WP_License_Client\\Load' => __DIR__ . '/../..' . '/src/Load.php',
         'QuadLayers\\WP_License_Client\\Models\\Activation' => __DIR__ . '/../..' . '/src/Models/Activation.php',
         'QuadLayers\\WP_License_Client\\Models\\Base' => __DIR__ . '/../..' . '/src/Models/Base.php',
         'QuadLayers\\WP_License_Client\\Models\\Plugin' => __DIR__ . '/../..' . '/src/Models/Plugin.php',
         'QuadLayers\\WP_License_Client\\Models\\UserData' => __DIR__ . '/../..' . '/src/Models/UserData.php',
+        'QuadLayers\\WP_License_Client\\Traits\\PluginDataByFile' => __DIR__ . '/../..' . '/src/Traits/PluginDataByFile.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

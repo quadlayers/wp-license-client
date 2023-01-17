@@ -1,8 +1,6 @@
 <?php
 namespace QuadLayers\WP_License_Client\Models;
 
-use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
-
 /**
  * Model_User_Data Class
  * This class handles the input data of the user in the database.
@@ -10,13 +8,6 @@ use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
  * @since 1.0.0
  */
 class UserData extends Base {
-
-	/**
-	 * Plugin model
-	 *
-	 * @var Model_Plugin
-	 */
-	protected $plugin;
 
 	/**
 	 * Default attributes of the user data model.
@@ -28,15 +19,6 @@ class UserData extends Base {
 		'license_email'  => null,
 		'license_market' => null,
 	);
-
-	/**
-	 * Setup class
-	 *
-	 * @param Model_Plugin $plugin Model_Plugin instance.
-	 */
-	public function __construct( Model_Plugin $plugin ) {
-		$this->plugin = $plugin;
-	}
 
 	/**
 	 * Get database user data suffix.

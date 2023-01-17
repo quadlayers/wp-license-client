@@ -2,8 +2,6 @@
 
 namespace QuadLayers\WP_License_Client\Models;
 
-use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
-
 /**
  * Model_Activation Class
  * This class handles fetched data of the activation in the database.
@@ -11,13 +9,6 @@ use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
  * @since 1.0.0
  */
 class Activation extends Base {
-
-	/**
-	 * Plugin model
-	 *
-	 * @var Model_Plugin
-	 */
-	protected $plugin;
 
 	/**
 	 * Default attributes of the activation model.
@@ -42,15 +33,6 @@ class Activation extends Base {
 		'activation_site'      => null,
 		'activation_created'   => null,
 	);
-
-	/**
-	 * Setup class
-	 *
-	 * @param Model_Plugin $plugin Model_Plugin instance.
-	 */
-	public function __construct( Model_Plugin $plugin ) {
-		$this->plugin = $plugin;
-	}
 
 	/**
 	 * Get database activation suffix

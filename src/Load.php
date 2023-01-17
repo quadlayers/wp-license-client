@@ -76,8 +76,8 @@ final class Load {
 		/**
 		 * Get plugin file path
 		 */
-		if ( ! isset( $this->client_data['dir'] ) ) {
-			$this->client_data['dir'] = __DIR__;
+		if ( ! isset( $this->client_data['plugin_file'] ) ) {
+			throw new \Exception( esc_html__( 'Please include a valid plugin_file.', 'wp-license-client' ) );
 		}
 
 		/**
@@ -95,7 +95,12 @@ final class Load {
 		/**
 		 * Load plugin models
 		 */
-		$this->plugin     = new Model_Plugin( $this->client_data );
+		$this->plugin = new Model_Plugin( $this->client_data );
+
+		if ( ! $this->plugin->is_valid() ) {
+			throw new \Exception( sprintf( esc_html__( '%s is not a valid plugin file.', 'wp-license-client' ), $this->plugin->get_file() ) );
+		}
+
 		$this->activation = new Model_Activation( $this->plugin );
 		$this->user_data  = new Model_User_Data( $this->plugin );
 		new Controller_Plugin_Information( $this->plugin, $this->activation, $this->user_data );

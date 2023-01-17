@@ -22,7 +22,7 @@ if ( ! function_exists( 'your_plugin_license_client_integration' ) ) {
 				array(
 					'api_url'     => 'https://yoursite.com/wp-json/wc/wdd/',
 					'product_key' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-					'dir'         => __DIR__,
+					'plugin_file' => __FILE__,
 					// 'rest_namespace' => 'your_plugin', /** Enable rest api */
 					// 'parent_menu_slug' => 'your_plugin_menu_slug',
 					// 'license_url' => admin_url( 'admin.php?page=your_plugin_license_page' ) ),

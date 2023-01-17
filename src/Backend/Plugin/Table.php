@@ -40,7 +40,7 @@ class Table {
 			'admin_init',
 			function() {
 				add_filter( 'plugins_api', array( $this, 'add_fetch_data' ), 10, 3 );
-				add_action( 'in_plugin_update_message-' . $this->plugin->get_plugin_base(), array( $this, 'add_license_notification' ), 10, 2 );
+				add_action( 'in_plugin_update_message-' . $this->plugin->get_base(), array( $this, 'add_license_notification' ), 10, 2 );
 			}
 		);
 
@@ -60,17 +60,17 @@ class Table {
 			return $return;
 		}
 
-		if ( $args->slug != $this->plugin->get_plugin_slug() ) {
+		if ( $args->slug != $this->plugin->get_slug() ) {
 			return $return;
 		}
 
 		$transient = get_site_transient( 'update_plugins' );
 
-		if ( empty( $transient->no_update[ $this->plugin->get_plugin_base() ] ) ) {
+		if ( empty( $transient->no_update[ $this->plugin->get_base() ] ) ) {
 			return $return;
 		}
 
-		$plugin = $transient->no_update[ $this->plugin->get_plugin_base() ];
+		$plugin = $transient->no_update[ $this->plugin->get_base() ];
 
 		if ( ! $plugin ) {
 			return $return;
@@ -128,7 +128,7 @@ class Table {
 					),
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
-						esc_url( $this->plugin->get_plugin_url() ),
+						esc_url( $this->plugin->get_url() ),
 						esc_html__( 'purchase', 'wp-license-client' )
 					)
 				)
@@ -147,7 +147,7 @@ class Table {
 					esc_html__( 'Please contact the plugin author %1$s.', 'wp-license-client' ),
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
-						esc_url( $this->plugin->get_plugin_url() ),
+						esc_url( $this->plugin->get_url() ),
 						esc_html__( 'here', 'wp-license-client' )
 					)
 				)

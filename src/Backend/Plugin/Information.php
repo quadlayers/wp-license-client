@@ -69,9 +69,9 @@ class Information {
 		}
 
 		$plugin                 = new \stdClass();
-		$plugin->id             = $this->plugin->get_plugin_slug();
-		$plugin->slug           = $this->plugin->get_plugin_slug();
-		$plugin->plugin         = $this->plugin->get_plugin_base();
+		$plugin->id             = $this->plugin->get_slug();
+		$plugin->slug           = $this->plugin->get_slug();
+		$plugin->plugin         = $this->plugin->get_base();
 		$plugin->new_version    = $product->version;
 		$plugin->url            = $product->homepage;
 		$plugin->tested         = $product->tested;
@@ -95,13 +95,13 @@ class Information {
 			'changelog'   => wpautop( $product->changelog ),
 			'screenshots' => $product->screenshots,
 		);
-		$plugin->donate_link     = $this->plugin->get_plugin_url();
+		$plugin->donate_link     = $this->plugin->get_url();
 		$plugin->banners         = array(
 			'low'  => $product->banner_low,
 			'high' => $product->banner_high,
 		);
 
-		$transient->no_update[ $this->plugin->get_plugin_base() ] = $plugin;
+		$transient->no_update[ $this->plugin->get_base() ] = $plugin;
 
 		return $transient;
 	}

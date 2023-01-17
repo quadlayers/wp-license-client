@@ -60,17 +60,17 @@ class Download {
 			return $transient;
 		}
 
-		if ( empty( $transient->no_update[ $this->plugin->get_plugin_base() ] ) ) {
+		if ( empty( $transient->no_update[ $this->plugin->get_base() ] ) ) {
 			return $transient;
 		}
 
-		$plugin = $transient->no_update[ $this->plugin->get_plugin_base() ];
+		$plugin = $transient->no_update[ $this->plugin->get_base() ];
 
 		/**
 		 * Check if there is higher version available.
 		 */
 
-		$is_higher_version = version_compare( $plugin->version, $this->plugin->get_plugin_version(), '>' );
+		$is_higher_version = version_compare( $plugin->version, $this->plugin->get_version(), '>' );
 
 		if ( ! $is_higher_version ) {
 			return $transient;
@@ -98,7 +98,7 @@ class Download {
 					),
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
-						esc_url( $this->plugin->get_plugin_url() ),
+						esc_url( $this->plugin->get_url() ),
 						esc_html__( 'purchase', 'wp-license-client' )
 					)
 				)
@@ -106,7 +106,7 @@ class Download {
 			/**
 			 * Set the download link true to display the notice.
 			 */
-			$transient->response[ $this->plugin->get_plugin_base() ] = $plugin;
+			$transient->response[ $this->plugin->get_base() ] = $plugin;
 			return $transient;
 		}
 
@@ -133,12 +133,12 @@ class Download {
 					esc_html__( 'Please contact the plugin author %1$s.', 'wp-license-client' ),
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
-						esc_url( $this->plugin->get_plugin_url() ),
+						esc_url( $this->plugin->get_url() ),
 						esc_html__( 'here', 'wp-license-client' )
 					)
 				)
 			);
-			$transient->response[ $this->plugin->get_plugin_base() ] = $plugin;
+			$transient->response[ $this->plugin->get_base() ] = $plugin;
 			return $transient;
 		}
 
@@ -152,7 +152,7 @@ class Download {
 		$plugin->package       = $download_link;
 		$plugin->download_link = $download_link;
 
-		$transient->response[ $this->plugin->get_plugin_base() ] = $plugin;
+		$transient->response[ $this->plugin->get_base() ] = $plugin;
 
 		return $transient;
 	}

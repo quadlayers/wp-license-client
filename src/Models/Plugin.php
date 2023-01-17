@@ -2,6 +2,8 @@
 
 namespace QuadLayers\WP_License_Client\Models;
 
+use QuadLayers\WP_License_Client\Traits\PluginDataByFile;
+
 /**
  * Model_Plugin Class
  * This class handles plugin data
@@ -9,13 +11,6 @@ namespace QuadLayers\WP_License_Client\Models;
  * @since 1.0.0
  */
 class Plugin {
-
-	/**
-	 * Plugin __DIR__
-	 *
-	 * @var string
-	 */
-	private $dir;
 
 	/**
 	 * Server API url
@@ -37,20 +32,6 @@ class Plugin {
 	 * @var string
 	 */
 	private $license_menu_slug = null;
-
-	/**
-	 * Plugin author URL
-	 *
-	 * @var string
-	 */
-	private $plugin_url;
-
-	/**
-	 * Plugin file path
-	 *
-	 * @var string
-	 */
-	private $plugin_file;
 
 	/**
 	 * Product key from API server
@@ -85,6 +66,9 @@ class Plugin {
 	 *
 	 * @param array $client_data Plugin data.
 	 */
+
+	use PluginDataByFile;
+
 	public function __construct( array $client_data ) {
 
 		foreach ( $client_data as $key => $value ) {
@@ -92,72 +76,6 @@ class Plugin {
 				$this->{$key} = $value;
 			}
 		}
-
-		$this->try_get_plugin_file();
-	}
-
-	public function get_plugin_slug() {
-		if ( ! $this->get_plugin_file() ) {
-			return false;
-		}
-		$plugin_slug = basename( $this->get_plugin_file(), '.php' );
-		return $plugin_slug;
-	}
-
-	public function is_valid() {
-		if ( ! $this->get_plugin_file() ) {
-			return false;
-		}
-		if ( ! is_file( $this->get_plugin_file() ) ) {
-			return false;
-		}
-		return true;
-	}
-
-	public function get_plugin_base() {
-		if ( ! $this->get_plugin_file() ) {
-			return false;
-		}
-		$plugin_base = plugin_basename( $this->get_plugin_file() );
-		return $plugin_base;
-	}
-
-	public function get_plugin_version() {
-		$plugin_data = $this->get_wp_plugin_data( $this->get_plugin_file() );
-		if ( empty( $plugin_data['Version'] ) ) {
-			return false;
-		}
-		return $plugin_data['Version'];
-	}
-
-	public function get_plugin_name() {
-		$plugin_data = $this->get_wp_plugin_data( $this->get_plugin_file() );
-		if ( empty( $plugin_data['Name'] ) ) {
-			return false;
-		}
-		return $plugin_data['Name'];
-	}
-
-	public function get_plugin_url() {
-
-		if ( $this->plugin_url ) {
-			return $this->plugin_url;
-		}
-
-		$plugin_data = $this->get_wp_plugin_data( $this->get_plugin_file() );
-
-		if ( empty( $plugin_data['PluginURI'] ) ) {
-			return false;
-		}
-
-		return $plugin_data['PluginURI'];
-	}
-
-	private function get_wp_plugin_data() {
-		if ( ! $this->get_plugin_file() ) {
-			return false;
-		}
-		return get_plugin_data( $this->get_plugin_file() );
 	}
 
 	public function get_api_url() {
@@ -166,39 +84,6 @@ class Plugin {
 
 	public function get_product_key() {
 		return $this->product_key;
-	}
-
-	public function get_plugin_file() {
-		return $this->plugin_file;
-	}
-
-	private function try_get_plugin_file() {
-
-		if ( $this->plugin_file && is_file( $this->plugin_file ) ) {
-			return $this->plugin_file;
-		}
-
-		$plugin_basefolders = plugin_basename( $this->dir );
-
-		$plugin_filename = basename( $this->dir ) . '.php';
-
-		$plugin_basefolder = explode( '/', $plugin_basefolders );
-
-		if ( ! isset( $plugin_basefolder[0] ) ) {
-			return false;
-		}
-
-		$plugin_folder = $plugin_basefolder[0];
-
-		$plugin_file = wp_normalize_path( WP_PLUGIN_DIR . '/' . $plugin_folder . '/' . $plugin_filename );
-
-		if ( ! is_file( $plugin_file ) ) {
-			return false;
-		}
-
-		$this->plugin_file = $plugin_file;
-
-		return $plugin_file;
 	}
 
 	/**
@@ -228,7 +113,7 @@ class Plugin {
 		 * Enable menu if parent menu slug is not set
 		 */
 		if ( null === $this->parent_menu_slug || ! is_string( $this->parent_menu_slug ) ) {
-			return $this->get_plugin_slug();
+			return $this->get_slug();
 		}
 
 		/**

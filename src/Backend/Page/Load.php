@@ -53,7 +53,7 @@ class Load {
 		}
 
 		if ( ! isset( $_parent_pages[ $parent_menu_slug ] ) ) {
-			$plugin_name = $this->plugin->get_plugin_name();
+			$plugin_name = $this->plugin->get_name();
 			if ( $plugin_name ) {
 				add_menu_page(
 					$plugin_name,
@@ -73,7 +73,7 @@ class Load {
 			'manage_options',
 			$menu_slug_license,
 			function () {
-				$plugin_slug = $this->plugin->get_plugin_slug();
+				$plugin_slug = $this->plugin->get_slug();
 				$activation  = $this->activation->get();
 				$user_data   = $this->user_data->get();
 				include __DIR__ . '/view/license.php';
@@ -85,7 +85,7 @@ class Load {
 
 	function create_activation() {
 
-		$plugin_slug = $this->plugin->get_plugin_slug();
+		$plugin_slug = $this->plugin->get_slug();
 
 		if ( ! isset( $_REQUEST['option_page'] ) ) {
 			return;
@@ -120,7 +120,7 @@ class Load {
 
 	function delete_activation() {
 
-		$plugin_slug = $this->plugin->get_plugin_slug();
+		$plugin_slug = $this->plugin->get_slug();
 
 		if ( ! isset( $_REQUEST['option_page'] ) ) {
 			return;
