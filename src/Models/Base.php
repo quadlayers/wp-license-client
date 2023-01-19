@@ -100,6 +100,10 @@ abstract class Base {
 
 		$data = get_option( $this->get_db_key(), array() );
 
+		if ( ! is_array( $data ) ) {
+			return $this->get_defaults();
+		}
+
 		$valid_data = $this->get_valid_data( $data );
 
 		return $valid_data;
