@@ -135,6 +135,9 @@ trait PluginDataByFile {
 		if ( ! $this->get_file() ) {
 			return false;
 		}
+
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
 		return get_plugin_data( $this->get_file() );
 	}
 }
