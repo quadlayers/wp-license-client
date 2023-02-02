@@ -68,6 +68,9 @@ trait PluginDataByFile {
 	}
 
 	public function get_file() {
+		if ( ! is_file( $this->plugin_file ) ) {
+			return false;
+		}
 		return $this->plugin_file;
 	}
 
