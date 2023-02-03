@@ -34,16 +34,11 @@ class Load {
 			return;
 		}
 
-		$parent_menu_slug  = $this->plugin->get_parent_menu_slug();
-		$menu_slug_license = $this->plugin->get_license_menu_slug();
+		$license_menu_url = $this->plugin->get_menu_license_url();
 
-		$has_menu = self::find_my_menu_item( $parent_menu_slug, $menu_slug_license );
-
-		if ( ! $has_menu ) {
+		if ( ! $license_menu_url ) {
 			return;
 		}
-
-		$license_menu_url = $this->plugin->get_menu_license_url();
 
 		?>
 		<div class="notice notice-error" data-notice_id="quadmenu-user-rating">

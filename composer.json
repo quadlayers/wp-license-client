@@ -1,7 +1,6 @@
 {
 	"name": "quadlayers/wp-license-client",
 	"description": "Client for the WooCommerce License Manager server.",
-	"version": "1.3.2",
 	"keywords": [
 		"WordPress",
 		"License",
@@ -9,7 +8,7 @@
 	],
 	"type": "jetpack-library",
 	"require": {
-		"php": ">=7.4.0"
+		"php": ">=7.1.0"
 	},
 	"license": "GPL-3.0",
 	"authors": [
