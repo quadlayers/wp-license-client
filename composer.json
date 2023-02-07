@@ -7,9 +7,6 @@
 		"Client"
 	],
 	"type": "jetpack-library",
-	"require": {
-		"php": ">=7.1.0"
-	},
 	"license": "GPL-3.0",
 	"authors": [
 		{
@@ -18,6 +15,11 @@
 		}
 	],
 	"minimum-stability": "stable",
+	"config": {
+		"platform": {
+			"php": "7.1.0"
+		}
+	},
 	"autoload": {
 		"psr-4": {
 			"QuadLayers\\WP_License_Client\\": "src/"
@@ -28,5 +30,8 @@
 	},
 	"extra": {
 		"textdomain": "wp-license-client"
+	},
+	"require": {
+		"php": ">=7.1.0"
 	}
 }
