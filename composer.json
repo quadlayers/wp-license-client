@@ -18,6 +18,10 @@
 	"config": {
 		"platform": {
 			"php": "7.3.0"
+		},
+		"allow-plugins": {
+			"automattic/jetpack-composer-plugin": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	},
 	"autoload": {
@@ -33,5 +37,16 @@
 	},
 	"require": {
 		"php": ">=7.1.0"
+	},
+	"require-dev": {
+		"woocommerce/woocommerce-sniffs": "^0.1.3",
+		"phpunit/phpunit": "^9.5"
+	},
+	"scripts": {
+		"test:phpunit": "./vendor/bin/phpunit phpunit",
+		"build": "composer install --no-dev && composer dump-autoload -o --no-dev",
+		"phpcs:report:csv": "./vendor/bin/phpcs --warning-severity=0 --extensions=php --report=csv --report-file=./phpcs_error.csv ./src",
+		"phpcs:report:txt": "./vendor/bin/phpcs --warning-severity=0 --extensions=php --report-file=./phpcs_error.txt ./src",
+		"phpcs:report:autofix": "./vendor/bin/phpcbf ./src"
 	}
 }

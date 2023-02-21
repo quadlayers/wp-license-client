@@ -124,7 +124,7 @@ class Table {
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
 						esc_url( $this->plugin->get_menu_license_url() ),
-						esc_html__( 'settings', 'wp-license-client' ),
+						esc_html__( 'settings', 'wp-license-client' )
 					),
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',

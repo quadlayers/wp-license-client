@@ -94,7 +94,7 @@ class Download {
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
 						esc_url( $this->plugin->get_menu_license_url() ),
-						esc_html__( 'settings', 'wp-license-client' ),
+						esc_html__( 'settings', 'wp-license-client' )
 					),
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
@@ -126,7 +126,7 @@ class Download {
 		 * Check if there is an error. If yes, show a notice.
 		 */
 		if ( isset( $download_link->error ) || filter_var( $download_link, FILTER_VALIDATE_URL ) === false ) {
-			$plugin->upgrade_notice                                  = sprintf(
+			$plugin->upgrade_notice                           = sprintf(
 				'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
 				esc_html__( 'Automatic updates are disabled.', 'wp-license-client' ),
 				sprintf(

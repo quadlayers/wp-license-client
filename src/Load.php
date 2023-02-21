@@ -76,8 +76,8 @@ final class Load {
 		/**
 		 * Get plugin file path
 		 */
-		if ( ! isset( $this->client_data['plugin_file'] )) {
-			trigger_error( esc_html__( 'Please include a valid plugin_file.', 'wp-license-client'), E_USER_NOTICE );
+		if ( ! isset( $this->client_data['plugin_file'] ) ) {
+			trigger_error( esc_html__( 'Please include a valid plugin_file.', 'wp-license-client' ), E_USER_NOTICE );
 		}
 
 		/**
