@@ -16,6 +16,13 @@ use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
 abstract class Base implements FetchInterface {
 
 	/**
+	 * Plugin model
+	 *
+	 * @var Model_Plugin
+	 */
+	protected $plugin;
+
+	/**
 	 * Setup class with plugin model.
 	 *
 	 * @var Model_Plugin
