@@ -10,7 +10,6 @@ use QuadLayers\WP_License_Client\Api\Fetch\Activation\Delete as API_Fetch_Activa
 /**
  * Controller_Page Class
  */
-
 class Load {
 
 	protected $plugin;
@@ -41,7 +40,7 @@ class Load {
 
 	}
 
-	function add_menu() {
+	public function add_menu() {
 
 		global $_parent_pages;
 
@@ -83,29 +82,40 @@ class Load {
 
 	}
 
-	function create_activation() {
+	public function create_activation() {
 
 		$plugin_slug = $this->plugin->get_slug();
 
-		if ( ! isset( $_REQUEST['option_page'] ) ) {
+		/**
+		 * Validate current page
+		 */
+		if ( ! isset( $_REQUEST['option_page'] ) || $_REQUEST['option_page'] !== $plugin_slug . '-qlwlm-create' ) {
 			return;
 		}
 
-		if ( $_REQUEST['option_page'] !== $plugin_slug . '-qlwlm-create' ) {
-			return;
-		}
-
+		/**
+		 * Validate license
+		 */
 		if ( ! isset( $_REQUEST[ $plugin_slug ] ) ) {
 			return;
 		}
 
-		$this->user_data->create( $_REQUEST[ $plugin_slug ] );
+		/**
+		 * Validate nonce
+		 */
+		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( wp_unslash( $_REQUEST['_wpnonce'] ), $plugin_slug . '-qlwlm-create-options' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			return;
+		}
+
+		$license = wp_unslash( $_REQUEST[ $plugin_slug ] ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+		$this->user_data->create( $license );
 
 		$fetch = new API_Fetch_Activation_Create( $this->plugin );
 
 		$activation = $fetch->get_data(
 			array_merge(
-				(array) $_REQUEST[ $plugin_slug ],
+				(array) $license,
 				array(
 					'activation_site' => $this->plugin->get_activation_site(),
 					'product_key'     => $this->plugin->get_product_key(),
@@ -118,15 +128,21 @@ class Load {
 		}
 	}
 
-	function delete_activation() {
+	public function delete_activation() {
 
 		$plugin_slug = $this->plugin->get_slug();
 
-		if ( ! isset( $_REQUEST['option_page'] ) ) {
+		/**
+		 * Validate current page
+		 */
+		if ( ! isset( $_REQUEST['option_page'] ) || $_REQUEST['option_page'] !== $plugin_slug . '-qlwlm-delete' ) {
 			return;
 		}
 
-		if ( $_REQUEST['option_page'] !== $plugin_slug . '-qlwlm-delete' ) {
+		/**
+		 * Validate nonce
+		 */
+		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( wp_unslash( $_REQUEST['_wpnonce'] ), $plugin_slug . '-qlwlm-delete-options' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 			return;
 		}
 

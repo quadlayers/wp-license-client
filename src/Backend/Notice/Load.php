@@ -10,7 +10,6 @@ use QuadLayers\WP_License_Client\Api\Fetch\Activation\Delete as API_Fetch_Activa
 /**
  * Controller_Notice Class
  */
-
 class Load {
 
 	protected $plugin;
@@ -45,7 +44,7 @@ class Load {
 			<div class="notice-container" style="padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: left; align-items: center;">
 				<div class="notice-content" style="margin-left: 15px;">
 					<p>
-						<b><?php printf( esc_html__( 'Please activate your %s license key.', 'wp-license-client' ), $this->plugin->get_name() ); ?></b>
+						<b><?php printf( esc_html__( 'Please activate your %s license key.', 'wp-license-client' ), esc_html( $this->plugin->get_name() ) ); ?></b>
 						<br/>
 						<?php esc_html_e( 'Please complete the license activation process to receive automatic updates and enable all premium features.', 'wp-license-client' ); ?>
 					</p>
@@ -91,7 +90,7 @@ class Load {
 
 			foreach ( $arr as $slug ) {
 
-				if ( $slug == $submenu_page_slug ) {
+				if ( $slug === $submenu_page_slug ) {
 					return true;
 				}
 			}

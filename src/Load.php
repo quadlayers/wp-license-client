@@ -98,7 +98,7 @@ final class Load {
 		$this->plugin = new Model_Plugin( $this->client_data );
 
 		if ( ! $this->plugin->is_valid() ) {
-			trigger_error( sprintf( esc_html__( '%s is not a valid plugin file.', 'wp-license-client' ), $this->plugin->get_file() ), E_USER_NOTICE );
+			trigger_error( sprintf( esc_html__( '%s is not a valid plugin file.', 'wp-license-client' ), esc_html( $this->plugin->get_file() ) ), E_USER_NOTICE );
 		}
 
 		$this->activation = new Model_Activation( $this->plugin );

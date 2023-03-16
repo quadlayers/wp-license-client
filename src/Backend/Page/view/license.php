@@ -45,7 +45,7 @@
 				<?php if ( ! empty( $activation['license_created'] ) ) : ?>
 					<tr>
 						<td><?php echo esc_html__( 'Created', 'wp-license-client' ); ?></td>
-						<td><?php echo date( get_option( 'date_format' ), strtotime( $activation['license_created'] ) ); ?></td>
+						<td><?php echo esc_html( date_i18n( get_option( 'date_format' ), strtotime( $activation['license_created'] ) ) ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo esc_html__( 'Limit', 'wp-license-client' ); ?></td>
@@ -57,15 +57,15 @@
 					</tr>
 					<tr>
 						<td><?php echo esc_html__( 'Updates', 'wp-license-client' ); ?></td>
-						<td><?php echo ( $activation['license_expiration'] != '0000-00-00 00:00:00' && $activation['license_updates'] ) ? sprintf( esc_html__( 'Expires on %s', 'wp-license-client' ), $activation['license_expiration'] ) : esc_html__( 'Unlimited', 'wp-license-client' ); ?></td>
+						<td><?php echo '0000-00-00 00:00:00' !== $activation['license_expiration'] && $activation['license_updates'] ? sprintf( esc_html__( 'Expires on %s', 'wp-license-client' ), esc_html( $activation['license_expiration'] ) ) : esc_html__( 'Unlimited', 'wp-license-client' ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo esc_html__( 'Support', 'wp-license-client' ); ?></td>
-						<td><?php echo ( $activation['license_expiration'] != '0000-00-00 00:00:00' && $activation['license_support'] ) ? sprintf( esc_html__( 'Expires on %s', 'wp-license-client' ), $activation['license_expiration'] ) : esc_html__( 'Unlimited', 'wp-license-client' ); ?></td>
+						<td><?php echo '0000-00-00 00:00:00' !== $activation['license_expiration'] && $activation['license_support'] ? sprintf( esc_html__( 'Expires on %s', 'wp-license-client' ), esc_html( $activation['license_expiration'] ) ) : esc_html__( 'Unlimited', 'wp-license-client' ); ?></td>
 					</tr>
 					<tr>
 						<td><?php echo esc_html__( 'Expiration', 'wp-license-client' ); ?></td>
-						<td><?php echo ( $activation['license_expiration'] != '0000-00-00 00:00:00' ) ? date_i18n( get_option( 'date_format' ), strtotime( $activation['license_expiration'] ) ) : esc_html__( 'Unlimited', 'wp-license-client' ); ?></td>
+						<td><?php echo '0000-00-00 00:00:00' !== $activation['license_expiration'] ? esc_html( date_i18n( get_option( 'date_format' ), strtotime( $activation['license_expiration'] ) ) ) : esc_html__( 'Unlimited', 'wp-license-client' ); ?></td>
 					</tr>
 				<?php endif; ?>
 				<tr>

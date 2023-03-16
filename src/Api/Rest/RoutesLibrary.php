@@ -17,7 +17,6 @@ use QuadLayers\WP_License_Client\Api\Rest\Endpoints\RouteInterface;
 /**
  * API_Rest_Routes Class
  */
-
 class RoutesLibrary {
 
 	protected $routes = array();
