@@ -48,6 +48,6 @@
 		"phpcs:report:txt": "./vendor/bin/phpcs --standard=./phpcs.xml --warning-severity=0 --report-file=./phpcs_error.txt --extensions=php ./",
 		"phpcs:report:csv": "./vendor/bin/phpcs --standard=./phpcs.xml --warning-severity=0 --report-csv=./phpcs_error.csv --extensions=php ./",
 		"phpcs:report:xml": "./vendor/bin/phpcs --standard=./phpcs.xml --warning-severity=0 --report-xml=./phpcs_error.xml --extensions=php ./",
-		"phpcs:report:autofix": "./vendor/bin/phpcbf --standard=./phpcs.xml ./"
+		"phpcs:report:autofix": "./vendor/bin/phpcbf --standard=./phpcs.xml --extensions=php ./"
 	}
 }

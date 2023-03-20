@@ -89,7 +89,7 @@ class RoutesLibrary {
 	 * @param string $rest_path Rest path to get.
 	 * @return string|array
 	 */
-	public function get( string $rest_path = null ) {
+	public function get( $rest_path = null ) {
 
 		if ( null === $rest_path ) {
 			return $this->routes;
