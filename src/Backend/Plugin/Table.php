@@ -54,7 +54,7 @@ class Table {
 	 * @param object $args
 	 * @return object
 	 */
-	function add_fetch_data( $return, $action, $args ) {
+	public function add_fetch_data( $return, $action, $args ) {
 
 		if ( 'plugin_information' !== $action ) {
 			return $return;
@@ -89,7 +89,7 @@ class Table {
 	 * @param array $screenshots
 	 * @return string
 	 */
-	function add_screenshots( array $screenshots = array() ) {
+	public function add_screenshots( array $screenshots = array() ) {
 		ob_start();
 		?>
 			<ol>
@@ -108,7 +108,7 @@ class Table {
 	 * @param object $response
 	 * @return string
 	 */
-	function add_license_notification( $plugin_data, $response ) {
+	public function add_license_notification( $plugin_data, $response ) {
 
 		$activation = $this->activation->get();
 

@@ -79,7 +79,9 @@ class Information {
 		$plugin->icons          = array(
 			'default' => $product->icon,
 		);
-		// Fields for plugin info
+		/**
+		 * Fields for plugin info
+		 */
 		$plugin->version         = $product->version;
 		$plugin->homepage        = $product->homepage;
 		$plugin->name            = $product->name;

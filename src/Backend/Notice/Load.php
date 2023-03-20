@@ -4,8 +4,6 @@ namespace QuadLayers\WP_License_Client\Backend\Notice;
 use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
 use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
 use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
-use QuadLayers\WP_License_Client\Api\Fetch\Activation\Create as API_Fetch_Activation_Create;
-use QuadLayers\WP_License_Client\Api\Fetch\Activation\Delete as API_Fetch_Activation_Delete;
 
 /**
  * Controller_Notice Class

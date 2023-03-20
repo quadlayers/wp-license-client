@@ -1,9 +1,15 @@
 <?php
 /**
+ * QuadLayers WP Dashboard Widget News
+ *
  * Example of how to integrate WooCommerce License Manager Client with your plugin.
  * Include this file in the root folder of your WordPress plugn and setup settings based on your product
  * Documentation: https://quadlayers.com/documentation/woocommerce-license-manager/developer/
+ *
+ * @package   quadlayers/wp-license-client
+ * @link      https://github.com/quadlayers/wp-license-client
  */
+
 if ( ! function_exists( 'your_plugin_license_client_integration' ) ) {
 
 	function your_plugin_license_client_integration() {
