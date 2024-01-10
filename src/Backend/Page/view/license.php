@@ -1,3 +1,4 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
 <div class="wrap about-wrap full-width-layout qlwrap">
 	<form method="post">
 		<?php settings_fields( sanitize_key( $plugin_slug . '-qlwlm-create' ) ); ?>
