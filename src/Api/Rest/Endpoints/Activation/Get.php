@@ -41,7 +41,7 @@ class Get extends Base {
 		if ( empty( $activation ) ) {
 			$response = array(
 				'error'   => true,
-				'message' => esc_html__( 'Unknow error. Please delete and try again.', 'wp-license-client' ),
+				'message' => esc_html__( 'Unknown error. Please delete and try again.', 'wp-license-client' ),
 			);
 			return $this->handle_response( $response );
 		}
