@@ -62,6 +62,13 @@ class Plugin {
 	private $support_url;
 
 	/**
+	 * Activation delete url
+	 *
+	 * @var string
+	 */
+	private $activation_delete_url;
+
+	/**
 	 * Setup class
 	 *
 	 * @param array $client_data Plugin data.
@@ -93,6 +100,12 @@ class Plugin {
 	 */
 	public function get_activation_site() {
 		return home_url();
+	}
+
+	public function get_activation_delete_url() {
+		if ( $this->activation_delete_url && is_string( $this->activation_delete_url ) ) {
+			return $this->activation_delete_url;
+		}
 	}
 
 	/**

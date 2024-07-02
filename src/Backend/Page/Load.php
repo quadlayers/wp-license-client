@@ -75,6 +75,7 @@ class Load {
 				$plugin_slug = $this->plugin->get_slug();
 				$activation  = $this->activation->get();
 				$user_data   = $this->user_data->get();
+				$activation_delete_url = $this->plugin->get_activation_delete_url();
 				include __DIR__ . '/view/license.php';
 			},
 			99

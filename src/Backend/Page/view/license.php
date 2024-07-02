@@ -90,8 +90,12 @@
 				</tr>
 			</tbody>
 		</table>
-			<?php if ( $activation ) : ?>
-				<?php submit_button( esc_html__( 'Delete', 'wp-license-client' ), 'secondary' ); ?>		
+		<?php if ( $activation ) : ?>
+			<?php if ( ! empty( $activation_delete_url ) ) : ?>
+				<?php submit_button( esc_html__( 'Delete', 'wp-license-client' ), 'secondary' ); ?>
+			<?php else : ?>
+				<a href="<?php echo esc_url( $activation_delete_url );?>" title="<?php echo esc_html__( 'Contact Support to Delete Activation', 'wp-license-client' ); ?>"><?php echo esc_html__( 'Contact Support to Delete Activation', 'wp-license-client' ); ?></a>
 			<?php endif; ?>
+		<?php endif; ?>
 	</form>
 </div>
