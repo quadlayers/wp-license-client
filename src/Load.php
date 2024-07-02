@@ -53,14 +53,14 @@ final class Load {
 	/**
 	 * Instantiated Model_Activation in the constructor.
 	 *
-	 * @var Model_Plugin
+	 * @var Model_Activation
 	 */
 	public $activation;
 
 	/**
 	 * Instantiated Model_User_Data in the constructor.
 	 *
-	 * @var Model_Plugin
+	 * @var Model_User_Data
 	 */
 	public $user_data;
 

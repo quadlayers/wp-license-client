@@ -7,7 +7,7 @@ use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
 use QuadLayers\WP_License_Client\Api\Fetch\Product\Update as API_Fetch_Product_Update;
 
 /**
- * Controller_Plugin_Information Class
+ * Controller_Plugin_Update Class
  *
  * Implement plugin automatic updates.
  *

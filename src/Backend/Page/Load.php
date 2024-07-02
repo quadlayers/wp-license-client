@@ -127,6 +127,8 @@ class Load {
 		if ( $activation ) {
 			$this->activation->create( (array) $activation );
 		}
+
+		wp_clean_plugins_cache();
 	}
 
 	public function delete_activation() {
