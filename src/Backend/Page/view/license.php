@@ -1,4 +1,5 @@
-<?php if ( ! defined( 'ABSPATH' ) ) exit; ?>
+<?php if ( ! defined( 'ABSPATH' ) ) {
+exit;} ?>
 <div class="wrap about-wrap full-width-layout qlwrap">
 	<form method="post">
 		<?php settings_fields( sanitize_key( $plugin_slug . '-qlwlm-create' ) ); ?>
@@ -91,11 +92,26 @@
 			</tbody>
 		</table>
 		<?php if ( $activation ) : ?>
-			<?php if ( ! empty( $activation_delete_url ) ) : ?>
+			<?php if ( empty( $activation_delete_url ) ) : ?>
 				<?php submit_button( esc_html__( 'Delete', 'wp-license-client' ), 'secondary' ); ?>
 			<?php else : ?>
-				<a href="<?php echo esc_url( $activation_delete_url );?>" title="<?php echo esc_html__( 'Contact Support to Delete Activation', 'wp-license-client' ); ?>"><?php echo esc_html__( 'Contact Support to Delete Activation', 'wp-license-client' ); ?></a>
-			<?php endif; ?>
+				<p class="submit" style="font-size: 14px;">
+				<?php
+					echo sprintf(
+						wp_kses(
+							__( 'Do you want to delete license activation? Please contact support <a href="%s" target="_blank">here</a>.', 'wp-license-client' ),
+							array(
+								'a' => array(
+									'href'   => array(),
+									'target' => array(),
+								),
+							)
+						),
+						esc_url( $activation_delete_url )
+					);
+				?>
+				</p>
+				<?php endif; ?>
 		<?php endif; ?>
 	</form>
 </div>
