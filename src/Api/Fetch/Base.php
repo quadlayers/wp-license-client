@@ -95,9 +95,9 @@ abstract class Base implements FetchInterface {
 		$query = http_build_query( $args );
 
 		$response = wp_remote_request(
-			$api_url . '?' . $query . '&product_key=' . $this->plugin->get_product_key(),
+			$api_url . '?' . $query,
 			array(
-				'user-agent' => sprintf( 'WLM/%s/%s; %s', $this->plugin->get_slug(), $this->plugin->get_version(), $this->plugin->get_activation_site() ),
+				// 'user-agent' => sprintf( 'WLM/%s/%s; %s', $this->plugin->get_slug(), $this->plugin->get_version(), $this->plugin->get_activation_site() ),
 				'method'     => static::get_rest_method(),
 				'timeout'    => 100,
 			)
