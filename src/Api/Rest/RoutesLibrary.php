@@ -63,7 +63,7 @@ class RoutesLibrary {
 			return false;
 		}
 
-		return 'ql/WP_License_Client/' . $this->client_data['rest_namespace'];
+		return 'ql/wlm/' . $this->client_data['rest_namespace'];
 	}
 
 	/**
