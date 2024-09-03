@@ -142,10 +142,10 @@ abstract class Base implements FetchInterface {
 	 * @return string
 	 */
 	public function handle_error( $response = null ) {
-		$is_error = ( ! $response || isset( $response->code ) ) ? true : false;
+		$is_error = ( ! $response || isset( $response->code ) || isset( $response->error ) ) ? true : false;
 		if ( $is_error ) {
 			return (object) array(
-				'error'   => isset( $response->code ) ? $response->code : 404,
+				'error'   => isset( $response->code ) ? $response->code : ( isset( $response->error ) ? $response->error : 404 ),
 				'message' => isset( $response->message ) ? $response->message : esc_html__( 'Unknown error. Please try again.', 'wp-license-client' ),
 			);
 		}
