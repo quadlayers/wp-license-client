@@ -3,9 +3,8 @@
 namespace QuadLayers\WP_License_Client\Api\Rest;
 
 use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Activation\Create as API_Rest_Activation_License_Create;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Activation\Get as API_Rest_Activation_License_Get;
 use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Activation\Delete as API_Rest_Activation_License_Delete;
-
-use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Activation\Get as API_Rest_Get_Activation_License;
 
 use QuadLayers\WP_License_Client\Api\Rest\Endpoints\UserData\Create as API_Rest_User_Data_Create;
 use QuadLayers\WP_License_Client\Api\Rest\Endpoints\UserData\Get as API_Rest_User_Data_Get;
@@ -43,8 +42,8 @@ class RoutesLibrary {
 		 * Activation routes
 		 */
 		new API_Rest_Activation_License_Create( $this->client_data, $this );
+		new API_Rest_Activation_License_Get( $this->client_data, $this );
 		new API_Rest_Activation_License_Delete( $this->client_data, $this );
-		new API_Rest_Get_Activation_License( $this->client_data, $this );
 		/**
 		* User data routes
 		*/

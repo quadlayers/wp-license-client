@@ -26,7 +26,7 @@ if ( ! function_exists( 'your_plugin_license_client_integration' ) ) {
 
 			$your_plugin_license_client = ql_license_client(
 				array(
-					'api_url'     => 'https://yoursite.com/wp-json/wc/wdd/',
+					'api_url'     => 'https://yoursite.com/wp-json/wc/wlm/',
 					'product_key' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
 					'plugin_file' => __FILE__,
 					// 'rest_namespace' => 'your_plugin', /** Enable rest api */
