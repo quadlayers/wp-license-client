@@ -46,8 +46,6 @@ class Delete extends Base {
 			)
 		);
 
-		$model_activation->delete();
-
 		if ( isset( $activation->error ) ) {
 			$response = array(
 				'error'   => isset( $activation->error ) ? $activation->error : null,
@@ -55,6 +53,8 @@ class Delete extends Base {
 			);
 			return $this->handle_response( $response );
 		}
+
+		$model_activation->delete();
 
 		return $this->handle_response( $activation );
 	}
