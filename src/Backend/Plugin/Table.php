@@ -4,6 +4,7 @@ namespace QuadLayers\WP_License_Client\Backend\Plugin;
 
 use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
 use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
+use QuadLayers\WP_License_Client\Utils;
 
 /**
  * Controller_Plugin_Table Class
@@ -165,17 +166,47 @@ class Table {
 		if ( is_network_admin() || ! current_user_can( 'update_plugins' ) ) {
 			return;
 		}
+
+		$activation = $this->activation->get();
+
+		if ( 'none' === Utils::get_activation_status( $activation ) ) {
+
 		echo '<tr class="plugin-update-tr installer-plugin-update-tr wt-cli-plugin-inline-notice-tr">
+		<td colspan="4" class="plugin-update colspanchange">
+			<div class="update-message notice inline wt-plugin-notice-section">
+				<p>' .
+				esc_html__( 'The plugin license is not activated.', 'wp-license-client' ) . ' ' .
+				sprintf(
+					esc_html__( 'Please visit the %1$s to activate your license or %2$s one from our website.', 'wp-license-client' ),
+					sprintf(
+						'<a href="%s" target="_blank">%s</a>',
+						esc_url( $this->plugin->get_menu_license_url() ),
+						esc_html__( 'settings', 'wp-license-client' )
+					),
+					sprintf(
+						'<a href="%s" target="_blank">%s</a>',
+						esc_url( $this->plugin->get_url() ),
+						esc_html__( 'purchase', 'wp-license-client' )
+					)
+				) . '</p>
+				</div>
+		</td>
+	</tr>';
+		return;
+		}
+
+		if ( 'expired' === Utils::get_activation_status( $activation ) ) {
+			echo '<tr class="plugin-update-tr installer-plugin-update-tr wt-cli-plugin-inline-notice-tr">
 			<td colspan="4" class="plugin-update colspanchange">
 				<div class="update-message notice inline wt-plugin-notice-section">
 					<p>' .
-					esc_html__( 'The plugin license is not activated.', 'wp-license-client' ) . ' ' .
+					esc_html__( 'Your plugin license has expired.', 'wp-license-client' ) . ' ' .
 					sprintf(
-						esc_html__( 'Please visit %1$s to activate the license or %2$s in our website.', 'wp-license-client' ),
+						esc_html__( 'Please visit your %1$s to renew your license or %2$s a new one from our website.', 'wp-license-client' ),
 						sprintf(
 							'<a href="%s" target="_blank">%s</a>',
-							esc_url( $this->plugin->get_menu_license_url() ),
-							esc_html__( 'settings', 'wp-license-client' )
+							esc_url( $this->plugin->get_license_key_url() ),
+							esc_html__( 'account', 'wp-license-client' )
 						),
 						sprintf(
 							'<a href="%s" target="_blank">%s</a>',
@@ -186,5 +217,6 @@ class Table {
 					</div>
 			</td>
 		</tr>';
+		}
 	}
 }

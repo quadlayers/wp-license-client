@@ -69,6 +69,8 @@ class Create extends Base {
 				'error'   => isset( $activation->error ) ? $activation->error : null,
 				'message' => isset( $activation->message ) ? $activation->message : null,
 			);
+
+			$model_activation->delete();
 			return $this->handle_response( $activation );
 		}
 
