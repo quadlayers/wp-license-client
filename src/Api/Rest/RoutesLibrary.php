@@ -79,7 +79,6 @@ class RoutesLibrary {
 			$this->routes[ $rest_route ] = $rest_route_instance;
 			return;
 		}
-
 	}
 
 	/**
@@ -98,5 +97,4 @@ class RoutesLibrary {
 			return $this->routes[ $rest_path ];
 		}
 	}
-
 }

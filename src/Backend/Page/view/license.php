@@ -97,7 +97,7 @@ exit;} ?>
 			<?php else : ?>
 				<p class="submit" style="font-size: 14px;">
 				<?php
-					echo sprintf(
+					printf(
 						wp_kses(
 							__( 'Do you want to delete license activation? Please contact support <a href="%s" target="_blank">here</a>.', 'wp-license-client' ),
 							array(

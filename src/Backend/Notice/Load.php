@@ -20,7 +20,6 @@ class Load {
 		$this->user_data  = $model_user_data;
 
 		add_action( 'admin_notices', array( $this, 'add_notices' ) );
-
 	}
 
 	public function add_notices() {
@@ -63,7 +62,6 @@ class Load {
 			</div>
 		</div>
 		<?php
-
 	}
 
 	private static function find_my_menu_item( $menu_slug, $submenu_page_slug = false ) {
@@ -96,5 +94,4 @@ class Load {
 
 		return false;
 	}
-
 }

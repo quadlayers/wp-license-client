@@ -42,7 +42,7 @@ class Update {
 
 		add_action(
 			'admin_init',
-			function() {
+			function () {
 				add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'add_fetch_data' ) );
 			}
 		);
@@ -156,5 +156,4 @@ class Update {
 
 		return $transient;
 	}
-
 }

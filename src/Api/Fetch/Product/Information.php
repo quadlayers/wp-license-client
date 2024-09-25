@@ -28,5 +28,4 @@ class Information extends Base {
 	public static function get_rest_method() {
 		return 'GET';
 	}
-
 }

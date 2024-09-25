@@ -1,7 +1,7 @@
 <?php
 namespace QuadLayers\WP_License_Client\Api\Rest\Endpoints\Product;
 
-use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Base as Base;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Base;
 use QuadLayers\WP_License_Client\Api\Fetch\Product\Information as API_Fetch_Product_Information;
 use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
 use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;

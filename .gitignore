@@ -1,5 +1,7 @@
-# Lock
+/vendor
+/node_modules
 composer.lock
-# PhpCs
+.phpunit.result.cache
+.DS_Store
 phpcs_error.txt
 phpcs_error.csv

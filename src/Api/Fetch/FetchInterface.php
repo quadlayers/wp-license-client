@@ -10,7 +10,7 @@ interface FetchInterface {
 	 * @param array $args Array of required arguments for the request.
 	 * @return array
 	 */
-	public function get_data( array $args);
+	public function get_data( array $args );
 
 	/**
 	 * Get the rest route url, fetch the request and handle the response.
@@ -18,7 +18,7 @@ interface FetchInterface {
 	 * @param array $args Array of required arguments for the request.
 	 * @return array
 	 */
-	public function get_response( array $args);
+	public function get_response( array $args );
 
 	/**
 	 * Process the response and convert to required data format.
@@ -26,7 +26,7 @@ interface FetchInterface {
 	 * @param array $response Fetch response.
 	 * @return array
 	 */
-	public function response_to_data( $response);
+	public function response_to_data( $response );
 
 	/**
 	 * Build the server rest route path.
@@ -48,5 +48,4 @@ interface FetchInterface {
 	 * @return string
 	 */
 	public function handle_error();
-
 }

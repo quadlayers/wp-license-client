@@ -28,5 +28,4 @@ class Delete extends Base {
 	public static function get_rest_method() {
 		return 'DELETE';
 	}
-
 }

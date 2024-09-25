@@ -1,7 +1,7 @@
 <?php
 namespace QuadLayers\WP_License_Client\Api\Rest\Endpoints\Activation;
 
-use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Base as Base;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Base;
 use QuadLayers\WP_License_Client\Api\Fetch\Activation\Delete as API_Fetch_Activation_Delete;
 
 use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;

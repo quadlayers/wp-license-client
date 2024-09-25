@@ -38,12 +38,12 @@ class Table {
 		$this->activation = $activation;
 		add_action(
 			'admin_init',
-			function() {
+			function () {
 				add_filter( 'plugins_api', array( $this, 'add_fetch_data' ), 10, 3 );
-				add_action( 'in_plugin_update_message-' . $this->plugin->get_base(), array( $this, 'add_license_notification' ), 10, 2 );
+				add_action( 'in_plugin_update_message-' . $this->plugin->get_base(), array( $this, 'add_update_notification' ), 10, 2 );
+				add_action( 'after_plugin_row_' . $this->plugin->get_base(), array( $this, 'add_row_notification' ), 10, 2 );
 			}
 		);
-
 	}
 
 	/**
@@ -108,7 +108,7 @@ class Table {
 	 * @param object $response
 	 * @return string
 	 */
-	public function add_license_notification( $plugin_data, $response ) {
+	public function add_update_notification( $plugin_data, $response ) {
 
 		$activation = $this->activation->get();
 
@@ -155,4 +155,36 @@ class Table {
 		}
 	}
 
+	/**
+	 * Add error notification to the active plugin row.
+	 *
+	 * @return void
+	 */
+	public function add_row_notification() {
+
+		if ( is_network_admin() || ! current_user_can( 'update_plugins' ) ) {
+			return;
+		}
+		echo '<tr class="plugin-update-tr installer-plugin-update-tr wt-cli-plugin-inline-notice-tr">
+			<td colspan="4" class="plugin-update colspanchange">
+				<div class="update-message notice inline wt-plugin-notice-section">
+					<p>' .
+					esc_html__( 'The plugin license is not activated.', 'wp-license-client' ) . ' ' .
+					sprintf(
+						esc_html__( 'Please visit %1$s to activate the license or %2$s in our website.', 'wp-license-client' ),
+						sprintf(
+							'<a href="%s" target="_blank">%s</a>',
+							esc_url( $this->plugin->get_menu_license_url() ),
+							esc_html__( 'settings', 'wp-license-client' )
+						),
+						sprintf(
+							'<a href="%s" target="_blank">%s</a>',
+							esc_url( $this->plugin->get_url() ),
+							esc_html__( 'purchase', 'wp-license-client' )
+						)
+					) . '</p>
+					</div>
+			</td>
+		</tr>';
+	}
 }

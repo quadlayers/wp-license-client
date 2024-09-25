@@ -30,14 +30,13 @@ class Load {
 
 		add_action(
 			'plugins_loaded',
-			function() {
+			function () {
 				add_action( 'admin_init', array( $this, 'create_activation' ) );
 				add_action( 'admin_init', array( $this, 'delete_activation' ) );
 				add_action( 'admin_menu', array( $this, 'add_menu' ), 999 );
 			},
 			99
 		);
-
 	}
 
 	public function add_menu() {
@@ -72,15 +71,14 @@ class Load {
 			'manage_options',
 			$menu_slug_license,
 			function () {
-				$plugin_slug = $this->plugin->get_slug();
-				$activation  = $this->activation->get();
-				$user_data   = $this->user_data->get();
+				$plugin_slug           = $this->plugin->get_slug();
+				$activation            = $this->activation->get();
+				$user_data             = $this->user_data->get();
 				$activation_delete_url = $this->plugin->get_activation_delete_url();
 				include __DIR__ . '/view/license.php';
 			},
 			99
 		);
-
 	}
 
 	public function create_activation() {
