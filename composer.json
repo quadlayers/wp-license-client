@@ -50,6 +50,7 @@
 	},
 	"archive": {
 		"exclude": [
+			"/vendor",
 			"/packages",
 			"/tests",
 			"/node_modules",
