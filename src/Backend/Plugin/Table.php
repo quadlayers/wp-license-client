@@ -41,8 +41,8 @@ class Table {
 			'admin_init',
 			function () {
 				add_filter( 'plugins_api', array( $this, 'add_fetch_data' ), 10, 3 );
-				add_action( 'in_plugin_update_message-' . $this->plugin->get_base(), array( $this, 'add_update_notification' ), 10, 2 );
-				add_action( 'after_plugin_row_' . $this->plugin->get_base(), array( $this, 'add_row_notification' ), 10, 2 );
+				// add_action( 'in_plugin_update_message-' . $this->plugin->get_base(), array( $this, 'add_update_notification' ), 10, 2 );
+				add_action( 'after_plugin_row_' . $this->plugin->get_base(), array( $this, 'add_row_notification' ), 100, 2 );
 			}
 		);
 	}
@@ -161,46 +161,52 @@ class Table {
 	 *
 	 * @return void
 	 */
-	public function add_row_notification() {
+	public function add_row_notification( $plugin_file, $plugin_data ) {
 
+		// Check if current user has the required capability and we are not in the network admin
 		if ( is_network_admin() || ! current_user_can( 'update_plugins' ) ) {
 			return;
 		}
 
-		$activation = $this->activation->get();
+		$activation  = $this->activation->get();
+		$plugin_base = $this->plugin->get_base();
+
+		// Check if the plugin is active
+		$is_active = is_plugin_active( $plugin_base ) ? 'active' : '';
 
 		if ( 'none' === Utils::get_activation_status( $activation ) ) {
-
-		echo '<tr class="plugin-update-tr installer-plugin-update-tr wt-cli-plugin-inline-notice-tr">
-		<td colspan="4" class="plugin-update colspanchange">
-			<div class="update-message notice inline wt-plugin-notice-section">
-				<p>' .
-				esc_html__( 'The plugin license is not activated.', 'wp-license-client' ) . ' ' .
-				sprintf(
-					esc_html__( 'Please visit the %1$s to activate your license or %2$s one from our website.', 'wp-license-client' ),
+			// Add notification for non-activated license
+			echo '<tr class="plugin-update-tr installer-plugin-update-tr ' . esc_attr( $is_active ) . '" style="position:relative;top:-1px;">
+			<td colspan="4" class="plugin-update colspanchange">
+				<div class="update-message notice notice-error notice-alt inline">
+					<p>' .
+					'<b>' . esc_html__( 'The plugin license is not activated.', 'wp-license-client' ) . '</b> ' .
 					sprintf(
-						'<a href="%s" target="_blank">%s</a>',
-						esc_url( $this->plugin->get_menu_license_url() ),
-						esc_html__( 'settings', 'wp-license-client' )
-					),
-					sprintf(
-						'<a href="%s" target="_blank">%s</a>',
-						esc_url( $this->plugin->get_url() ),
-						esc_html__( 'purchase', 'wp-license-client' )
-					)
-				) . '</p>
+						esc_html__( 'Please visit the %1$s to activate your license or %2$s one from our website.', 'wp-license-client' ),
+						sprintf(
+							'<a href="%s" target="_blank">%s</a>',
+							esc_url( $this->plugin->get_menu_license_url() ),
+							esc_html__( 'settings', 'wp-license-client' )
+						),
+						sprintf(
+							'<a href="%s" target="_blank">%s</a>',
+							esc_url( $this->plugin->get_url() ),
+							esc_html__( 'purchase', 'wp-license-client' )
+						)
+					) . '</p>
 				</div>
-		</td>
-	</tr>';
-		return;
+			</td>
+		</tr>';
+			return;
 		}
 
 		if ( 'expired' === Utils::get_activation_status( $activation ) ) {
-			echo '<tr class="plugin-update-tr installer-plugin-update-tr wt-cli-plugin-inline-notice-tr">
+			// Add notification for expired license
+			echo '<tr class="plugin-update-tr installer-plugin-update-tr ' . esc_attr( $is_active ) . '" style="position:relative;top:-1px;">
 			<td colspan="4" class="plugin-update colspanchange">
-				<div class="update-message notice inline wt-plugin-notice-section">
+				<div class="update-message notice notice-error notice-alt inline">
 					<p>' .
-					esc_html__( 'Your plugin license has expired.', 'wp-license-client' ) . ' ' .
+					'<b>' . esc_html__( 'Your plugin license has expired.', 'wp-license-client' ) . '</b> ' .
 					sprintf(
 						esc_html__( 'Please visit your %1$s to renew your license or %2$s a new one from our website.', 'wp-license-client' ),
 						sprintf(
@@ -214,7 +220,7 @@ class Table {
 							esc_html__( 'purchase', 'wp-license-client' )
 						)
 					) . '</p>
-					</div>
+				</div>
 			</td>
 		</tr>';
 		}

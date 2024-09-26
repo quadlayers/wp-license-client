@@ -126,18 +126,7 @@ class Update {
 		 * Check if there is an error. If yes, show a notice.
 		 */
 		if ( isset( $update_link->error ) || filter_var( $update_link, FILTER_VALIDATE_URL ) === false ) {
-			$plugin->upgrade_notice                           = sprintf(
-				'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
-				esc_html__( 'Automatic updates are disabled.', 'wp-license-client' ),
-				sprintf(
-					esc_html__( 'Please contact the plugin author %1$s.', 'wp-license-client' ),
-					sprintf(
-						'<a href="%s" target="_blank">%s</a>',
-						esc_url( $this->plugin->get_url() ),
-						esc_html__( 'here', 'wp-license-client' )
-					)
-				)
-			);
+			$plugin->upgrade_notice                           = esc_html__( 'Automatic updates are currently disabled. Please ensure your license is valid and activated to enable updates.', 'wp-license-client' );
 			$transient->response[ $this->plugin->get_base() ] = $plugin;
 			return $transient;
 		}
