@@ -52,9 +52,7 @@ class Create extends Base {
 			return $this->handle_response( $response );
 		}
 
-		$fetch = new API_Fetch_Activation_Create( $model_plugin );
-
-		$activation = $fetch->get_data(
+		$activation = ( new API_Fetch_Activation_Create( $model_plugin ) )->get_data(
 			array_merge(
 				(array) $body,
 				array(

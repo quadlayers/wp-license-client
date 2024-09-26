@@ -35,28 +35,26 @@ class Delete extends Base {
 	 */
 	public function callback( \WP_REST_Request $request, Model_Plugin $model_plugin, Model_Activation $model_activation, Model_User_Data $model_user_data ) {
 
-		$fetch = new API_Fetch_Activation_Delete( $model_plugin );
-
 		$activation = $model_activation->get();
 
-		$activation = $fetch->get_data(
+		$delete = ( new API_Fetch_Activation_Delete( $model_plugin ) )->get_data(
 			array(
 				'license_key'         => isset( $activation['license_key'] ) ? $activation['license_key'] : null,
 				'activation_instance' => isset( $activation['activation_instance'] ) ? $activation['activation_instance'] : null,
 			)
 		);
 
-		if ( isset( $activation->error ) ) {
+		if ( isset( $delete->error ) ) {
 			$response = array(
-				'error'   => isset( $activation->error ) ? $activation->error : null,
-				'message' => isset( $activation->message ) ? $activation->message : null,
+				'error'   => isset( $delete->error ) ? $delete->error : null,
+				'message' => isset( $delete->message ) ? $delete->message : null,
 			);
 			return $this->handle_response( $response );
 		}
 
 		$model_activation->delete();
 
-		return $this->handle_response( $activation );
+		return $this->handle_response( $delete );
 	}
 
 	/**

@@ -110,9 +110,7 @@ class Load {
 
 		$this->user_data->create( $license );
 
-		$fetch = new API_Fetch_Activation_Create( $this->plugin );
-
-		$activation = $fetch->get_data(
+		$activation = ( new API_Fetch_Activation_Create( $this->plugin ) )->get_data(
 			array_merge(
 				(array) $license,
 				array(
@@ -148,11 +146,9 @@ class Load {
 
 		$this->user_data->delete();
 
-		$fetch = new API_Fetch_Activation_Delete( $this->plugin );
-
 		$activation = $this->activation->get();
 
-		$delete = $fetch->get_data(
+		$delete = ( new API_Fetch_Activation_Delete( $this->plugin ) )->get_data(
 			array(
 				'license_key'         => isset( $activation['license_key'] ) ? $activation['license_key'] : null,
 				'activation_instance' => isset( $activation['activation_instance'] ) ? $activation['activation_instance'] : null,

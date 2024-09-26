@@ -60,9 +60,7 @@ class Information {
 			return $transient;
 		}
 
-		$fetch = new API_Fetch_Product_Information( $this->plugin );
-
-		$product = $fetch->get_data();
+		$product = ( new API_Fetch_Product_Information( $this->plugin ) )->get_data();
 
 		if ( isset( $product->error ) ) {
 			return $transient;

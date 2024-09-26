@@ -113,9 +113,7 @@ class Update {
 		/**
 		 * Fetch the download link from the server API.
 		 */
-		$fetch = new API_Fetch_Product_Update( $this->plugin );
-
-		$update_link = $fetch->get_data(
+		$update_link = ( new API_Fetch_Product_Update( $this->plugin ) )->get_data(
 			array(
 				'license_key'         => isset( $activation['license_key'] ) ? $activation['license_key'] : null,
 				'activation_instance' => isset( $activation['activation_instance'] ) ? $activation['activation_instance'] : null,

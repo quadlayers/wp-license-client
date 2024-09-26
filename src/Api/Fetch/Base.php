@@ -162,6 +162,5 @@ abstract class Base implements FetchInterface {
 	 *
 	 * @return string POST
 	 */
-	abstract static public function get_rest_method();
-
+	abstract public static function get_rest_method();
 }
