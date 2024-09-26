@@ -117,7 +117,6 @@ class Load {
 				(array) $license,
 				array(
 					'activation_site' => $this->plugin->get_activation_site(),
-					'product_key'     => $this->plugin->get_product_key(),
 				)
 			)
 		);

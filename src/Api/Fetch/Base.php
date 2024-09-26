@@ -92,7 +92,7 @@ abstract class Base implements FetchInterface {
 
 		$api_url = $this->get_url();
 
-		$query = http_build_query( $args );
+		$query = http_build_query( array_merge( $args, array( 'product_key' => $this->plugin->get_product_key() ) ) );
 
 		$response = wp_remote_request(
 			$api_url . '?' . $query,
@@ -156,4 +156,12 @@ abstract class Base implements FetchInterface {
 	 * @return string
 	 */
 	abstract public function get_rest_path();
+
+	/**
+	 * Get rest method
+	 *
+	 * @return string POST
+	 */
+	abstract static public function get_rest_method();
+
 }

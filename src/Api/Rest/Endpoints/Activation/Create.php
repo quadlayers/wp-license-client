@@ -59,7 +59,6 @@ class Create extends Base {
 				(array) $body,
 				array(
 					'activation_site' => $model_plugin->get_activation_site(),
-					'product_key'     => $model_plugin->get_product_key(),
 				)
 			)
 		);

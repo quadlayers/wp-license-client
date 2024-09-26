@@ -62,11 +62,7 @@ class Information {
 
 		$fetch = new API_Fetch_Product_Information( $this->plugin );
 
-		$product = $fetch->get_data(
-			array(
-				'product_key' => $this->plugin->get_product_key(),
-			)
-		);
+		$product = $fetch->get_data();
 
 		if ( isset( $product->error ) ) {
 			return $transient;
