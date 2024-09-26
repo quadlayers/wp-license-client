@@ -28,15 +28,9 @@ class Load {
 			return;
 		}
 
-		add_action(
-			'plugins_loaded',
-			function () {
-				add_action( 'admin_init', array( $this, 'create_activation' ) );
-				add_action( 'admin_init', array( $this, 'delete_activation' ) );
-				add_action( 'admin_menu', array( $this, 'add_menu' ), 999 );
-			},
-			99
-		);
+		add_action( 'admin_init', array( $this, 'create_activation' ) );
+		add_action( 'admin_init', array( $this, 'delete_activation' ) );
+		add_action( 'admin_menu', array( $this, 'add_menu' ), 999 );
 	}
 
 	public function add_menu() {
