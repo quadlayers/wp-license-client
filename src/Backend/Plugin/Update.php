@@ -66,6 +66,8 @@ class Update {
 
 		$plugin = $transient->no_update[ $this->plugin->get_base() ];
 
+		$plugin->package = null;
+
 		/**
 		 * Check if there is higher version available.
 		 */
