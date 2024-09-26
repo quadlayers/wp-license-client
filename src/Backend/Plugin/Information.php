@@ -42,7 +42,7 @@ class Information {
 
 		add_action(
 			'admin_init',
-			function() {
+			function () {
 				add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'add_fetch_data' ) );
 			}
 		);
@@ -60,9 +60,7 @@ class Information {
 			return $transient;
 		}
 
-		$fetch = new API_Fetch_Product_Information( $this->plugin );
-
-		$product = $fetch->get_data();
+		$product = ( new API_Fetch_Product_Information( $this->plugin ) )->get_data();
 
 		if ( isset( $product->error ) ) {
 			return $transient;
@@ -107,5 +105,4 @@ class Information {
 
 		return $transient;
 	}
-
 }

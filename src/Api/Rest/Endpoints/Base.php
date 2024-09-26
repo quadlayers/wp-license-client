@@ -25,7 +25,7 @@ abstract class Base implements RouteInterface {
 
 		add_action(
 			'rest_api_init',
-			function() use ( $client_data ) {
+			function () use ( $client_data ) {
 
 				register_rest_route(
 					$this->routes_library->get_rest_namespace(),
@@ -33,7 +33,7 @@ abstract class Base implements RouteInterface {
 					array(
 						'args'                => $this->get_rest_args(),
 						'methods'             => $this->get_rest_method(),
-						'callback'            => function( $request ) use ( $client_data ) {
+						'callback'            => function ( $request ) use ( $client_data ) {
 
 							$model_plugin     = new Model_Plugin( $client_data );
 							$model_activation = new Model_Activation( $model_plugin );
@@ -71,7 +71,6 @@ abstract class Base implements RouteInterface {
 		$rest_route     = $this->get_rest_route();
 
 		return "{$rest_namespace}/{$rest_route}";
-
 	}
 
 	public function get_rest_args() {
@@ -91,7 +90,6 @@ abstract class Base implements RouteInterface {
 		$rest_path = $this->get_rest_path();
 
 		return get_rest_url( $blog_id, $rest_path );
-
 	}
 
 	private static function get_error( $code, $message ) {

@@ -30,14 +30,13 @@ class Load {
 
 		add_action(
 			'plugins_loaded',
-			function() {
+			function () {
 				add_action( 'admin_init', array( $this, 'create_activation' ) );
 				add_action( 'admin_init', array( $this, 'delete_activation' ) );
 				add_action( 'admin_menu', array( $this, 'add_menu' ), 999 );
 			},
 			99
 		);
-
 	}
 
 	public function add_menu() {
@@ -72,15 +71,14 @@ class Load {
 			'manage_options',
 			$menu_slug_license,
 			function () {
-				$plugin_slug = $this->plugin->get_slug();
-				$activation  = $this->activation->get();
-				$user_data   = $this->user_data->get();
+				$plugin_slug           = $this->plugin->get_slug();
+				$activation            = $this->activation->get();
+				$user_data             = $this->user_data->get();
 				$activation_delete_url = $this->plugin->get_activation_delete_url();
 				include __DIR__ . '/view/license.php';
 			},
 			99
 		);
-
 	}
 
 	public function create_activation() {
@@ -112,14 +110,11 @@ class Load {
 
 		$this->user_data->create( $license );
 
-		$fetch = new API_Fetch_Activation_Create( $this->plugin );
-
-		$activation = $fetch->get_data(
+		$activation = ( new API_Fetch_Activation_Create( $this->plugin ) )->get_data(
 			array_merge(
 				(array) $license,
 				array(
 					'activation_site' => $this->plugin->get_activation_site(),
-					'product_key'     => $this->plugin->get_product_key(),
 				)
 			)
 		);
@@ -151,11 +146,9 @@ class Load {
 
 		$this->user_data->delete();
 
-		$fetch = new API_Fetch_Activation_Delete( $this->plugin );
-
 		$activation = $this->activation->get();
 
-		$delete = $fetch->get_data(
+		$delete = ( new API_Fetch_Activation_Delete( $this->plugin ) )->get_data(
 			array(
 				'license_key'         => isset( $activation['license_key'] ) ? $activation['license_key'] : null,
 				'activation_instance' => isset( $activation['activation_instance'] ) ? $activation['activation_instance'] : null,

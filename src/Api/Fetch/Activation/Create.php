@@ -28,5 +28,4 @@ class Create extends Base {
 	public static function get_rest_method() {
 		return 'POST';
 	}
-
 }

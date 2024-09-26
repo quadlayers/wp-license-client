@@ -54,7 +54,7 @@ abstract class Base implements FetchInterface {
 		 * Trim and remove line breaks
 		 */
 		$args = array_map(
-			function( $value ) {
+			function ( $value ) {
 
 				$value = trim( $value );
 				$value = preg_replace( "/[\r\n|\n|\r]+/", PHP_EOL, $value );
@@ -92,21 +92,20 @@ abstract class Base implements FetchInterface {
 
 		$api_url = $this->get_url();
 
-		$query = http_build_query( $args );
+		$query = http_build_query( array_merge( $args, array( 'product_key' => $this->plugin->get_product_key() ) ) );
 
 		$response = wp_remote_request(
 			$api_url . '?' . $query,
 			array(
 				// 'user-agent' => sprintf( 'WLM/%s/%s; %s', $this->plugin->get_slug(), $this->plugin->get_version(), $this->plugin->get_activation_site() ),
-				'method'     => static::get_rest_method(),
-				'timeout'    => 100,
+				'method'  => static::get_rest_method(),
+				'timeout' => 100,
 			)
 		);
 
 		$response = json_decode( wp_remote_retrieve_body( $response ) );
 
 		return $this->handle_response( $response );
-
 	}
 
 	/**
@@ -120,7 +119,6 @@ abstract class Base implements FetchInterface {
 		$data = is_array( $response ) ? (object) $response : $response;
 
 		return $data;
-
 	}
 
 	/**
@@ -158,4 +156,11 @@ abstract class Base implements FetchInterface {
 	 * @return string
 	 */
 	abstract public function get_rest_path();
+
+	/**
+	 * Get rest method
+	 *
+	 * @return string POST
+	 */
+	abstract public static function get_rest_method();
 }

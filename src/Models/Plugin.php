@@ -173,5 +173,4 @@ class Plugin {
 			return $this->support_url;
 		}
 	}
-
 }

@@ -50,5 +50,4 @@ class UserData extends Base {
 		$data = $this->save( $user_data );
 		return $data;
 	}
-
 }

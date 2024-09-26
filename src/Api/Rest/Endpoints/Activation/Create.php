@@ -1,7 +1,7 @@
 <?php
 namespace QuadLayers\WP_License_Client\Api\Rest\Endpoints\Activation;
 
-use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Base as Base;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Base;
 use QuadLayers\WP_License_Client\Api\Fetch\Activation\Create as API_Fetch_Activation_Create;
 
 use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
@@ -52,14 +52,11 @@ class Create extends Base {
 			return $this->handle_response( $response );
 		}
 
-		$fetch = new API_Fetch_Activation_Create( $model_plugin );
-
-		$activation = $fetch->get_data(
+		$activation = ( new API_Fetch_Activation_Create( $model_plugin ) )->get_data(
 			array_merge(
 				(array) $body,
 				array(
 					'activation_site' => $model_plugin->get_activation_site(),
-					'product_key'     => $model_plugin->get_product_key(),
 				)
 			)
 		);
@@ -69,6 +66,8 @@ class Create extends Base {
 				'error'   => isset( $activation->error ) ? $activation->error : null,
 				'message' => isset( $activation->message ) ? $activation->message : null,
 			);
+
+			$model_activation->delete();
 			return $this->handle_response( $activation );
 		}
 
@@ -85,5 +84,4 @@ class Create extends Base {
 	public function get_rest_method() {
 		return \WP_REST_Server::CREATABLE;
 	}
-
 }

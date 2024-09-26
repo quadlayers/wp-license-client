@@ -86,11 +86,10 @@ abstract class Base {
 		$db_suffix   = $this->get_db_suffix();
 
 		return sanitize_key( "qlwlm_{$plugin_slug}_{$db_suffix}" );
-
 	}
 
-	abstract public function create( array $data);
-	abstract public function update( array $data);
+	abstract public function create( array $data );
+	abstract public function update( array $data );
 
 	public function get() {
 

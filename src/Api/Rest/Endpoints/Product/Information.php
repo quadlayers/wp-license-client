@@ -1,7 +1,7 @@
 <?php
 namespace QuadLayers\WP_License_Client\Api\Rest\Endpoints\Product;
 
-use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Base as Base;
+use QuadLayers\WP_License_Client\Api\Rest\Endpoints\Base;
 use QuadLayers\WP_License_Client\Api\Fetch\Product\Information as API_Fetch_Product_Information;
 use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
 use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
@@ -55,9 +55,7 @@ class Information extends Base {
 		$activation_instance = trim( $body->activation_instance );
 		$license_key         = trim( $body->license_key );
 
-		$fetch = new API_Fetch_Product_Information( $model_plugin );
-
-		$product = $fetch->get_data(
+		$product = ( new API_Fetch_Product_Information( $model_plugin ) )->get_data(
 			array(
 				'license_key'         => $license_key,
 				'activation_instance' => $activation_instance,

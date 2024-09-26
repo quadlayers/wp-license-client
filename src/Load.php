@@ -2,7 +2,11 @@
 
 namespace QuadLayers\WP_License_Client;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+/**
+ * Include the Composer autoload file if you're not using Composer in your package.
+ *
+ * require_once __DIR__ . '/../vendor/autoload.php';
+ */
 
 /**
  * Models
@@ -108,6 +112,5 @@ final class Load {
 		new Controller_Plugin_Table( $this->plugin, $this->activation, $this->user_data );
 		new Controller_Page( $this->plugin, $this->activation, $this->user_data );
 		new Controller_Notice( $this->plugin, $this->activation, $this->user_data );
-
 	}
 }

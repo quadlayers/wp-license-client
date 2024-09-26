@@ -42,7 +42,7 @@ class Update {
 
 		add_action(
 			'admin_init',
-			function() {
+			function () {
 				add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'add_fetch_data' ) );
 			}
 		);
@@ -65,6 +65,8 @@ class Update {
 		}
 
 		$plugin = $transient->no_update[ $this->plugin->get_base() ];
+
+		$plugin->package = null;
 
 		/**
 		 * Check if there is higher version available.
@@ -113,9 +115,7 @@ class Update {
 		/**
 		 * Fetch the download link from the server API.
 		 */
-		$fetch = new API_Fetch_Product_Update( $this->plugin );
-
-		$update_link = $fetch->get_data(
+		$update_link = ( new API_Fetch_Product_Update( $this->plugin ) )->get_data(
 			array(
 				'license_key'         => isset( $activation['license_key'] ) ? $activation['license_key'] : null,
 				'activation_instance' => isset( $activation['activation_instance'] ) ? $activation['activation_instance'] : null,
@@ -126,18 +126,7 @@ class Update {
 		 * Check if there is an error. If yes, show a notice.
 		 */
 		if ( isset( $update_link->error ) || filter_var( $update_link, FILTER_VALIDATE_URL ) === false ) {
-			$plugin->upgrade_notice                           = sprintf(
-				'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
-				esc_html__( 'Automatic updates are disabled.', 'wp-license-client' ),
-				sprintf(
-					esc_html__( 'Please contact the plugin author %1$s.', 'wp-license-client' ),
-					sprintf(
-						'<a href="%s" target="_blank">%s</a>',
-						esc_url( $this->plugin->get_url() ),
-						esc_html__( 'here', 'wp-license-client' )
-					)
-				)
-			);
+			$plugin->upgrade_notice                           = esc_html__( 'Automatic updates are currently disabled. Please ensure your license is valid and activated to enable updates.', 'wp-license-client' );
 			$transient->response[ $this->plugin->get_base() ] = $plugin;
 			return $transient;
 		}
@@ -156,5 +145,4 @@ class Update {
 
 		return $transient;
 	}
-
 }
