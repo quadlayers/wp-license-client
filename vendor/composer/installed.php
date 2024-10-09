@@ -3,7 +3,7 @@
         'name' => 'quadlayers/wp-license-client',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'c221dc72193b222a27b14eda5c689d0fb6973267',
+        'reference' => '213b7e6c71a68a3dec3cc22883cd4cdb79045cb7',
         'type' => 'jetpack-library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'quadlayers/wp-license-client' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'c221dc72193b222a27b14eda5c689d0fb6973267',
+            'reference' => '213b7e6c71a68a3dec3cc22883cd4cdb79045cb7',
             'type' => 'jetpack-library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
