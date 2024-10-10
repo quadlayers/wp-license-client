@@ -42,6 +42,7 @@ class ComposerStaticIniteb9a0fa6f6b53af4496b422004095824
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\UserData\\Delete' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/UserData/Delete.php',
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\UserData\\Get' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/UserData/Get.php',
         'QuadLayers\\WP_License_Client\\Api\\Rest\\RoutesLibrary' => __DIR__ . '/../..' . '/src/Api/Rest/RoutesLibrary.php',
+        'QuadLayers\\WP_License_Client\\Backend\\Menu\\Load' => __DIR__ . '/../..' . '/src/Backend/Menu/Load.php',
         'QuadLayers\\WP_License_Client\\Backend\\Notice\\Load' => __DIR__ . '/../..' . '/src/Backend/Notice/Load.php',
         'QuadLayers\\WP_License_Client\\Backend\\Page\\Load' => __DIR__ . '/../..' . '/src/Backend/Page/Load.php',
         'QuadLayers\\WP_License_Client\\Backend\\Plugin\\Information' => __DIR__ . '/../..' . '/src/Backend/Plugin/Information.php',
@@ -52,8 +53,8 @@ class ComposerStaticIniteb9a0fa6f6b53af4496b422004095824
         'QuadLayers\\WP_License_Client\\Models\\Base' => __DIR__ . '/../..' . '/src/Models/Base.php',
         'QuadLayers\\WP_License_Client\\Models\\Plugin' => __DIR__ . '/../..' . '/src/Models/Plugin.php',
         'QuadLayers\\WP_License_Client\\Models\\UserData' => __DIR__ . '/../..' . '/src/Models/UserData.php',
+        'QuadLayers\\WP_License_Client\\Traits\\ActivationStatus' => __DIR__ . '/../..' . '/src/Traits/ActivationStatus.php',
         'QuadLayers\\WP_License_Client\\Traits\\PluginDataByFile' => __DIR__ . '/../..' . '/src/Traits/PluginDataByFile.php',
-        'QuadLayers\\WP_License_Client\\Utils' => __DIR__ . '/../..' . '/src/Utils.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

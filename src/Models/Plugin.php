@@ -145,8 +145,8 @@ class Plugin {
 		if ( ! $this->get_parent_menu_slug() ) {
 			return false;
 		}
-		if ( ! $this->license_menu_slug || ! is_string( $this->license_menu_slug ) ) {
-			return $this->get_parent_menu_slug() . '_license';
+		if ( ! $this->license_menu_slug ) {
+			return false;
 		}
 
 		return $this->license_menu_slug;

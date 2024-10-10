@@ -2,6 +2,8 @@
 
 namespace QuadLayers\WP_License_Client\Models;
 
+use QuadLayers\WP_License_Client\Traits\ActivationStatus;
+
 /**
  * Model_Activation Class
  * This class handles fetched data of the activation in the database.
@@ -33,6 +35,11 @@ class Activation extends Base {
 		'activation_site'      => null,
 		'activation_created'   => null,
 	);
+
+	/**
+	 * Activation status trait.
+	 */
+	use ActivationStatus;
 
 	/**
 	 * Get database activation suffix

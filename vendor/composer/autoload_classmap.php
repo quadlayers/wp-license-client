@@ -23,6 +23,7 @@ return array(
     'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\UserData\\Delete' => $baseDir . '/src/Api/Rest/Endpoints/UserData/Delete.php',
     'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\UserData\\Get' => $baseDir . '/src/Api/Rest/Endpoints/UserData/Get.php',
     'QuadLayers\\WP_License_Client\\Api\\Rest\\RoutesLibrary' => $baseDir . '/src/Api/Rest/RoutesLibrary.php',
+    'QuadLayers\\WP_License_Client\\Backend\\Menu\\Load' => $baseDir . '/src/Backend/Menu/Load.php',
     'QuadLayers\\WP_License_Client\\Backend\\Notice\\Load' => $baseDir . '/src/Backend/Notice/Load.php',
     'QuadLayers\\WP_License_Client\\Backend\\Page\\Load' => $baseDir . '/src/Backend/Page/Load.php',
     'QuadLayers\\WP_License_Client\\Backend\\Plugin\\Information' => $baseDir . '/src/Backend/Plugin/Information.php',
@@ -33,6 +34,6 @@ return array(
     'QuadLayers\\WP_License_Client\\Models\\Base' => $baseDir . '/src/Models/Base.php',
     'QuadLayers\\WP_License_Client\\Models\\Plugin' => $baseDir . '/src/Models/Plugin.php',
     'QuadLayers\\WP_License_Client\\Models\\UserData' => $baseDir . '/src/Models/UserData.php',
+    'QuadLayers\\WP_License_Client\\Traits\\ActivationStatus' => $baseDir . '/src/Traits/ActivationStatus.php',
     'QuadLayers\\WP_License_Client\\Traits\\PluginDataByFile' => $baseDir . '/src/Traits/PluginDataByFile.php',
-    'QuadLayers\\WP_License_Client\\Utils' => $baseDir . '/src/Utils.php',
 );

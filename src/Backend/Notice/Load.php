@@ -4,7 +4,6 @@ namespace QuadLayers\WP_License_Client\Backend\Notice;
 use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
 use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
 use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
-use QuadLayers\WP_License_Client\Utils;
 
 /**
  * Controller_Notice Class
@@ -26,9 +25,7 @@ class Load {
 
 	public function add_license_activate() {
 
-		$activation = $this->activation->get();
-
-		if ( 'none' !== Utils::get_activation_status( $activation ) ) {
+		if ( 'none' !== $this->activation->status() ) {
 			return;
 		}
 
@@ -71,15 +68,15 @@ class Load {
 
 	public function add_license_expired() {
 
-		$activation = $this->activation->get();
-
-		if ( 'expired' !== Utils::get_activation_status( $activation ) ) {
+		if ( 'expired' !== $this->activation->status() ) {
 			return;
 		}
 
 		if ( ! $this->plugin->get_menu_license_url() ) {
 			return;
 		}
+
+		$activation = $this->activation->get();
 
 		$user = wp_get_current_user();
 
@@ -90,7 +87,7 @@ class Load {
 					<p>
 						<b><?php printf( esc_html__( 'Your %s license has expired.', 'wp-license-client' ), esc_html( $this->plugin->get_name() ) ); ?></b>
 						<br/>
-						<?php printf( esc_html__( 'Hey %1$s, your license for %2$s has expired. Please renew it to retain access to premium features.', 'wp-license-client' ), esc_html( $user->display_name ), esc_html( $this->plugin->get_name() ), esc_html( $activation['license_expiration'] ) ); ?>
+						<?php printf( esc_html__( 'Hello %1$s, your license has expired. You can still access premium features for 7 more days. Renew now to avoid losing them.', 'wp-license-client' ), esc_html( $user->display_name ), esc_html( $this->plugin->get_name() ), esc_html( $activation['license_expiration'] ) ); ?>
 					</p>
 					<span style="display:flex;align-items:center;gap: 15px;">
 						<a href="<?php echo esc_url( $this->plugin->get_license_key_url() ); ?>" class="button-secondary">

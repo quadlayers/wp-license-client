@@ -4,7 +4,6 @@ namespace QuadLayers\WP_License_Client\Backend\Plugin;
 
 use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
 use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
-use QuadLayers\WP_License_Client\Utils;
 
 /**
  * Controller_Plugin_Table Class
@@ -109,52 +108,50 @@ class Table {
 	 * @param object $response
 	 * @return string
 	 */
-	public function add_update_notification( $plugin_data, $response ) {
+	// public function add_update_notification( $plugin_data, $response ) {
 
-		$activation = $this->activation->get();
+	// 	/**
+	// 	 * Check if the license is activated. If not, show a notice.
+	// 	 */
+	// 	if ( 'none' === $this->activation->status() ) {
+	// 		printf(
+	// 			'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
+	// 			esc_html__( 'Activate your license.', 'wp-license-client' ),
+	// 			sprintf(
+	// 				esc_html__( 'Please visit %1$s to activate the license or %2$s in our website.', 'wp-license-client' ),
+	// 				sprintf(
+	// 					'<a href="%s" target="_blank">%s</a>',
+	// 					esc_url( $this->plugin->get_menu_license_url() ),
+	// 					esc_html__( 'settings', 'wp-license-client' )
+	// 				),
+	// 				sprintf(
+	// 					'<a href="%s" target="_blank">%s</a>',
+	// 					esc_url( $this->plugin->get_url() ),
+	// 					esc_html__( 'purchase', 'wp-license-client' )
+	// 				)
+	// 			)
+	// 		);
+	// 		return;
+	// 	}
 
-		/**
-		 * Check if the license is activated. If not, show a notice.
-		 */
-		if ( ! isset( $activation['license_key'], $activation['activation_instance'] ) ) {
-			printf(
-				'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
-				esc_html__( 'Activate your license.', 'wp-license-client' ),
-				sprintf(
-					esc_html__( 'Please visit %1$s to activate the license or %2$s in our website.', 'wp-license-client' ),
-					sprintf(
-						'<a href="%s" target="_blank">%s</a>',
-						esc_url( $this->plugin->get_menu_license_url() ),
-						esc_html__( 'settings', 'wp-license-client' )
-					),
-					sprintf(
-						'<a href="%s" target="_blank">%s</a>',
-						esc_url( $this->plugin->get_url() ),
-						esc_html__( 'purchase', 'wp-license-client' )
-					)
-				)
-			);
-			return;
-		}
-
-		/**
-		 * Check if the download link is valid. If not, show a notice.
-		 */
-		if ( empty( $response->download_link ) || filter_var( $response->download_link, FILTER_VALIDATE_URL ) === false ) {
-			printf(
-				'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
-				esc_html__( 'Automatic updates are disabled.', 'wp-license-client' ),
-				sprintf(
-					esc_html__( 'Please contact the plugin author %1$s.', 'wp-license-client' ),
-					sprintf(
-						'<a href="%s" target="_blank">%s</a>',
-						esc_url( $this->plugin->get_url() ),
-						esc_html__( 'here', 'wp-license-client' )
-					)
-				)
-			);
-		}
-	}
+	// 	/**
+	// 	 * Check if the download link is valid. If not, show a notice.
+	// 	 */
+	// 	if ( empty( $response->download_link ) || filter_var( $response->download_link, FILTER_VALIDATE_URL ) === false ) {
+	// 		printf(
+	// 			'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
+	// 			esc_html__( 'Automatic updates are disabled.', 'wp-license-client' ),
+	// 			sprintf(
+	// 				esc_html__( 'Please contact the plugin author %1$s.', 'wp-license-client' ),
+	// 				sprintf(
+	// 					'<a href="%s" target="_blank">%s</a>',
+	// 					esc_url( $this->plugin->get_url() ),
+	// 					esc_html__( 'here', 'wp-license-client' )
+	// 				)
+	// 			)
+	// 		);
+	// 	}
+	// }
 
 	/**
 	 * Add error notification to the active plugin row.
@@ -168,13 +165,12 @@ class Table {
 			return;
 		}
 
-		$activation  = $this->activation->get();
 		$plugin_base = $this->plugin->get_base();
 
 		// Check if the plugin is active
 		$is_active = is_plugin_active( $plugin_base ) ? 'active' : '';
 
-		if ( 'none' === Utils::get_activation_status( $activation ) ) {
+		if ( 'none' === $this->activation->status() ) {
 			// Add notification for non-activated license
 			echo '<tr class="plugin-update-tr installer-plugin-update-tr ' . esc_attr( $is_active ) . '" style="position:relative;top:-1px;">
 			<td colspan="4" class="plugin-update colspanchange">
@@ -200,7 +196,7 @@ class Table {
 			return;
 		}
 
-		if ( 'expired' === Utils::get_activation_status( $activation ) ) {
+		if ( 'expired' === $this->activation->status() ) {
 			// Add notification for expired license
 			echo '<tr class="plugin-update-tr installer-plugin-update-tr ' . esc_attr( $is_active ) . '" style="position:relative;top:-1px;">
 			<td colspan="4" class="plugin-update colspanchange">

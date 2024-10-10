@@ -26,6 +26,7 @@ use QuadLayers\WP_License_Client\Backend\Plugin\Update as Controller_Plugin_Upda
 use QuadLayers\WP_License_Client\Backend\Plugin\Table as Controller_Plugin_Table;
 use QuadLayers\WP_License_Client\Backend\Page\Load as Controller_Page;
 use QuadLayers\WP_License_Client\Backend\Notice\Load as Controller_Notice;
+use QuadLayers\WP_License_Client\Backend\Menu\Load as Controller_Menu;
 /**
  * Class Load
  *
@@ -112,5 +113,6 @@ final class Load {
 		new Controller_Plugin_Table( $this->plugin, $this->activation, $this->user_data );
 		new Controller_Page( $this->plugin, $this->activation, $this->user_data );
 		new Controller_Notice( $this->plugin, $this->activation, $this->user_data );
+		new Controller_Menu( $this->plugin, $this->activation );
 	}
 }
