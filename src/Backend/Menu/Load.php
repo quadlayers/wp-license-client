@@ -34,7 +34,7 @@ class Load {
 			return;
 		}
 
-		if ( 'expired' !== $this->activation->status() ) {
+		if ( 'valid' === $this->activation->status() ) {
 			return;
 		}
 
