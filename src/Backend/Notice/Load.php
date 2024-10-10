@@ -4,7 +4,6 @@ namespace QuadLayers\WP_License_Client\Backend\Notice;
 use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
 use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
 use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
-use QuadLayers\WP_License_Client\Utils;
 
 /**
  * Controller_Notice Class
@@ -26,9 +25,7 @@ class Load {
 
 	public function add_license_activate() {
 
-		$activation = $this->activation->get();
-
-		if ( 'none' !== Utils::get_activation_status( $activation ) ) {
+		if ( 'none' !== $this->activation->status() ) {
 			return;
 		}
 
@@ -71,15 +68,15 @@ class Load {
 
 	public function add_license_expired() {
 
-		$activation = $this->activation->get();
-
-		if ( 'expired' !== Utils::get_activation_status( $activation ) ) {
+		if ( 'expired' !== $this->activation->status() ) {
 			return;
 		}
 
 		if ( ! $this->plugin->get_menu_license_url() ) {
 			return;
 		}
+
+		$activation = $this->activation->get();
 
 		$user = wp_get_current_user();
 

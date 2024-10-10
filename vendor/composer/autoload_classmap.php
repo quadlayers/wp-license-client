@@ -34,6 +34,6 @@ return array(
     'QuadLayers\\WP_License_Client\\Models\\Base' => $baseDir . '/src/Models/Base.php',
     'QuadLayers\\WP_License_Client\\Models\\Plugin' => $baseDir . '/src/Models/Plugin.php',
     'QuadLayers\\WP_License_Client\\Models\\UserData' => $baseDir . '/src/Models/UserData.php',
+    'QuadLayers\\WP_License_Client\\Traits\\ActivationStatus' => $baseDir . '/src/Traits/ActivationStatus.php',
     'QuadLayers\\WP_License_Client\\Traits\\PluginDataByFile' => $baseDir . '/src/Traits/PluginDataByFile.php',
-    'QuadLayers\\WP_License_Client\\Utils' => $baseDir . '/src/Utils.php',
 );

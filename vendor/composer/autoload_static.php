@@ -53,8 +53,8 @@ class ComposerStaticIniteb9a0fa6f6b53af4496b422004095824
         'QuadLayers\\WP_License_Client\\Models\\Base' => __DIR__ . '/../..' . '/src/Models/Base.php',
         'QuadLayers\\WP_License_Client\\Models\\Plugin' => __DIR__ . '/../..' . '/src/Models/Plugin.php',
         'QuadLayers\\WP_License_Client\\Models\\UserData' => __DIR__ . '/../..' . '/src/Models/UserData.php',
+        'QuadLayers\\WP_License_Client\\Traits\\ActivationStatus' => __DIR__ . '/../..' . '/src/Traits/ActivationStatus.php',
         'QuadLayers\\WP_License_Client\\Traits\\PluginDataByFile' => __DIR__ . '/../..' . '/src/Traits/PluginDataByFile.php',
-        'QuadLayers\\WP_License_Client\\Utils' => __DIR__ . '/../..' . '/src/Utils.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -3,8 +3,6 @@ namespace QuadLayers\WP_License_Client\Backend\Menu;
 
 use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
 use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
-use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
-use QuadLayers\WP_License_Client\Utils;
 
 /**
  * Controller_Menu Class
@@ -36,7 +34,7 @@ class Load {
 			return;
 		}
 
-		if ( 'expired' !== Utils::get_activation_status( $this->activation->get() ) ) {
+		if ( 'expired' !== $this->activation->status() ) {
 			return;
 		}
 
