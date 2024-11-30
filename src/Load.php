@@ -85,34 +85,39 @@ final class Load {
 			trigger_error( esc_html__( 'Please include a valid plugin_file.', 'wp-license-client' ), E_USER_NOTICE );
 		}
 
-		/**
-		 * Rest API support
-		 */
-		$this->routes = new API_Rest_Routes_Library( $this->client_data );
+		add_action(
+			'init',
+			function () {
+				/**
+				* Rest API support
+				*/
+				$this->routes = new API_Rest_Routes_Library( $this->client_data );
 
-		/**
-		 * Don't load plugin models outside admin panel
-		 */
-		if ( ! is_admin() ) {
-			return;
-		}
+				/**
+				* Don't load plugin models outside admin panel
+				*/
+				if ( ! is_admin() ) {
+					return;
+				}
 
-		/**
-		 * Load plugin models
-		 */
-		$this->plugin = new Model_Plugin( $this->client_data );
+				/**
+				* Load plugin models
+				*/
+				$this->plugin = new Model_Plugin( $this->client_data );
 
-		if ( ! $this->plugin->is_valid() ) {
-			trigger_error( sprintf( esc_html__( '%s is not a valid plugin file.', 'wp-license-client' ), esc_html( $this->plugin->get_file() ) ), E_USER_NOTICE );
-		}
+				if ( ! $this->plugin->is_valid() ) {
+					trigger_error( sprintf( esc_html__( '%s is not a valid plugin file.', 'wp-license-client' ), esc_html( $this->plugin->get_file() ) ), E_USER_NOTICE );
+				}
 
-		$this->activation = new Model_Activation( $this->plugin );
-		$this->user_data  = new Model_User_Data( $this->plugin );
-		new Controller_Plugin_Information( $this->plugin, $this->activation, $this->user_data );
-		new Controller_Plugin_Update( $this->plugin, $this->activation, $this->user_data );
-		new Controller_Plugin_Table( $this->plugin, $this->activation, $this->user_data );
-		new Controller_Page( $this->plugin, $this->activation, $this->user_data );
-		new Controller_Notice( $this->plugin, $this->activation, $this->user_data );
-		new Controller_Menu( $this->plugin, $this->activation );
+				$this->activation = new Model_Activation( $this->plugin );
+				$this->user_data  = new Model_User_Data( $this->plugin );
+				new Controller_Plugin_Information( $this->plugin, $this->activation, $this->user_data );
+				new Controller_Plugin_Update( $this->plugin, $this->activation, $this->user_data );
+				new Controller_Plugin_Table( $this->plugin, $this->activation, $this->user_data );
+				new Controller_Page( $this->plugin, $this->activation, $this->user_data );
+				new Controller_Notice( $this->plugin, $this->activation, $this->user_data );
+				new Controller_Menu( $this->plugin, $this->activation );
+			}
+		);
 	}
 }
