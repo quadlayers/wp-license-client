@@ -21,6 +21,7 @@ class Load {
 
 		add_action( 'admin_notices', array( $this, 'add_license_activate' ) );
 		add_action( 'admin_notices', array( $this, 'add_license_expired' ) );
+		add_action( 'admin_notices', array( $this, 'add_license_error' ) );
 	}
 
 	public function add_license_activate() {
@@ -93,6 +94,76 @@ class Load {
 						<a href="<?php echo esc_url( $this->plugin->get_license_key_url() ); ?>" class="button-secondary">
 							<?php esc_html_e( 'Renew License', 'wp-license-client' ); ?>
 						</a>
+						<?php if ( $this->plugin->get_support_url() ) : ?>
+							<a href="<?php echo esc_url( $this->plugin->get_support_url() ); ?>" target="_blank">
+								<?php esc_html_e( 'Get support', 'wp-license-client' ); ?>
+							</a>
+						<?php endif; ?>
+					</span>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Display license API error messages with detailed explanation about premium features
+	 */
+	public function add_license_error() {
+
+		if ( 'error' !== $this->activation->status() ) {
+			return;
+		}
+
+		$activation = $this->activation->get();
+
+		if ( empty( $activation['message'] ) ) {
+			return;
+		}
+
+		$plugin_name     = $this->plugin->get_name();
+		$message         = $activation['message'];
+		$license_url     = $this->plugin->get_menu_license_url();
+		$license_key_url = $this->plugin->get_license_key_url();
+
+		$is_max_activations = false;
+		if ( isset( $activation['error'] ) && $activation['error'] === 2003 ) {
+			$is_max_activations = true;
+		} elseif ( stripos( $message, 'maximum' ) !== false && stripos( $message, 'activations' ) !== false ) {
+			$is_max_activations = true;
+		}
+
+		?>
+		<div class="notice notice-error" data-notice_id="quadlayers-license-error">
+			<div class="notice-container" style="padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: left; align-items: center;">
+				<div class="notice-content" style="margin-left: 15px;">
+					<p>
+						<b><?php printf( esc_html__( '%s license activation error!', 'wp-license-client' ), esc_html( $plugin_name ) ); ?></b>
+						<br/>
+						<?php echo esc_html( $message ); ?>
+					</p>
+					<p>
+						<strong><?php esc_html_e( 'Important:', 'wp-license-client' ); ?></strong> 
+						<?php
+						printf(
+							esc_html__( 'Premium features for %s will be deactivated because your license is not active. Please resolve this issue to restore full functionality.', 'wp-license-client' ),
+							esc_html( $plugin_name )
+						);
+						?>
+					</p>
+					<span style="display:flex;align-items:center;gap: 15px;">
+						<?php if ( $license_url ) : ?>
+							<a href="<?php echo esc_url( $license_url ); ?>" class="button-primary">
+								<?php esc_html_e( 'Activate', 'wp-license-client' ); ?>
+							</a>
+						<?php endif; ?>
+						
+						<?php if ( $license_key_url ) : ?>
+							<a href="<?php echo esc_url( $license_key_url ); ?>" target="_blank" class="button-secondary">
+								<?php esc_html_e( 'Renew', 'wp-license-client' ); ?>
+							</a>
+						<?php endif; ?>
+						
 						<?php if ( $this->plugin->get_support_url() ) : ?>
 							<a href="<?php echo esc_url( $this->plugin->get_support_url() ); ?>" target="_blank">
 								<?php esc_html_e( 'Get support', 'wp-license-client' ); ?>
