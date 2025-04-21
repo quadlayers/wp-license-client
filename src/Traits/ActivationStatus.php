@@ -13,6 +13,10 @@ trait ActivationStatus {
 
 	public function get_status( $activation ) {
 
+		if ( isset( $activation['error'], $activation['message'] ) ) {
+			return 'error';
+		}
+
 		if ( ! isset( $activation['license_key'], $activation['activation_instance'], $activation['license_expiration'] ) ) {
 			return 'none';
 		}

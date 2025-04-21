@@ -18,6 +18,7 @@ class Activation extends Base {
 	 * @var array
 	 */
 	protected $defaults = array(
+		'error'                => null,
 		'message'              => null,
 		'order_id'             => null,
 		'license_key'          => null,
