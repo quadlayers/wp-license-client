@@ -93,7 +93,7 @@ final class Load {
 				* Rest API support
 				*/
 				$this->routes = new API_Rest_Routes_Library( $this->client_data );
-				
+
 				/**
 				* Load plugin models for all contexts (needed for Cron)
 				*/
@@ -105,10 +105,10 @@ final class Load {
 
 				$this->activation = new Model_Activation( $this->plugin );
 				$this->user_data  = new Model_User_Data( $this->plugin );
-				
+
 				// License verification works in both admin and frontend for Cron
 				new Controller_Verify_License( $this->plugin, $this->user_data, $this->activation );
-				
+
 				/**
 				* Don't load admin-specific controllers outside admin panel
 				*/
