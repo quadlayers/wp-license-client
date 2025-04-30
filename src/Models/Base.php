@@ -97,9 +97,31 @@ abstract class Base {
 			return $this->get_defaults();
 		}
 
-		$data = get_option( $this->get_db_key(), array() );
+		$data      = array();
+		$site_data = null;
 
-		if ( ! is_array( $data ) ) {
+		if ( is_multisite() && is_network_admin() ) {
+			$sites = get_sites(
+				array(
+					'fields' => 'ids',
+				)
+			);
+			foreach ( $sites as $site_id ) {
+				if ( function_exists( 'switch_to_blog' ) && function_exists( 'restore_current_blog' ) ) {
+					switch_to_blog( $site_id );
+					$site_data = get_option( $this->get_db_key(), array() );
+					restore_current_blog();
+					if ( isset( $site_data['license_key'], $site_data['activation_instance'] ) ) {
+						$data = $site_data;
+						break; // Found valid license data
+					}
+				}
+			}
+		} else {
+			$data = get_option( $this->get_db_key(), array() );
+		}
+
+		if ( ! is_array( $data ) || empty( $data ) ) {
 			return $this->get_defaults();
 		}
 
