@@ -56,7 +56,7 @@ abstract class Base implements FetchInterface {
 		$args = array_map(
 			function ( $value ) {
 
-				$value = trim( $value );
+				$value = $value ? trim( $value ) : '';
 				$value = preg_replace( "/[\r\n|\n|\r]+/", PHP_EOL, $value );
 
 				return $value;

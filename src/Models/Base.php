@@ -61,7 +61,9 @@ abstract class Base {
 		if ( strlen( $param ) > $length ) {
 			$param = substr( $param, 0, $length );
 		}
-		return trim( $param );
+
+		
+		return $param ? trim( $param ) : '';
 	}
 
 	protected function get_valid_data( array $array ) {
