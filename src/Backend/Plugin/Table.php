@@ -170,7 +170,7 @@ class Table {
 		// Check if the plugin is active
 		$is_active = is_plugin_active( $plugin_base ) ? 'active' : '';
 
-		if ( 'none' === $this->activation->status() ) {
+		if ( 'valid' !== $this->activation->status() ) {
 			// Add notification for non-activated license
 			echo '<tr class="plugin-update-tr installer-plugin-update-tr ' . esc_attr( $is_active ) . '" style="position:relative;top:-1px;">
 			<td colspan="4" class="plugin-update colspanchange">
