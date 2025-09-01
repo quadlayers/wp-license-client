@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita2f304a3aa9b3480dc700d4685094adc
+class ComposerStaticInitfa90a75497b929fd379629aa36e58caa
 {
     public static $files = array (
         'ee9922e131abffdaa2e5fa31e355dc22' => __DIR__ . '/../..' . '/src/helpers.php',
@@ -36,7 +36,6 @@ class ComposerStaticInita2f304a3aa9b3480dc700d4685094adc
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\Activation\\Delete' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/Activation/Delete.php',
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\Activation\\Get' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/Activation/Get.php',
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\Base' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/Base.php',
-        'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\Product\\Information' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/Product/Information.php',
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\RouteInterface' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/RouteInterface.php',
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\UserData\\Create' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/UserData/Create.php',
         'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\UserData\\Delete' => __DIR__ . '/../..' . '/src/Api/Rest/Endpoints/UserData/Delete.php',
@@ -62,9 +61,9 @@ class ComposerStaticInita2f304a3aa9b3480dc700d4685094adc
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita2f304a3aa9b3480dc700d4685094adc::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita2f304a3aa9b3480dc700d4685094adc::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInita2f304a3aa9b3480dc700d4685094adc::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitfa90a75497b929fd379629aa36e58caa::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitfa90a75497b929fd379629aa36e58caa::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitfa90a75497b929fd379629aa36e58caa::$classMap;
 
         }, null, ClassLoader::class);
     }
