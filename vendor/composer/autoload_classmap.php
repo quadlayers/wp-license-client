@@ -17,7 +17,6 @@ return array(
     'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\Activation\\Delete' => $baseDir . '/src/Api/Rest/Endpoints/Activation/Delete.php',
     'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\Activation\\Get' => $baseDir . '/src/Api/Rest/Endpoints/Activation/Get.php',
     'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\Base' => $baseDir . '/src/Api/Rest/Endpoints/Base.php',
-    'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\Product\\Information' => $baseDir . '/src/Api/Rest/Endpoints/Product/Information.php',
     'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\RouteInterface' => $baseDir . '/src/Api/Rest/Endpoints/RouteInterface.php',
     'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\UserData\\Create' => $baseDir . '/src/Api/Rest/Endpoints/UserData/Create.php',
     'QuadLayers\\WP_License_Client\\Api\\Rest\\Endpoints\\UserData\\Delete' => $baseDir . '/src/Api/Rest/Endpoints/UserData/Delete.php',

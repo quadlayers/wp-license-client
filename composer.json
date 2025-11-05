@@ -16,9 +16,6 @@
 	],
 	"minimum-stability": "stable",
 	"config": {
-		"platform": {
-			"php": "7.4.0"
-		},
 		"allow-plugins": {
 			"automattic/jetpack-composer-plugin": true,
 			"dealerdirect/phpcodesniffer-composer-installer": true
@@ -36,11 +33,11 @@
 		"textdomain": "wp-license-client"
 	},
 	"require": {
-		"php": ">=7.4.0"
+		"php": ">=7.2.0"
 	},
 	"require-dev": {
 		"woocommerce/woocommerce-sniffs": "^1.0.0",
-		"phpunit/phpunit": "^9.5"
+		"phpunit/phpunit": "^9.6"
 	},
 	"scripts": {
 		"test": "vendor/bin/phpunit --debug",

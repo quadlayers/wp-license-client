@@ -60,7 +60,7 @@ class Table {
 			return $return;
 		}
 
-		if ( $args->slug != $this->plugin->get_slug() ) {
+		if ( ! isset( $args->slug ) || $args->slug != $this->plugin->get_slug() ) {
 			return $return;
 		}
 
