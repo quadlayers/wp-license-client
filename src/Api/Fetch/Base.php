@@ -103,6 +103,13 @@ abstract class Base implements FetchInterface {
 			)
 		);
 
+		if ( is_wp_error( $response ) ) {
+			return (object) array(
+				'error'   => $response->get_error_code(),
+				'message' => $response->get_error_message(),
+			);
+		}
+
 		$response = json_decode( wp_remote_retrieve_body( $response ) );
 
 		return $this->handle_response( $response );
