@@ -16,7 +16,7 @@ class Load {
 	protected $activation;
 	protected $user_data;
 
-	public function __construct( Model_Plugin $model_plugin, Model_Activation $model_activation, Model_User_Data $model_user_data = null ) {
+	public function __construct( Model_Plugin $model_plugin, Model_Activation $model_activation, ?Model_User_Data $model_user_data = null ) {
 		$this->plugin     = $model_plugin;
 		$this->activation = $model_activation;
 		$this->user_data  = $model_user_data;
