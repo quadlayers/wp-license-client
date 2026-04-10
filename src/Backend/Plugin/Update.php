@@ -92,7 +92,8 @@ class Update {
 				'</p></div><span class="notice notice-error notice-alt" style="display:block; padding: 10px;"><b>%s</b> %s</span>',
 				esc_html__( 'Activate your license.', 'wp-license-client' ),
 				sprintf(
-					esc_html__( 'Please visit %1$s to activate the license or %2$s in our website.', 'wp-license-client' ),
+					/* translators: %1$s: settings link, %2$s: purchase link */
+				esc_html__( 'Please visit %1$s to activate the license or %2$s in our website.', 'wp-license-client' ),
 					sprintf(
 						'<a href="%s" target="_blank">%s</a>',
 						esc_url( $this->plugin->get_menu_license_url() ),

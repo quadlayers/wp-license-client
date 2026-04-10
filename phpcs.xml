@@ -1,47 +1,76 @@
 <?xml version="1.0"?>
-<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Example Project" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
-	<description>QuadLayers PHPCS rules</description>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="WooCommerce Marketplace" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+	<description>Mirrors the WooCommerce.com marketplace PHPCS requirements for third-party extensions.</description>
+
 	<!-- Configs -->
 	<config name="minimum_supported_wp_version" value="4.7" />
 	<config name="testVersion" value="7.2-" />
+
 	<!-- Exclude paths -->
-	<exclude-pattern>/node_modules</exclude-pattern>
-	<exclude-pattern>/vendor</exclude-pattern>
-	<exclude-pattern>/tests</exclude-pattern>
-	<exclude-pattern>/jetpack_vendor/i18n-map.php</exclude-pattern>
-	<exclude-pattern>/jetpack_vendor/automattic</exclude-pattern>
-	<exclude-pattern>/phpunit</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>/build</exclude-pattern>
 	<exclude-pattern>/artifacts</exclude-pattern>
-	<exclude-pattern>/test-results</exclude-pattern>
-	<exclude-pattern>/playwright-report</exclude-pattern>
-	<exclude-pattern>/playwright</exclude-pattern>
-	<exclude-pattern>/.plugin</exclude-pattern>
-	<!-- Include the WordPress-Extra standard. -->
-	<rule ref="WordPress-Extra">
-		<!-- <exclude name="WordPress.WP.GlobalVariablesOverride" /> -->
-		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment"/>
-		<!-- <exclude name="WordPress.PHP.YodaConditions.NotYoda" /> -->
-		<exclude name="Squiz.Commenting.FileComment.Missing" />
-		<exclude name="Squiz.Commenting.ClassComment.Missing" />
-		<exclude name="Squiz.Commenting.VariableComment.Missing" />
-		<exclude name="Squiz.Commenting.FunctionComment.Missing" />
-		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag" />
-		<exclude name="Squiz.Commenting.FunctionComment.MissingParamName" />
-		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment" />
-		<exclude name="WooCommerce.Commenting.CommentHooks.MissingHookComment" />
+	<exclude-pattern>/tests</exclude-pattern>
+	<exclude-pattern>/phpunit</exclude-pattern>
+	<exclude-pattern>/.tools</exclude-pattern>
+
+	<!-- WordPress-Core with marketplace exclusions -->
+	<rule ref="WordPress-Core">
+		<exclude name="Generic.WhiteSpace.IncrementDecrementSpacing" />
+		<exclude name="Modernize.FunctionCalls.Dirname" />
+		<exclude name="PEAR.Files.IncludingFile" />
+		<exclude name="PSR12.Traits.UseDeclaration" />
+		<exclude name="PSR12.Functions.ReturnTypeDeclaration.SpaceBeforeColon" />
+		<exclude name="PSR2.Classes.ClassDeclaration.CloseBraceAfterBody" />
+		<exclude name="PSR2.Files.EndFileNewline.TooMany" />
+		<exclude name="PSR2.Methods.FunctionClosingBrace.SpacingBeforeClose" />
+		<exclude name="Squiz.Functions.FunctionDeclarationArgumentSpacing" />
+		<exclude name="Universal.Constants.UppercaseMagicConstants" />
+		<exclude name="Universal.Namespaces" />
+		<exclude name="Universal.UseStatements.NoLeadingBackslash" />
 	</rule>
-	<!-- Add in some extra rules from other standards. -->
-	<rule ref="Generic.CodeAnalysis.UnusedFunctionParameter"/>
-	<rule ref="Generic.Commenting.Todo"/>
-	<!-- Exclude WooCommerce-Core rules. -->
+
+	<!-- WordPress-Extra with marketplace exclusions -->
+	<rule ref="WordPress-Extra">
+		<exclude name="Generic.Commenting.DocComment.SpacingAfter" />
+		<exclude name="Generic.Files.LineEndings.InvalidEOLChar" />
+		<exclude name="Generic.Functions.FunctionCallArgumentSpacing.SpaceBeforeComma" />
+		<exclude name="PEAR.Functions.FunctionCallSignature" />
+		<exclude name="Squiz.Commenting" />
+		<exclude name="Squiz.PHP.DisallowSizeFunctionsInLoops.Found" />
+		<exclude name="Squiz.WhiteSpace" />
+		<exclude name="WordPress.Arrays" />
+		<exclude name="WordPress.Files.FileName" />
+		<exclude name="WordPress.NamingConventions" />
+		<exclude name="WordPress.Security.EscapeOutput.ErrorNotEscaped" />
+		<exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped" />
+		<exclude name="WordPress.Security.ValidatedSanitizedInput.MissingUnslash" />
+		<exclude name="WordPress.WhiteSpace" />
+		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralText" />
+		<exclude name="Universal.CodeAnalysis.NoEchoSprintf" />
+		<exclude name="Universal.ControlStructures.DisallowLonelyIf" />
+		<exclude name="Universal.Files.SeparateFunctionsFromOO" />
+		<exclude name="WordPress.WP.I18n.EmptyTextDomain" />
+		<exclude name="NormalizedArrays.Arrays.ArrayBraceSpacing" />
+		<exclude name="NormalizedArrays.Arrays.CommaAfterLast" />
+		<exclude name="Generic.WhiteSpace.LanguageConstructSpacing" />
+		<exclude name="Squiz.Functions.MultiLineFunctionDeclaration" />
+		<exclude name="Universal.WhiteSpace" />
+	</rule>
+
+	<!-- WooCommerce-Core with marketplace exclusions -->
 	<rule ref="WooCommerce-Core">
 		<exclude name="Core.Commenting.CommentTags.AuthorTag" />
-		<exclude name="WordPress.PHP.DontExtract" />
-		<exclude name="Generic.Arrays.DisallowShortArraySyntax" />
 		<exclude name="Generic.WhiteSpace.ScopeIndent.Incorrect" />
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax" />
+		<exclude name="WooCommerce.Commenting.CommentHooks.HookCommentWrongStyle" />
+		<exclude name="WooCommerce.Commenting.CommentHooks.MissingHookComment" />
+		<exclude name="WooCommerce.Commenting.CommentHooks.MissingSinceComment" />
+		<exclude name="WordPress.PHP.DontExtract" />
 	</rule>
-	<!-- Exclude tests folder. -->
+
+	<!-- PHPCompatibility -->
 	<rule ref="PHPCompatibility">
 		<exclude-pattern>*/tests/*</exclude-pattern>
 	</rule>

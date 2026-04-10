@@ -178,7 +178,8 @@ class Table {
 					<p>' .
 					'<b>' . esc_html__( 'The plugin license is not activated.', 'wp-license-client' ) . '</b> ' .
 					sprintf(
-						esc_html__( 'Please visit the %1$s to activate your license or %2$s one from our website.', 'wp-license-client' ),
+						/* translators: %1$s: settings link, %2$s: purchase link */
+				esc_html__( 'Please visit the %1$s to activate your license or %2$s one from our website.', 'wp-license-client' ),
 						sprintf(
 							'<a href="%s">%s</a>',
 							esc_url( $this->plugin->get_menu_license_url() ),
@@ -204,7 +205,8 @@ class Table {
 					<p>' .
 					'<b>' . esc_html__( 'Your plugin license has expired.', 'wp-license-client' ) . '</b> ' .
 					sprintf(
-						esc_html__( 'Please visit your %1$s to renew your license or %2$s a new one from our website.', 'wp-license-client' ),
+						/* translators: %1$s: account link, %2$s: purchase link */
+				esc_html__( 'Please visit your %1$s to renew your license or %2$s a new one from our website.', 'wp-license-client' ),
 						sprintf(
 							'<a href="%s" target="_blank">%s</a>',
 							esc_url( $this->plugin->get_license_key_url() ),

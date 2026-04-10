@@ -2,25 +2,16 @@
 
 namespace QuadLayers\WP_License_Client;
 
-/**
- * Include the Composer autoload file if you're not using Composer in your package.
- *
- * require_once __DIR__ . '/../vendor/autoload.php';
- */
+// Include the Composer autoload file if you're not using Composer in your package.
+// require_once __DIR__ . '/../vendor/autoload.php';
 
-/**
- * Models
- */
+// Models.
 use QuadLayers\WP_License_Client\Models\Plugin as Model_Plugin;
 use QuadLayers\WP_License_Client\Models\UserData as Model_User_Data;
 use QuadLayers\WP_License_Client\Models\Activation as Model_Activation;
-/**
- * API
- */
+// API.
 use QuadLayers\WP_License_Client\Api\Rest\RoutesLibrary as API_Rest_Routes_Library;
-/**
- * Controllers
- */
+// Controllers.
 use QuadLayers\WP_License_Client\Backend\Plugin\Information as Controller_Plugin_Information;
 use QuadLayers\WP_License_Client\Backend\Plugin\Update as Controller_Plugin_Update;
 use QuadLayers\WP_License_Client\Backend\Plugin\Table as Controller_Plugin_Table;

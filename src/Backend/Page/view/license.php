@@ -107,9 +107,9 @@ exit;} ?>
 			<?php else : ?>
 				<p class="submit" style="font-size: 14px;">
 				<?php
-					/* translators: %s: support URL */
 					printf(
 						wp_kses(
+							/* translators: %s: support URL */
 							__( 'Do you want to delete license activation? Please contact support <a href="%s" target="_blank">here</a>.', 'wp-license-client' ),
 							array(
 								'a' => array(

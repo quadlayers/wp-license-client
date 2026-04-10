@@ -59,7 +59,7 @@ class StatusChange {
 			)
 		);
 
-		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), $message );
+		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr(  ), wp_kses_post(  ) );
 
 		// Add script to handle dismissible notice and remove the transient
 		if ( $notice['dismissible'] ) {
@@ -94,7 +94,7 @@ class StatusChange {
 
 		// Check if user has permission
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( __( 'You do not have permission to perform this action', 'wp-license-client' ) );
+			wp_die( esc_html__( 'You do not have permission to perform this action', 'wp-license-client' ) );
 		}
 
 		// Get the transient key and delete it

@@ -140,7 +140,7 @@ class Load {
 		$license_key_url = $this->plugin->get_license_key_url();
 
 		$is_max_activations = false;
-		if ( isset( $activation['error'] ) && $activation['error'] === 2003 ) {
+		if ( isset( $activation['error'] ) && 2003 === $activation['error'] ) {
 			$is_max_activations = true;
 		} elseif ( stripos( $message, 'maximum' ) !== false && stripos( $message, 'activations' ) !== false ) {
 			$is_max_activations = true;
@@ -163,8 +163,8 @@ class Load {
 					<p>
 						<strong><?php esc_html_e( 'Important:', 'wp-license-client' ); ?></strong> 
 						<?php
-						/* translators: %s: plugin name */
 						printf(
+							/* translators: %s: plugin name */
 							esc_html__( 'Premium features for %s will be deactivated because your license is not active. Please resolve this issue to restore full functionality.', 'wp-license-client' ),
 							esc_html( $plugin_name )
 						);

@@ -30,7 +30,7 @@ trait ActivationStatus {
 
 	public function is_expired( $activation ) {
 
-		if ( $activation['license_expiration'] === '0000-00-00 00:00:00' ) {
+		if ( '0000-00-00 00:00:00' === $activation['license_expiration'] ) {
 			return false;
 		}
 
