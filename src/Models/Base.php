@@ -62,7 +62,6 @@ abstract class Base {
 			$param = substr( $param, 0, $length );
 		}
 
-		
 		return $param ? trim( $param ) : '';
 	}
 

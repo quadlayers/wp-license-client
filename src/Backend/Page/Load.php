@@ -35,8 +35,6 @@ class Load {
 
 	public function add_menu() {
 
-		global $_parent_pages;
-
 		$parent_menu_slug  = $this->plugin->get_parent_menu_slug();
 		$menu_slug_license = $this->plugin->get_license_menu_slug();
 
@@ -44,7 +42,7 @@ class Load {
 			return;
 		}
 
-		if ( ! isset( $_parent_pages[ $parent_menu_slug ] ) ) {
+		if ( ! isset( $GLOBALS['_parent_pages'][ $parent_menu_slug ] ) ) {
 			$plugin_name = $this->plugin->get_name();
 			if ( $plugin_name ) {
 				add_menu_page(
@@ -82,7 +80,7 @@ class Load {
 		/**
 		 * Validate current page
 		 */
-		if ( ! isset( $_REQUEST['option_page'] ) || $_REQUEST['option_page'] !== $plugin_slug . '-qlwlm-create' ) {
+		if ( ! isset( $_REQUEST['option_page'] ) || sanitize_text_field( wp_unslash( $_REQUEST['option_page'] ) ) !== $plugin_slug . '-qlwlm-create' ) {
 			return;
 		}
 
@@ -96,11 +94,11 @@ class Load {
 		/**
 		 * Validate nonce
 		 */
-		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( wp_unslash( $_REQUEST['_wpnonce'] ), $plugin_slug . '-qlwlm-create-options' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ), $plugin_slug . '-qlwlm-create-options' ) ) {
 			return;
 		}
 
-		$license = wp_unslash( $_REQUEST[ $plugin_slug ] ); //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		$license = array_map( 'sanitize_text_field', wp_unslash( (array) $_REQUEST[ $plugin_slug ] ) );
 
 		$this->user_data->create( $license );
 
@@ -127,14 +125,14 @@ class Load {
 		/**
 		 * Validate current page
 		 */
-		if ( ! isset( $_REQUEST['option_page'] ) || $_REQUEST['option_page'] !== $plugin_slug . '-qlwlm-delete' ) {
+		if ( ! isset( $_REQUEST['option_page'] ) || sanitize_text_field( wp_unslash( $_REQUEST['option_page'] ) ) !== $plugin_slug . '-qlwlm-delete' ) {
 			return;
 		}
 
 		/**
 		 * Validate nonce
 		 */
-		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( wp_unslash( $_REQUEST['_wpnonce'] ), $plugin_slug . '-qlwlm-delete-options' ) ) { //phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		if ( ! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ), $plugin_slug . '-qlwlm-delete-options' ) ) {
 			return;
 		}
 

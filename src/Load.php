@@ -100,6 +100,7 @@ final class Load {
 				$this->plugin = new Model_Plugin( $this->client_data );
 
 				if ( ! $this->plugin->is_valid() ) {
+					/* translators: %s: plugin file path */
 					trigger_error( sprintf( esc_html__( '%s is not a valid plugin file.', 'wp-license-client' ), esc_html( $this->plugin->get_file() ) ), E_USER_NOTICE );
 				}
 

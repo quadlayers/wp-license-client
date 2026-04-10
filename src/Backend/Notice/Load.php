@@ -39,7 +39,12 @@ class Load {
 			<div class="notice-container" style="padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: left; align-items: center;">
 				<div class="notice-content" style="margin-left: 15px;">
 					<p>
-						<b><?php printf( esc_html__( 'Please activate your %s license key.', 'wp-license-client' ), esc_html( $this->plugin->get_name() ) ); ?></b>
+						<b>
+						<?php
+						/* translators: %s: plugin name */
+						printf( esc_html__( 'Please activate your %s license key.', 'wp-license-client' ), esc_html( $this->plugin->get_name() ) );
+						?>
+						</b>
 						<br/>
 						<?php esc_html_e( 'Please complete the license activation process to receive automatic updates and enable all premium features.', 'wp-license-client' ); ?>
 					</p>
@@ -86,9 +91,17 @@ class Load {
 			<div class="notice-container" style="padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: left; align-items: center;">
 				<div class="notice-content" style="margin-left: 15px;">
 					<p>
-						<b><?php printf( esc_html__( 'Your %s license has expired.', 'wp-license-client' ), esc_html( $this->plugin->get_name() ) ); ?></b>
+						<b>
+						<?php
+						/* translators: %s: plugin name */
+						printf( esc_html__( 'Your %s license has expired.', 'wp-license-client' ), esc_html( $this->plugin->get_name() ) );
+						?>
+						</b>
 						<br/>
-						<?php printf( esc_html__( 'Hello %1$s, your license has expired. You can still access premium features for 7 more days. Renew now to avoid losing them.', 'wp-license-client' ), esc_html( $user->display_name ), esc_html( $this->plugin->get_name() ), esc_html( $activation['license_expiration'] ) ); ?>
+						<?php
+						/* translators: %1$s: user display name */
+						printf( esc_html__( 'Hello %1$s, your license has expired. You can still access premium features for 7 more days. Renew now to avoid losing them.', 'wp-license-client' ), esc_html( $user->display_name ), esc_html( $this->plugin->get_name() ), esc_html( $activation['license_expiration'] ) );
+						?>
 					</p>
 					<span style="display:flex;align-items:center;gap: 15px;">
 						<a href="<?php echo esc_url( $this->plugin->get_license_key_url() ); ?>" class="button-secondary">
@@ -138,13 +151,19 @@ class Load {
 			<div class="notice-container" style="padding-top: 10px; padding-bottom: 10px; display: flex; justify-content: left; align-items: center;">
 				<div class="notice-content" style="margin-left: 15px;">
 					<p>
-						<b><?php printf( esc_html__( '%s license activation error!', 'wp-license-client' ), esc_html( $plugin_name ) ); ?></b>
+						<b>
+						<?php
+						/* translators: %s: plugin name */
+						printf( esc_html__( '%s license activation error!', 'wp-license-client' ), esc_html( $plugin_name ) );
+						?>
+						</b>
 						<br/>
 						<?php echo esc_html( $message ); ?>
 					</p>
 					<p>
 						<strong><?php esc_html_e( 'Important:', 'wp-license-client' ); ?></strong> 
 						<?php
+						/* translators: %s: plugin name */
 						printf(
 							esc_html__( 'Premium features for %s will be deactivated because your license is not active. Please resolve this issue to restore full functionality.', 'wp-license-client' ),
 							esc_html( $plugin_name )

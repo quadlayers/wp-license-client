@@ -59,11 +59,21 @@ exit;} ?>
 					</tr>
 					<tr>
 						<td><?php echo esc_html__( 'Updates', 'wp-license-client' ); ?></td>
-						<td><?php echo '0000-00-00 00:00:00' !== $activation['license_expiration'] && $activation['license_updates'] ? sprintf( esc_html__( 'Expires on %s', 'wp-license-client' ), esc_html( $activation['license_expiration'] ) ) : esc_html__( 'Unlimited', 'wp-license-client' ); ?></td>
+						<td>
+						<?php
+						/* translators: %s: expiration date */
+						echo '0000-00-00 00:00:00' !== $activation['license_expiration'] && $activation['license_updates'] ? sprintf( esc_html__( 'Expires on %s', 'wp-license-client' ), esc_html( $activation['license_expiration'] ) ) : esc_html__( 'Unlimited', 'wp-license-client' );
+						?>
+						</td>
 					</tr>
 					<tr>
 						<td><?php echo esc_html__( 'Support', 'wp-license-client' ); ?></td>
-						<td><?php echo '0000-00-00 00:00:00' !== $activation['license_expiration'] && $activation['license_support'] ? sprintf( esc_html__( 'Expires on %s', 'wp-license-client' ), esc_html( $activation['license_expiration'] ) ) : esc_html__( 'Unlimited', 'wp-license-client' ); ?></td>
+						<td>
+						<?php
+						/* translators: %s: expiration date */
+						echo '0000-00-00 00:00:00' !== $activation['license_expiration'] && $activation['license_support'] ? sprintf( esc_html__( 'Expires on %s', 'wp-license-client' ), esc_html( $activation['license_expiration'] ) ) : esc_html__( 'Unlimited', 'wp-license-client' );
+						?>
+						</td>
 					</tr>
 					<tr>
 						<td><?php echo esc_html__( 'Expiration', 'wp-license-client' ); ?></td>
@@ -97,6 +107,7 @@ exit;} ?>
 			<?php else : ?>
 				<p class="submit" style="font-size: 14px;">
 				<?php
+					/* translators: %s: support URL */
 					printf(
 						wp_kses(
 							__( 'Do you want to delete license activation? Please contact support <a href="%s" target="_blank">here</a>.', 'wp-license-client' ),

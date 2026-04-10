@@ -22,15 +22,13 @@ class Load {
 
 	public function add_menu_alert() {
 
-		global $_parent_pages;
-
 		$parent_menu_slug = $this->plugin->get_parent_menu_slug();
 
 		if ( ! $parent_menu_slug ) {
 			return;
 		}
 
-		if ( ! isset( $_parent_pages[ $parent_menu_slug ] ) ) {
+		if ( ! isset( $GLOBALS['_parent_pages'][ $parent_menu_slug ] ) ) {
 			return;
 		}
 
